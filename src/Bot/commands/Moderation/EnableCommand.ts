@@ -39,7 +39,7 @@ export default class Command extends BaseCommand {
       return;
     }
     disabledCommands[command.getName()] = false;
-    const DatabaseConfig = await GuildConfig.findOneAndUpdate(
+    const DatabaseConfig: any = await GuildConfig.findOneAndUpdate(
       { guildId: message.guild.id },
       { disabledCommands },
       { new: true }

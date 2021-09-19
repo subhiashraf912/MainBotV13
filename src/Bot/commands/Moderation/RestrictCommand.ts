@@ -47,7 +47,7 @@ export default class Command extends BaseCommand {
         commandRestricts[command.getName()].push(channel.id);
       });
 
-      const DBConfig = await GuildConfig.findOneAndUpdate(
+      const DBConfig: any = await GuildConfig.findOneAndUpdate(
         { guildId: message.guild.id },
         { commandRestricts },
         { new: true }
@@ -70,7 +70,7 @@ export default class Command extends BaseCommand {
         commandRestricts[command.getName()].push(channel.id);
       });
 
-      const DBConfig = await GuildConfig.findOneAndUpdate(
+      const DBConfig: any = await GuildConfig.findOneAndUpdate(
         { guildId: message.guild.id },
         { commandRestricts },
         { new: true }
@@ -103,7 +103,7 @@ export default class Command extends BaseCommand {
         return;
       }
       commandRestricts[command.getName()].push(channel.id);
-      const DBConfig = await GuildConfig.findOneAndUpdate(
+      const DBConfig: any = await GuildConfig.findOneAndUpdate(
         { guildId: message.guild.id },
         { commandRestricts },
         { new: true }
