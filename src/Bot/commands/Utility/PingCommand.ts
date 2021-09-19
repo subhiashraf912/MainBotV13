@@ -21,7 +21,7 @@ export default class PingCommand extends BaseCommand {
       }\`\`\`\n\`\`\`${GetLanguage("APILatency", config.language)}: ${
         (client.ws.ping / 3).toString().split(".")[0]
       }\`\`\``
-    );
+    ); //
     message.reply({ embeds: [embed] });
   }
 }
