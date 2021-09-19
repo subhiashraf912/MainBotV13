@@ -49,11 +49,8 @@ export default class RepeatCommand extends BaseCommand {
       });
       return;
     }
-    let modeToBeSet: number;
-    if (args[0] === "song") modeToBeSet = 1;
-    else if (args[0] === "queue") modeToBeSet = 2;
-    else modeToBeSet = 0;
-    let mode: number = client.distube.setRepeatMode(message, modeToBeSet);
+
+    let mode: number = client.distube.setRepeatMode(message);
     const loopMode: string = mode
       ? mode == 2
         ? GetLanguage("AllQueue", config.language)
