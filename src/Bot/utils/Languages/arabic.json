@@ -1,0 +1,434 @@
+{
+  "test": "أمر التست يعمل بشكل صحيح.",
+  "language_not_supported": "هذه اللغة غير مدعومة!",
+  "changed_language_sucess": "تم تغير اللغة بنجاح! ",
+  "perms_needed": "أنت تحتاج لصلاحيات ``{perms}`` للوصول لهذا الأمر!",
+  "bot_perms_needed": "يحتاج البوت لصلاحيات ``{perms}`` للوصول لهذا الأمر!",
+  "member_not_found": "لم يتم العثور على هذا العضو!",
+  "bot_missing_ban_perms": "أنا لا أمتلك الصلاحيات اللازمة لحظر هذا العضو!",
+  "bot_missing_kick_perms": "أنا لا أمتلك الصلاحيات اللازمة لطرد هذا العضو!",
+  "bot_missing_unban_perms": "أنا لا أمتلك الصلاحيات اللازمة لفك الحظر هذا العضو!",
+  "bot_missing_mute_role_perms": "لا يمكنني تعديل رتبة الميوت! تأكد أن رتبتي أعلى من رتبة الميوت!",
+  "member_got_banned": "تم حظر ``{member}`` من السيرفر!",
+  "bot_missing_edit_role_perms": "ليس لدي الصلاحيات اللازمة لتعديل هذه الرتبة!",
+  "member_got_kicked": "تم طرد ``{member}`` من السيرفر!",
+  "member_unbanned": "لقد تم فك الحظر عنك في سيرفر {guild} بواسطة: {by}!",
+  "member_vkicked": "تم طرد ``{member}`` من الروم!",
+  "member_not_in_vc": "هذا العضو ليس بروم صوتي!",
+  "bot_missing_vkick_perms": "أنا لا أمتلك الصلاحيات اللازمة لطرد الأعضاء من الروم الصوتي!",
+  "bot_missing_move_members_perms": "أنا لا أمتلك الصلاحيات اللازمة لنقل الأعضاء من الروم الصوتي!",
+  "mute_role_not_found": "لم يتم العثور على رتبة الميوت!",
+  "role_not_found": "لم يتم العثور على تلك الرتبة!",
+  "mute_not_found": "لم يتم العثور على هذه الرتبة!",
+  "added_mute_role": "تم اعطاء ميوت للعضو ``{member}``!",
+  "removed_mute_role": "تم رفع الميوت عن ``{member}``!",
+  "done_setting_mute_role": "تم تغير رتبة الميوت!",
+  "member_not_muted": "هذا العضو لا يتملك رتبة ميوت!",
+  "member_is_muted": "هذا العضو يتملك رتبة ميوت!",
+  "no_clear_messages_amount": "يجب عليك اضافة عدد الرسائل المراد حذفها!",
+  "clear_amount_must_be_number": "عدد الرسائل يجب أن يكون رقم!",
+  "clear_amount_must_be_more_than_zero": "يجب أن يكون عدد الرسائل اكثر من 0!",
+  "clear_amount_must_be_less_than_100": "يجب أن يكون عدد الرسائل أقل من 100!",
+  "clear_channel_must_be_text": "يجب أن يكون الروم روم كتابي!",
+  "cleared_messages": "لقد تم مسح {messages} رسالة!",
+  "channel_not_found": "لم أتمكن من العثور على  هذا الروم!",
+  "moved_member_to_new_vc": "تم نقل {member} الى الروم {vc}!",
+  "vc_needed": "يجب أن يكون الروم روم صوتي",
+  "member_has_role": "هذا العضو يمتلك تلك الرتبة مسبقاً!",
+  "member_doesnt_have_role": "هذا العضو لا يمتلك هذه الرتبة!",
+  "member_role_added": "تم تغير رتب العضو بنجاح!",
+  "member_role_removed": "تم الزالة الرتبة بنجاح!",
+  "warn_embed_title": "تحذير جديد",
+  "warned_member": "العضو الذي تم تحذيره:",
+  "warn_reason": "سبب التحذير:",
+  "warns_amount": "التحذيرات الحالية:",
+  "no_reason": "لا يوجد سبب محدد",
+  "no_warns_found": "لم يتم العثور على تحذيرات لهذا العضو!",
+  "member_warns": "التحذيرات",
+  "member": "العضو",
+  "member_left_server": "هذا العضو غادر السيرفر",
+  "by": "بواسطة",
+  "date": "التاريخ",
+  "warn_doesnt_exist": "لم يتم العثور على هذا التحذير!",
+  "you_need_to_add_warn": "يجب عليك إدخال التحذير الذي تريد حذفه!",
+  "number_required": "القيمة التي قمت بإدخالها يجب أن تكون رقم!",
+  "warn_removed": "تم حذف التحذير رقم {number} لهذا العضو!",
+  "error_happened": "لقد حدث خطأ!",
+  "role_color_updated": "لقد تم تغير لون الرتبة بنجاح!",
+  "nick_changed": "لقد تم تغير الكنية بنجاح!",
+  "cant_find_category": "لم يتم العثور على هذا القسم!",
+  "bot_categories": "هذه هي أقسام الأوامر في البوت",
+  "type": "أكتب:",
+  "category": "القسم",
+  "to_get_help": "للحصول على المساعدة",
+  "help_command": "أمر المساعدة",
+  "bot_help_commands": "هذه هي الأوامر في البوت",
+  "command_name": "اسم الأمر",
+  "description": "الوصف",
+  "aliases": "الأوامر الفرعية",
+  "ban_description": "يقوم بحظر عضو من السيرفر!",
+  "kick_description": "يقوم بطرد عضو من السيرفر!",
+  "remove-role_description": "يقوم بإزالة رتبة من العضو!",
+  "set-color_description": "يقوم بتغير لون الرتبة!",
+  "unban_description": "يقوم بفك الحظر عن عضو من السيرفر!",
+  "vkick_description": "يقوم بطرد عضو من الغرفة الصوتية!",
+  "warns_description": "يقوم بعرض تحذيرات عضو ما!",
+  "clear_description": "يقوم بمسح عدد من الرسائل في الشات!",
+  "move_description": "يقوم بنقل عضو إلى غرفة صوتية جديدة!",
+  "remove-warn_description": "يقوم بإزالة تحذير معين عن العضو!",
+  "set-mute-role_description": "يقوم بتسطيب رتبة الكتم!",
+  "unmute_description": "يقوم بفك الكتم عن عضو!",
+  "vmute_description": "يقوم بإعضاء كتم لعضو ما في الغرفة الصوتية",
+  "clear-nick_description": "يقوم بمسح الكنية الخاصة بشخص ما!",
+  "mute_description": "يقوم بإعطاء كتم لعضو ما!",
+  "role_description": "يقوم بإعطاء رتبة لعضو ما!",
+  "set-nick_description": "يقوم بتغير كنية عضو ما!",
+  "unvmute_description": "يقوم بفك الكتم عن عضو من الغرفة الصوتية!",
+  "warn_description": "يعطي تحذير لشخص ما!",
+  "no_aliases": "لا يوجد أوامر فرعية!",
+  "for_more_help": "للمزيد من المساعدة!",
+  "vkick_usage": "{prefix}vkick @someone/id",
+  "warns_usage": "{prefix}warns @someone/id",
+  "clear_usage": "{prefix}clear | {prefix}clear [messages number]",
+  "move_usage": "{prefix}move @someone/id #voicechannel/id",
+  "remove-warn_usage": "{prefix}remove-warn @someone/id [warn number]",
+  "set-mute-role_usage": "{prefix}set-mute-role @role/id",
+  "unmute_usage": "{prefix}unmute @someone/id",
+  "vmute_usage": "{prefix}vmute @someone/id",
+  "clear-nick_usage": "{prefix}clear-nick @someone/id",
+  "mute_usage": "{prefix}mute @someone/id",
+  "role_usage": "{prefix}role @someone/id @role/id",
+  "set-nick_usage": "{prefix}set-nick @someone/id [new nickname]",
+  "unvmute_usage": "{prefix}unvmute @someone/id",
+  "warn_usage": "{prefix}@someone/id [reason]",
+  "member_leveled_up": "لقد وصل العضو {member} إلى المستوى {level}! 🎉",
+  "member_got_level_role": "لقد حصل العضو {member} على الرتبة {role} بالوصول إلى المستوى الجديد! 🎉",
+  "cant_give_level_role": "لم أتمكن من إعطاء الرتبة {role} للعضو {member} لأنني لا أمتلك الصلاحيات اللازمة لإعطاء تلك الرتبة!",
+  "whois_user_info": "معلومات المستخدم",
+  "whois_joined_at": "وقت الانضمام:",
+  "whois_status": "الحالة:",
+  "whois_created_at": "وقت إنشاء الحساب:",
+  "whois_display_color": "لون العرض:",
+  "whois_display_name": "الاسم المستعار بالسيرفر:",
+  "whois_roles": "الرتب:",
+  "whois_permissions": "الصلاحيات:",
+  "whois_member": "العضو:",
+  "whois_bot?": "بوت",
+  "bot_prefix": "البريفكس:",
+  "bot_memory_usage": "استخدام الذاكرة:",
+  "bot_ping": "البنج:",
+  "bot_status": "حالة البوت:",
+  "bot_uptime": "نشط منذ:",
+  "bot_shard": "شارد:",
+  "bot_shards": "عدد الشاردز:",
+  "bot_commands_size": "عدد الأوامر:",
+  "bot_events_size": "عدد الافنتات:",
+  "bot_users_count": "عدد المستخدمين:",
+  "bot_guilds_count": "عدد السيرفرات:",
+  "command": "أمر",
+  "usage": "الاستخدام",
+  "no_description": "لا يوجد وصف لهذا الأمر",
+  "no_usage": "لا يوجد استخدام محدد لهذا الأمر",
+  "lock_description": "يقوم بإقفال الروم الذي تم ارسال الرسالة به!",
+  "unlock_description": "يقوم بإلغاء القفل عن الروم الذي تم ارسال الرسالة به!",
+  "whois_description": "يقوم بعرض بيانات العضو!",
+  "add-related-song_description": "يقوم بإضافة أغنية من المقترحات",
+  "auto-play_description": "يقوم بتغير حالة التشغيل التلقائي للأغاني!",
+  "jump_description": "يقوم بتخطي العديد من الأغاني دفعة واحدة!",
+  "lyrics_description": "يقوم بجلب كلمات الأغنية المرادة!",
+  "now-playing_description": "يقوم بعرض الأغنية المشغلة حالياً!",
+  "pause_description": "يقوم بإيقاف الأغنية مؤقتاً!",
+  "play_description": "يقوم بتشغيل أغنية تقريبا من جميع المواقع!",
+  "play-skip_description": "يقوم بتشغيل أغنية وتخطي الأغنية الحالية!",
+  "previous_description": "يقوم بتشغيل الأغنية السابقة!",
+  "queue_description": "يقوم بعرض الأغاني المطلوبة!",
+  "repeat_description": "يقوم بإعادة الأغنية أو جميع الأغاني!",
+  "resume_description": "يقوم بإستكمال الأغنية الموقفة مؤقتاً!",
+  "search_description": "يقوم بالبحث عن أغنية في اليوتيوب!",
+  "seek_description": "يقوم بتشغيل الأغنية من عدد ثواني محدد!",
+  "filter_description": "يقوم بتغير الفلتر الخاص بالأغنية!",
+  "shuffle_description": "يقوم بخلط الأغاني!",
+  "skip_description": "يقوم بتخطي الأغنية الحالية!",
+  "speed_description": "يقوم بتغير سرعة الأغنية!",
+  "stop_description": "يقوم بإيقاف الأغاني!",
+  "volume_description": "يقوم بتغير حجم صوت الأغنية!",
+  "lock_usage": "{prefix}lock",
+  "unlock_usage": "{prefix}unlock",
+  "whois_usage": "{prefix}whois | {prefix}whois @someone",
+  "add-related-song_usage": "{prefix}add-related-song",
+  "auto-play_usage": "{prefix}auto-play",
+  "jump_usage": "{prefix}jump",
+  "lyrics_usage": "{prefix}lyrics <الأغنية>",
+  "now-playing_usage": "{prefix}now-playing",
+  "pause_usage": "{prefix}pause",
+  "play_usage": "{prefix}play <الأغنية>",
+  "play-skip_usage": "{prefix}play-skip <الأغنية>",
+  "previous_usage": "{prefix}previous",
+  "queue_usage": "{prefix}queue",
+  "repeat_usage": "{prefix}repeat",
+  "resume_usage": "{prefix}resume",
+  "search_usage": "{prefix}search <الأغنية>",
+  "seek_usage": "{prefix}seek <الأغاني>",
+  "filter_usage": "{prefix}filter <الفلتر>",
+  "shuffle_usage": "{prefix}shuffle",
+  "skip_usage": "{prefix}skip",
+  "speed_usage": "{prefix}speed <السرعة>",
+  "stop_usage": "{prefix}stop",
+  "volume_usage": "{prefix}volume <الصوت>",
+  "requested_by": "تم الطلب بواسطة:",
+  "server_info": "معلومات السيرفر",
+  "guild_owner": "صاحب السيرفر:",
+  "guild_name": "اسم السيرفر:",
+  "guild_created_at": "تاريخ الإنشاء:",
+  "guild_member_count": "عدد الأعضاء:",
+  "guild_afk_channel": "روم afk:",
+  "guild_rules_channel": "روم القواعد:",
+  "guild_system_channel": "روم النظام:",
+  "guild_roles_count": "عدد الرتب:",
+  "guild_region": "بلد السيرفر:",
+  "guild_partnered": "بارتنر:",
+  "guild_features": "المميزات:",
+  "guild_emojis_size": "عدد الايموجيز:",
+  "guild_channels_size": "عدد الرومات:",
+  "guild_afk_timeout": "وقت الafk:",
+  "no_channel": "لا يوجد روم محدد!",
+  "no_owner": "لا يوجد مالك!",
+  "roles_members": "عضو",
+  "roles_roles": "الرتب",
+  "member_credits": "لديك {credits}$ رصيد في حسابك!",
+  "member_got_daily": "لقد استلمت رصيدك اليومي بمقدار {daily}$",
+  "avatar_description": "بإمكانك عرض الأفاتر الخاص بك أو الخاص بأشخاص آخرين!",
+  "avatar_usage": "{prefix}avatar @someone/id/username/tag",
+  "bot_description": "يمكنك عرض معلومات عن البوت!",
+  "bot_usage": "{prefix}bot",
+  "test_description": "تجربة إذا كان البوت يعمل أو ﻻ!",
+  "test_usage": "{prefix}test",
+  "credits_description": "يقوم هذا الأمر بعرض رصيد حسابك!",
+  "credits_usage": "{prefix}credits",
+  "help_description": "يقوم بعرض أمر المساعدة!",
+  "help_usage": "{prefix}help",
+  "move-me_description": "يقوم بنقلك إلى روم صوتي جديد!",
+  "move-me_usage": "{prefix}move-me #voicechannel/id",
+  "ping_description": "يقوم بعرض بنج البوت!",
+  "ping_usage": "{prefix}ping",
+  "roles_description": "يقوم بعرض رتب السيرفر مع عدد أعضاء كل رتبة!",
+  "roles_usage": "{prefix}roles",
+  "roll_description": "يقوم بإختيار رقم عشوائي من 1 إلى 100",
+  "roll_usage": "{prefix}roll",
+  "server_description": "يقوم بعرض بيانات السيرفر!",
+  "server_usage": "{prefix}server",
+  "set-language_description": "يقوم بتغير لغة البوت!",
+  "set-language_usage": "{prefix}set-language {language}",
+  "short_description": "يقوم بإختصار رابط معين!",
+  "short_usage": "{prefix}short {link}",
+  "non_bot_required": "ﻻ يمكنك القيام بهذه العملية مع بوت!",
+  "credits_amount_must_be_a_number": "يجب أن يكون المبلغ المراد تحويله رقماً!",
+  "member_doesn't_have_enough_credits": "أنت ﻻ تمتلك رصيد كافي للتحويل!",
+  "member_gave_credits": "{member} قام بتحويل {credits_amount} للعضو {target}!",
+  "missing_args_credits": "يجب عليك إدخال المبلغ المراد تحويله ومنشن الشخص المراد التحويل له!",
+  "you_can't_give_yourself": "ﻻ يمكنك التحويل لنفسك!",
+  "you_can't_give_a_bot": "ﻻ يمكنك التحويل لبوت!",
+  "daily_time_left": "لقد استلمت رصيدك اليومي بالفعل! عليك الانتظار {time} للإستلام مجدداً!",
+  "prefix_required": "يجب عليك إدخال البريفكس مع رسالتك!",
+  "prefix_updated": "لقد تم تغير البريفكس بنجاح!",
+  "no_level_roles_found": "لم يتم العثور على أي رتب مستويات في هذا السيرفر!",
+  "level": "المستوى",
+  "role": "الرتبة",
+  "deleted_role": "رتبة محذوفة",
+  "server_level_roles": "رتب المستويات الخاصة بالسيرفر",
+  "add_level_roles_wrong_syntax": "يجب عليك إدخال المستوى أوﻻً ثم الرتبة!",
+  "level_roles_updated": "تم إضافة `{role}` كرتبة للمستوى `{level}` ",
+  "remove_level_roles_wrong_syntax": "يجب عليك إدخال المستوى المراد حذفه!",
+  "level_not_found_in_database": "لم يتم العثور على هذا المستوى في قاعدة البيانات!",
+  "level_role_remove": "المستوى `{level}` قد تم حذفه من رتب المستويات!",
+  "level_system_got_disabled": "لقد تم تعطيل نظام المستويات!",
+  "level_system_already_disabled": "نظام المستويات معطل بالفعل!",
+  "level_system_got_enabled": "لقد تم تفعيل نظام المستويات!",
+  "level_system_already_enabled": "نظام المستويات مفعل بالفعل!",
+  "channel_needed": "يجب عليك إدخال الروم (اي دي | اسم | منشن)!",
+  "added_level_channel": "لقد تم إدراج {channel} ك روم مستويات!",
+  "removed_level_channel": "لقد تم حذف {channel} من رومات المستويات!",
+  "channel_already_in_levels": "هذا الروم موجود بالفعل في رومات المستويات!",
+  "channel_doesnt_exist_in_levels": "هذا الروم غير موجود في رومات المستويات!",
+  "no_levels_channels_found": "لم يتم العثور على أي رومات مستويات. سيعمل نظام المستويات في جميع الرومات!",
+  "text_channel_required": "يجب أن يكون نوع الروم روم نصي!",
+  "levels_channels": "رومات المستويات",
+  "level_channels_description": "الرومات التي يعمل بها نظام المستويات! باقي الرومات لن تعطي نقاط خبرة!",
+  "logs_updated": "لقد تم اختيار {channel} ك روم ل `{logs}`!",
+  "no_logs_set": "لا يوجد سجلات لهذا السيرفر!",
+  "server_logs_channels": "سجلات السيرفر:",
+  "channels_logs": "سجلات الرومات:",
+  "boosts_logs": "سجلات البوست:",
+  "member_logs": "سجلات الأعضاء:",
+  "server_logs": "سجلات السيرفر:",
+  "message_logs": "سجلات الرسائل:",
+  "roles_logs": "سجلات الرتب:",
+  "voice_channels_logs": "سجلات الرومات الصوتية:",
+  "add-level-channel_description": "يقوم بإضافة روم مستويات جديد!",
+  "add-level-role_description": "يقوم بإضافة رتبة مستويات جديدة!",
+  "role_is_higher_than_bot": "هذه الرتبة أعلى من رتبة البوت! الرجاء تغير صلاحيات البوت!",
+  "all-logs_description": "يقوم بتغير جميع السجلات الى الروم المحدد!",
+  "hide_description": "يقوم بإخفاء روم!",
+  "delete-level-channel_description": "يقوم بحذف روم مستويات!",
+  "boosts-logs_description": "يقوم بإختيار روم سجلات البوست!",
+  "disable-level-system_description": "يقوم بتعطيل نظام المستويات!",
+  "channel-logs_description": "يقوم بإختيار روم سجلات الرومات!",
+  "enable-level-system_description": "يقوم بتفعيل نظام المستويات!",
+  "server-logs_description": "يقوم بإختيار روم سجلات السيرفر!",
+  "level-channels_description": "يقوم بعرض رومات المستويات!",
+  "members-logs_description": "يقوم بإختيار روم سجلات الأعضاء!",
+  "level-roles_description": "يقوم بعرض رتب المستويات!",
+  "message-logs_description": "يقوم بإختيار روم سجلات الرسائل!",
+  "max-xp_description": "يقوم بإختيار الحد الأقصى لنقاط الخبرة!",
+  "daily_description": "يقوم بإعطاءك رصيد يومي!",
+  "roles-logs_description": "يقوم بإختيار روم سجلات الرتب!",
+  "min-xp_description": "يقوم بإختيار الحد الأدنى لنقاط الخبرة!",
+  "give_description": "يقوم بتحويل رصيد من حسابك لشخص آخر!",
+  "view-logs_description": "يقوم بعرض جميع رومات السجلات!",
+  "remove-level-role_description": "يقوم بحذف رتبة مستويات!!",
+  "voice-logs_description": "يقوم بإختيار روم سجلات الصوت!",
+  "set-prefix_description": "يقوم بتغير البريفكس الخاص بالسيرفر",
+  "add-level-channel_usage": "{prefix}add-level-channel #channel/ChannelName/ChannelId",
+  "add-level-role_usage": "{prefix}add-level-role <level> <role (@role/RoleName/RoleId)>",
+  "all-logs_usage": "{prefix}all-logs #channel/channel id/channel name",
+  "hide_usage": "{prefix}hide #channel/channel id/channel name",
+  "delete-level-channel_usage": "{prefix}delete-level-channel #channel/channel name/channel id",
+  "boosts-logs_usage": "{prefix}boosts-logs #channel/channel id/channel name",
+  "disable-level-system_usage": "{prefix}disable-level-system",
+  "channel-logs_usage": "{prefix}channel-logs #channel/channel id/channel name",
+  "enable-level-system_usage": "{prefix}enable-level-system",
+  "server-logs_usage": "{prefix}server-logs #channel/channel id/channel name",
+  "level-channels_usage": "{prefix}level-channels",
+  "members-logs_usage": "{prefix}members-logs #channel/channel id/channel name",
+  "level-roles_usage": "{prefix}level-roles",
+  "message-logs_usage": "{prefix}messages-logs #channel/channel id/channel name",
+  "max-xp_usage": "{prefix}max-xp | {prefix}max-xp <number>",
+  "daily_usage": "{prefix}daily",
+  "roles-logs_usage": "{prefix}roles-logs #channel/channel id/channel name",
+  "min-xp_usage": "{prefix}min-xp | {prefix}min-xp <number>",
+  "give_usage": "{prefix}give @someone <credits>",
+  "view-logs_usage": "{prefix}view-logs",
+  "remove-level-role_usage": "{prefix}remove-level-role <level>",
+  "voice-logs_usage": "{prefix}voice-logs #channel/channel id/channel name",
+  "set-prefix_usage": "{prefix}set-prefix <new prefix>",
+  "anime-episodes_description": "يقوم بجلب حلقات أي أنمي!",
+  "anime-news_description": "يقوم بجلب آخر أخبار الأنمي!",
+  "anime_description": "يقوم بالبحث عن أنمي!",
+  "akinator_description": "يقوم بتشغيل لعبة أكيناتور! (المارد الأزرق)",
+  "bed_description": "يقوم بإنشاء ميم سرير!",
+  "detect-anime_description": "يقوم بتحليل الصورة وجلب الأنمي الذي تحتويه الصورة!",
+  "delete_description": "يقوم بإنشاء ميم حذف شخص ما!",
+  "manga_description": "يقوم بجلب معلومات المانجا!",
+  "egg_description": "يقوم بإنشاء ميم بيضة!",
+  "bite_description": "يقوم بعض شخص ما!",
+  "waifu_description": "يقوم بإنشاء صورة وايفو لك أيها الويب xD",
+  "xo_description": "يقوم بتشغيل لعبة xo!",
+  "blush_description": "يقوم بإرسال صورة احمرار ودود متحركة!",
+  "cry_description": "يقوم بإرسال صورة بكاء متحركة!",
+  "leaderboard_description": "يقوم بعرض المستويات مرتبة من الأعلى للأسفل!",
+  "cuddle_description": "يقوم بإرسال صورة مداعبة متحركة!",
+  "dance_description": "يقوم بإرسال صورة رقص متحركة!",
+  "deredere_description": "يقوم بإرسال صورة deredere متحركة!",
+  "greet_description": "يقوم بإرسال صورة ترحيب متحركة!",
+  "grin_description": "يقوم بإرسال صورة ابتسامة متحركة!",
+  "math_description": "يقوم بعمليات حسابية!",
+  "profile_description": "يقوم بعرض البروفايل الخاص بك!",
+  "handholding_description": "يقوم بإمساك يد شخص آخر!",
+  "rank-background_description": "يقوم بتغير خلفية البروفايل والرانك الخاصة بك!",
+  "happy_description": "يقوم بإرسال صورة سعادة متحركة!",
+  "my-id_description": "يقوم بعرض الأي دي الخاص بك!",
+  "remove_description": "يقوم بحذف أغنية من الكيو!",
+  "rank_description": "يقوم بعرض المستوى الخاص بك!",
+  "unhide_description": "يقوم بإخفاء روم!",
+  "high-five_description": "يقوم بإعطاء هاي فايف لشخص ما!",
+  "note_description": "يقوم بحفظ تذكرة للخاص!",
+  "hug_description": "يقوم بحضن شخص آخر!",
+  "pfp_description": "يقوم بجلب صورة افاتار يمكنك استخدامها!",
+  "voice-leaderboard_description": "يقوم بعرض رتب الصوت مرتبة من الأعلى للأسفل!",
+  "kill_description": "يقوم بقتل شخص ما!",
+  "kiss_description": "يقوم بتقبيل شخص ما!",
+  "lewd_description": "يقوم بإرسال صورة متحركة تعبر على أن الحالة هنتاي خخخ!",
+  "nom_description": "Sends a nom gif!",
+  "set-birthday_description": "يقوم بتغير تاريخ الميلاد الخاص بك!",
+  "pet_description": "يقوم بتهدئة شخص ما!",
+  "poke_description": "يقوم بإرسال صورة نكز متحركة!",
+  "pout_description": "يقوم بإرسال صورة عبوس متحركة!",
+  "translate_description": "يقوم بترجمة النص للغة أخرى!",
+  "punch_description": "يقوم بلكم شخص ما!",
+  "scoff_description": "يقوم بالسخرية من شخص ما!",
+  "shrug_description": "يقوم بهز الكتفين!",
+  "slap_description": "يقوم بضرب شخص ما!",
+  "sleepy_description": "يقوم بإرسال صورة نعاس متحركة!",
+  "smile_description": "يقوم بإرسال صورة ابتسامة متحركة!",
+  "smug_description": "يقوم بإرسال صورة عجرفة متحركة!",
+  "stare_description": "يقوم بالتحديق في شخص ما!",
+  "teehee_description": "Sends a teehee gif!",
+  "think_description": "يقوم بإرسال صورة تفكير متحركة!",
+  "thumbs-up_description": "يقوم بإعطاء لايك لشخص ما!",
+  "triggered_description": "يقوم بإرسال صورة triggered!",
+  "wag_description": "يقوم بإرسال صورة هز ذيل متحركة",
+  "anime-episodes_usage": "{prefix}anime-episodes",
+  "anime-news_usage": "{prefix}anime-news",
+  "anime_usage": "{prefix}anime <anime name>",
+  "akinator_usage": "{prefix}akinator",
+  "bed_usage": "{prefix}bed @someone",
+  "detect-anime_usage": "{prefix}detect-anime (upload picture with your message)",
+  "delete_usage": "{prefix}delete @someone",
+  "manga_usage": "{prefix}manga <manga name>",
+  "egg_usage": "{prefix}egg @someone",
+  "bite_usage": "{prefix}bite @someone",
+  "waifu_usage": "{prefix}waifu",
+  "xo_usage": "{prefix}xo @someone",
+  "blush_usage": "{prefix}blush",
+  "cry_usage": "{prefix}cry",
+  "leaderboard_usage": "{prefix}leaderboard",
+  "cuddle_usage": "{prefix}cuddle @someone",
+  "dance_usage": "{prefix}dance",
+  "deredere_usage": "{prefix}deredere",
+  "greet_usage": "{prefix}greet @someone",
+  "grin_usage": "{prefix}grin",
+  "math_usage": "{prefix}math <question>",
+  "profile_usage": "{prefix}profile | {prefix}profile @someone",
+  "handholding_usage": "{prefix}handholding @someone",
+  "rank-background_usage": "{prefix}rank-background (upload a picture with your message)",
+  "happy_usage": "{prefix}happy",
+  "my-id_usage": "{prefix}my-id",
+  "remove_usage": "{prefix}remove <song number>",
+  "rank_usage": "{prefix}rank | {prefix}rank @someone",
+  "unhide_usage": "{prefix}unhide",
+  "high-five_usage": "{prefix}high-five @someone",
+  "note_usage": "{prefix}note <your note> (u can upload a picture too)",
+  "hug_usage": "{prefix}hug @someone",
+  "pfp_usage": "{prefix}pfp",
+  "voice-leaderboard_usage": "{prefix}voice-leaderboard",
+  "kill_usage": "{prefix}kill @someone",
+  "kiss_usage": "{prefix}kiss @someone",
+  "lewd_usage": "{prefix}lewd",
+  "nom_usage": "{prefix}nom @someone",
+  "set-birthday_usage": "{prefix}set-birthday dd mm yyyy",
+  "pet_usage": "{prefix}pet @someone",
+  "poke_usage": "{prefix}poke",
+  "pout_usage": "{prefix}pout",
+  "translate_usage": "{prefix}translate <text> -en (-en is optional, change en to language)",
+  "punch_usage": "{prefix}punch @someone",
+  "scoff_usage": "{prefix}scoff",
+  "shrug_usage": "{prefix}shrug",
+  "slap_usage": "{prefix}slap @someone",
+  "sleepy_usage": "{prefix}sleepy",
+  "smile_usage": "{prefix}smile",
+  "smug_usage": "{prefix}smug",
+  "stare_usage": "{prefix}stare @someone",
+  "teehee_usage": "{prefix}teehee",
+  "think_usage": "{prefix}think",
+  "thumbs-up_usage": "{prefix}thumbs-up @someone",
+  "triggered_usage": "{prefix}triggered",
+  "wag_usage": "{prefix}wag",
+  "voice-rank_description": "يقوم بعرض مستوى الصوت الخاص بك!",
+  "insult_description": "يقوم بإهانة شخص ما!",
+  "voice-rank_usage": "{prefix}voice-rank",
+  "insult_usage": "{prefix}insult @someone",
+  "voice_channel_required": "يجب أن يكون الروم روم صوتي!",
+  "server_voice_level_roles": "رتب السيرفر الصوتية",
+  "add_voice_level_roles_wrong_syntax": "يجب أن يكون المستوى بهذه الصيغة: 5m| 5h | 5d | 30h etc!",
+  "no_category_found": "لم يتم العثور على هذا القسم!"
+}
