@@ -53,7 +53,7 @@ export default class NowPlayingCommand extends BaseCommand {
       .setColor("RED")
       .setAuthor(
         queue.songs[0].user?.tag ||
-          GetLanguage("UnkownSongRequester", config.language)
+          GetLanguage("UnknownSongRequester", config.language)
       )
       .setThumbnail(queue.songs[0].thumbnail ? queue.songs[0].thumbnail : "")
       .setTimestamp(new Date())

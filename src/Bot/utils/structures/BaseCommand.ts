@@ -29,7 +29,7 @@ export default abstract class BaseCommand {
   getUsage(language: string): string {
     return (
       (GetLanguage(`${this.options.name}_usage`, language) as string) ||
-      (GetLanguage("no_description", language) as string)
+      (GetLanguage("NoDescription", language) as string)
     );
   }
   get tutorialGif(): string {
@@ -51,4 +51,10 @@ type commandOptions = {
   tutorialGif?: string;
 };
 
-type categories = "moderation" | "music" | "test" | "utility" | "owner";
+type categories =
+  | "moderation"
+  | "music"
+  | "test"
+  | "utility"
+  | "owner"
+  | "anime";

@@ -12,7 +12,7 @@ export default class TestCommand extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     message.reply({
       content: GetLanguage(
-        "TheTestCommandWorks",
+        "TestCommandWorks",
         (await getConfig(client, message.guild?.id as string)).language
       ),
     });

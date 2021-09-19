@@ -21,7 +21,7 @@ export default class PlaySongEvent extends DisTubeBaseEvent {
         .addField(
           GetLanguage("DisTubePlaySongEventSongName", config.language),
           song.name ||
-            GetLanguage("DisTubePlaySongEventUnknownSongName", config.language)
+            GetLanguage("DisTubePlaySongEventUknownSongName", config.language)
         )
         .addField(
           GetLanguage("Duration", config.language),

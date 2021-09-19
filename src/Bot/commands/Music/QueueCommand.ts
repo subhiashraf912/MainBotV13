@@ -74,7 +74,9 @@ function generateQueueEmbed(
       info = `${info}\n\`\`\`css\n${++j}) ${track.name}🎵 || ${GetLanguage(
         "By",
         language
-      )}: ${track.user?.tag || GetLanguage("UnkownRequester", language)}\`\`\``;
+      )}: ${
+        track.user?.tag || GetLanguage("UnknownRequester", language)
+      }\`\`\``;
     });
 
     const embed = new MessageEmbed().setDescription(

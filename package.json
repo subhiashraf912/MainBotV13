@@ -26,6 +26,7 @@
     "ffmpeg-static": "^4.4.0",
     "genius-lyrics": "^4.2.9",
     "libsodium-wrappers": "^0.7.9",
+    "mal-scraper": "^2.11.3",
     "mongoose": "^6.0.1",
     "node-fetch": "^2.6.1",
     "pm2": "^5.1.1",

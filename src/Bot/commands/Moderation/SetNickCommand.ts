@@ -8,7 +8,7 @@ import getMember from "../../utils/constants/getMember";
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "clear-nick",
+      name: "set-nick",
       category: "moderation",
       aliases: [],
       userPermissions: ["MANAGE_NICKNAMES"],
@@ -18,41 +18,34 @@ export default class Command extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.member || !message.guild) return;
+    if (!message.guild || !message.member) return;
+    const cachedConfig = await getConfig(client, message.guild.id);
+    const { language } = cachedConfig;
 
-    const config = await getConfig(client, message.guild.id);
-    const language = config.language;
     const member = await getMember({
       message,
       query: args[0],
-      returnAuthor: true,
     });
 
     if (!member) {
-      message.reply({
-        content: GetLanguage("MemberNotFound", language),
-      });
+      message.reply(GetLanguage("MemberNotFound", language));
       return;
     }
-    await member
-      .setNickname(
-        "",
-        GetLanguage("ResponsibleUser", config.language).replace(
-          "{user}",
-          message.author.tag
-        )
-      )
+
+    args.shift();
+    const nick = args.join(" ");
+    member
+      .setNickname(nick, `By: ${message.author.tag}`)
+      .then(() => {
+        message.reply({ content: GetLanguage("NicknameGotChanged", language) });
+      })
       .catch((err) => {
         message.reply(
-          `${GetLanguage("ErrorOccured", language)}\n${err.message}`
+          `${GetLanguage("ErrorOccured", language)}\n\`\`\`js\n${
+            err.message
+          }\`\`\``
         );
         return;
       });
-
-    await message.reply({
-      content: GetLanguage("BotHasClearedANickname", language)
-        .replace("{target}", member.user.tag)
-        .replace("{author}", message.author.tag),
-    });
   }
 }

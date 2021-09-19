@@ -20,14 +20,14 @@ export default class AddSongEvent extends DisTubeBaseEvent {
         .addField(
           GetLanguage("SongDuration", config.language),
           song.formattedDuration ||
-            GetLanguage("UnkownDuration", config.language),
+            GetLanguage("UnknownDuration", config.language),
           true
         )
         .addField(
           GetLanguage("AddedBy", config.language),
           song.user
             ? song.user.toString()
-            : GetLanguage("UnownUser", config.language),
+            : GetLanguage("UnknownUser", config.language),
           true
         )
         .setThumbnail(song.thumbnail ? song.thumbnail : "");

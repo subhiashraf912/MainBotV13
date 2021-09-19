@@ -9,7 +9,7 @@ import getRole from "../../utils/constants/getRole";
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "remove-role",
+      name: "add-role",
       category: "moderation",
       aliases: [],
       userPermissions: ["MANAGE_ROLES"],
@@ -23,44 +23,53 @@ export default class Command extends BaseCommand {
     if (!message.member) return;
     const cachedConfig = await getConfig(client, message.guild.id);
     const { language } = cachedConfig;
-    if (!args[0] || !args[1]) {
+    if (!args[0]) {
       message.reply({
         content: GetLanguage("RoleAndMemberAreRequired", language),
       });
+      return;
     }
     const role = await getRole({
       message,
       query: args[0],
     });
+    args.shift();
+    if (!args.join(" ")) {
+      message.reply({
+        content: GetLanguage("RoleAndMemberAreRequired", language),
+      });
+      return;
+    }
+    const member = await getMember({
+      message,
+      query: args.join(" "),
+    });
+
+    if (!member) {
+      message.reply({
+        content: GetLanguage("MemberNotFound", language),
+      });
+      return;
+    }
+
     if (!role) {
       message.reply(GetLanguage("RoleNotFound", language));
       return;
     }
-
-    const member = await getMember({
-      message,
-      query: args[1],
-      returnAuthor: true,
-    });
-
     if (!role.editable) {
       message.reply(GetLanguage("BotIsMissingEditRolePerms", language));
       return;
     }
-    member?.roles.cache.has(role.id)
+    !member.roles.cache.has(role.id)
       ? member.roles
-          .remove(role)
+          .add(role)
           .then(() =>
             message.reply(
-              GetLanguage("MemberRoleGotRemoved", language)
-                .replace("{roleName}", role.name)
-                .replace("{memberTag}", member.user.tag)
+              GetLanguage("MemberRoleAdded", language)
+                .replace("{role}", role.name)
+                .replace("{member}", member.user.username)
             )
           )
-      : message.reply(
-          GetLanguage("MemberDoesNotHaveRole", language)
-            .replace("{roleName}", role.name)
-            .replace("{memberTag}", member?.user.tag as string)
-        );
+      : message.reply(GetLanguage("MemberHasTheRole", language));
   }
 }
