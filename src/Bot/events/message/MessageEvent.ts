@@ -58,50 +58,6 @@ export default class MessageEvent extends BaseEvent {
         }
         command.run(client, message, cmdArgs);
       }
-    } else {
-      prefix = "";
-      const [cmdName, ...cmdArgs] = message.content
-        .slice(prefix.length)
-        .trim()
-        .split(/\s+/);
-      const command =
-        client.nonPrefixedCommands.get(cmdName.toLowerCase()) ||
-        client.nonPrefixedCommands.get(
-          client.nonPrefixedCommandsAliases.get(cmdName.toLowerCase()) as string
-        );
-
-      if (command) {
-        command.getUserPermissions().map((perm) => {
-          if (!message.member?.permissions.has(perm)) {
-            return message.reply({
-              content: GetLanguage(
-                "MemberIsMissingPermissions",
-                config.language
-              ).replace("{permissions}", perm),
-            });
-          }
-        });
-        command.getBotPermissions().map((perm) => {
-          if (!message.member?.guild.me?.permissions.has(perm)) {
-            return message.reply({
-              content: GetLanguage(
-                "ClientIsMissingPermissions",
-                config.language
-              ),
-            });
-          }
-        });
-        if (command.getCategory() === "owner") {
-          if (!client.owners.has(message.author.id))
-            return message.reply({
-              content: GetLanguage(
-                "OnlyClientOwnersCanAccessThisCommand",
-                config.language
-              ),
-            });
-        }
-        command.run(client, message, cmdArgs);
-      }
     }
   }
 }
