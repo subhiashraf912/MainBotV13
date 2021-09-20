@@ -5,7 +5,6 @@ import {
   registerCommands,
   registerDistubeEvents,
   registerEvents,
-  registerNonPrefixedCommands,
   registerSlashCommands,
 } from "../utils/registry";
 import InitDistube from "../utils/Initlizers/InitDistube";
@@ -19,7 +18,6 @@ type startOptionsType = {
   eventsPath: string;
   musicManagerEventsPath: string;
   mongoDbURI: string;
-  nonPrefixedCommandsPath: string;
   slashCommandsPath: string;
 };
 type configType = {
@@ -36,10 +34,8 @@ export default class DiscordClient extends Client {
 
   private _commands = new Collection<string, BaseCommand>();
   private _slashCommands = new Collection<string, BaseSlashCommand>();
-  private _nonPrefixedCommands = new Collection<string, BaseCommand>();
   private _events = new Collection<string, BaseEvent>();
   private _aliases = new Collection<string, string>();
-  private _nonPrefixedCommandsAliases = new Collection<string, string>();
   private _distubeEvents = new Collection<string, BaseEvent>();
   private _configs = new Collection<string, configType>();
   private _distube: DisTube = InitDistube(this);
@@ -71,9 +67,6 @@ export default class DiscordClient extends Client {
     registerCommands(this, path);
   }
 
-  async regNonPrefixedCommands(path: string) {
-    registerNonPrefixedCommands(this, path);
-  }
   async regEvents(path: string) {
     registerEvents(this, path);
   }
@@ -86,7 +79,6 @@ export default class DiscordClient extends Client {
   async start(options: startOptionsType) {
     await this.initMongoose(options.mongoDbURI);
     await this.regCommands(options.commandsPath);
-    await this.regNonPrefixedCommands(options.nonPrefixedCommandsPath);
     await this.regEvents(options.eventsPath);
     await this.regMusicEvents(options.musicManagerEventsPath);
     await this.regSlashCommands(options.slashCommandsPath);
@@ -118,13 +110,6 @@ export default class DiscordClient extends Client {
   get aliases(): Collection<string, string> {
     return this._aliases;
   }
-  get nonPrefixedCommands(): Collection<string, BaseCommand> {
-    return this._nonPrefixedCommands;
-  }
-  get nonPrefixedCommandsAliases(): Collection<string, string> {
-    return this._nonPrefixedCommandsAliases;
-  }
-
   get distubeEvents(): Collection<string, BaseEvent> {
     return this._distubeEvents;
   }

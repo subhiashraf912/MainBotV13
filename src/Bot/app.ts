@@ -12,7 +12,6 @@ const client = new DiscordClient({
 (async () => {
   await client.start({
     commandsPath: "../commands",
-    nonPrefixedCommandsPath: "../noPrefixCommands",
     eventsPath: "../events",
     musicManagerEventsPath: "../musicEvents",
     token: process.env.BOT_TOKEN as string,

@@ -22,26 +22,6 @@ export async function registerCommands(
     }
   }
 }
-export async function registerNonPrefixedCommands(
-  client: DiscordClient,
-  dir: string = ""
-) {
-  const filePath = path.join(__dirname, dir);
-  const files = await fs.readdir(filePath);
-  for (const file of files) {
-    const stat = await fs.lstat(path.join(filePath, file));
-    if (stat.isDirectory()) registerCommands(client, path.join(dir, file));
-    if (file.endsWith(".js") || file.endsWith(".ts")) {
-      const { default: Command } = await import(path.join(dir, file));
-      const command = new Command();
-      client.nonPrefixedCommands.set(command.getName(), command);
-      command.getAliases().forEach((alias: string) => {
-        client.nonPrefixedCommandsAliases.set(alias, command.getName());
-      });
-    }
-  }
-}
-
 export async function registerEvents(client: DiscordClient, dir: string = "") {
   const filePath = path.join(__dirname, dir);
   const files = await fs.readdir(filePath);
