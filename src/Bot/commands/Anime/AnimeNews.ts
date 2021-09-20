@@ -8,7 +8,7 @@ const mal = require("mal-scraper");
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "anime-episodes",
+      name: "anime-news",
       category: "anime",
       aliases: [],
       userPermissions: [],
@@ -18,14 +18,10 @@ export default class Command extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const anime = await mal.getInfoFromName(args.join(" "));
+    let news = await mal.getNewsNoDetails(50);
     const config = await getConfig(client, message.guild?.id as string);
-    const episodes = await mal.getEpisodesList({
-      name: anime.title,
-      id: anime.id,
-    });
+    const embeds = GenerateNewsEmbed(news, 2, config.language);
 
-    const embeds = GenerateEpisodesEmbed(episodes, anime, config.language);
     pagination({
       author: message.author,
       channel: message.channel as TextChannel,
@@ -36,37 +32,26 @@ export default class Command extends BaseCommand {
   }
 }
 
-function GenerateEpisodesEmbed(
-  episodes: Array<any>,
-  anime: any,
-  language: string
-) {
+function GenerateNewsEmbed(news: Array<any>, max: number, language: string) {
   const embeds = [];
-  let k = 5;
-  for (let i = 0; i < episodes.length; i += 5) {
-    const current = episodes.slice(i, k);
+  let k = max;
+  for (let i = 0; i < news.length; i += max) {
+    const current = news.slice(i, k);
     let j = i;
-    k += 5;
+    k += max;
+    const image = current[0].image;
     const info = current
       .map(
-        (ep) =>
-          `**${GetLanguage("Episode", language)} ${++j}:\n**\`${GetLanguage(
-            "Name",
-            language
-          )}: ${ep.title}\`\n\`${GetLanguage("JapaneseName", language)}: ${
-            ep.japaneseTitle
-          }\`\n\`${GetLanguage("Aired", language)}: ${ep.aired}\``
+        (element) =>
+          `**${++j}: [${element.title}](${element.link})**\n**\`${
+            element.text
+          }\`**`
       )
       .join(`\n`);
     const embed = new MessageEmbed()
-      .setTitle(
-        `${GetLanguage("EpisodesListTitle", language).replace(
-          "{animeName}",
-          anime.title
-        )}`
-      )
+      .setTitle(GetLanguage("LatestAnimeNews", language))
       .setDescription(`${info}`)
-      .setThumbnail(anime.picture)
+      .setThumbnail(image)
       .setFooter(GetLanguage("DataFromAnimeList", language));
     embeds.push(embed);
   }
