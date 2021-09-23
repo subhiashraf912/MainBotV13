@@ -57,4 +57,5 @@ type categories =
   | "test"
   | "utility"
   | "owner"
+  | "birthdays"
   | "anime";
