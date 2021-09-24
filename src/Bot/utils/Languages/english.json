@@ -227,5 +227,21 @@
   "InvalidMonth": "> Provide a correct month baka.",
   "MemberIsLessThan13YearsOld": "> You need to be +13 to use discord.",
   "MemberIsMoreThan50YearsOld": "> Nobody who's +50 years old uses discord bruh.",
-  "BirthdayHasBeenUpdated": "> {member} Your birthday has been updated."
+  "BirthdayHasBeenUpdated": "> {member} Your birthday has been updated.",
+  "NoDataWereFoundInTheDatabase": "No data were found in the database.",
+  "RankGotCached": "> The rank got cached.",
+  "Restarting": "> Restarting...",
+  "BotAvatarIsRequiredAsAnAttachment": "> Bot's new avatar is required as an attachment.",
+  "BotAvatarHasBeenUpdated": "> Bot's avatar has been updated.",
+  "NewCreditsAreRequired": "> You need to pass the new credits.",
+  "CreditsMustBeOnlyNumbers": "> The credits must be numbers only.",
+  "MemberToGiveCreditsIsABot": "> You cannot give credits to a bot.",
+  "CreditsHaveBeenUpdated": "> The credits have been updated.",
+  "NewLevelIsRequired": "> You need to pass the new level.",
+  "MemberToGiveRankIsABot": "> Cannot update data for a bot.",
+  "NewLevelMustBeANumber": "> The new level must be a number.",
+  "LevelHasBeenUpdated": "> The level has been updated.",
+  "NewXPIsRequired": "> You need to pass the new xp.",
+  "NewXPMustBeANumber": "> The new xp must be a number.",
+  "XPHasBeenUpdated": "> XP has been updated."
 }

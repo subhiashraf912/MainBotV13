@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import configType from "../../types/GuildConfig";
 
 const guildSchema = new mongoose.Schema({
   guildId: { type: String, required: true, unique: false },
@@ -124,4 +125,4 @@ const guildSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Guild", guildSchema, "guilds");
+export default mongoose.model<configType>("Guild", guildSchema, "guilds");

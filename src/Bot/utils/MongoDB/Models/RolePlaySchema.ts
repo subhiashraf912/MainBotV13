@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
-
+interface rolePlay {
+  FirstMember: string;
+  SecMember: string;
+  times: number;
+  type: string;
+}
 const RolePlaySchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   FirstMember: {
@@ -24,4 +29,4 @@ const RolePlaySchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Roleplay", RolePlaySchema, "rolePlay");
+export default mongoose.model<rolePlay>("Roleplay", RolePlaySchema, "rolePlay");

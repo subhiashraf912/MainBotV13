@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import BirthdayType from "../../types/BirthdayType";
+
 const birthdaysSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   user: {
@@ -13,4 +15,8 @@ const birthdaysSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("birthdays", birthdaysSchema, "birthdays");
+export default mongoose.model<BirthdayType>(
+  "birthdays",
+  birthdaysSchema,
+  "birthdays"
+);

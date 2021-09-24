@@ -10,7 +10,10 @@ export default class ErrorEvent extends DisTubeBaseEvent {
   async run(client: DiscordClient, channel: TextChannel, error: Error) {
     const config = await getConfig(client, channel.guild.id);
     channel.send({
-      content: GetLanguage("DisTubeErrorEvent", config.language),
+      content: GetLanguage("DisTubeErrorEvent", config.language).replace(
+        "{error}",
+        error.message
+      ),
     });
   }
 }

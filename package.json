@@ -28,6 +28,7 @@
     "libsodium-wrappers": "^0.7.9",
     "mal-scraper": "^2.11.3",
     "mongoose": "^6.0.1",
+    "mongoose-tsgen": "^8.3.9",
     "node-fetch": "^2.6.1",
     "node-kitsu": "^1.1.1",
     "pm2": "^5.1.1",

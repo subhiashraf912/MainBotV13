@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import RankType from "../../types/RankType";
+
 const rankSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   user: {
@@ -29,4 +31,4 @@ const rankSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Rank", rankSchema, "ranks");
+export default mongoose.model<RankType>("Rank", rankSchema, "ranks");

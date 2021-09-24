@@ -1,4 +1,10 @@
 import mongoose from "mongoose";
+
+interface profileBanner {
+  user: string;
+  rankBackground: string;
+}
+
 const rankBackgroundSchema = new mongoose.Schema({
   user: {
     type: String,
@@ -13,7 +19,7 @@ const rankBackgroundSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model(
+export default mongoose.model<profileBanner>(
   "RankBackground",
   rankBackgroundSchema,
   "ranksBackgrounds"

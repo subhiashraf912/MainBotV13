@@ -12,6 +12,7 @@ import DisTube from "distube";
 import init from "../utils/MongoDB/mongoose";
 import BaseSlashCommand from "../utils/structures/BaseSlashCommand";
 import getOwners from "../utils/constants/getOwners";
+import RankType from "../utils/types/RankType";
 type startOptionsType = {
   token: string;
   commandsPath: string;
@@ -31,10 +32,10 @@ export default class DiscordClient extends Client {
   private _mainOwner = process.env.MAIN_OWNER;
   private _token = process.env.BOT_TOKEN;
   private _mongodb = process.env.BOT_MONGODB;
-
   private _commands = new Collection<string, BaseCommand>();
   private _slashCommands = new Collection<string, BaseSlashCommand>();
   private _events = new Collection<string, BaseEvent>();
+  private _ranks = new Collection<string, RankType>();
   private _aliases = new Collection<string, string>();
   private _distubeEvents = new Collection<string, BaseEvent>();
   private _configs = new Collection<string, configType>();
@@ -42,7 +43,7 @@ export default class DiscordClient extends Client {
   private _mongoose = init;
   private _currentPlayingSong = new Collection<string, Message>();
   private _owners = new Collection<string, User>();
-  private _queueVol = 50;
+  private _queueVol = 100;
   constructor(options: ClientOptions) {
     super(options);
     if (!this._mainOwner)
@@ -94,6 +95,9 @@ export default class DiscordClient extends Client {
   }
   get queueVolume(): number {
     return this._queueVol;
+  }
+  get ranks(): Collection<string, RankType> {
+    return this._ranks;
   }
   set queueVolume(value: number) {
     this._queueVol = value;

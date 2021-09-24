@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
-
+interface LogsType {
+  guildId: string;
+  ChannelLogs: string;
+  BoostLogs: string;
+  MemberLogs: string;
+  GuildLogs: string;
+  MessageLogs: string;
+  RolesLogs: string;
+  VoiceChannelsLogs: string;
+}
 let Schema = new mongoose.Schema({
   guildId: String,
   ChannelLogs: String,
@@ -10,4 +19,4 @@ let Schema = new mongoose.Schema({
   RolesLogs: String,
   VoiceChannelsLogs: String,
 });
-export default mongoose.model("Logs", Schema);
+export default mongoose.model<LogsType>("Logs", Schema);
