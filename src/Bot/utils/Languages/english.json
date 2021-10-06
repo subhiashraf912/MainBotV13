@@ -301,5 +301,15 @@
   "GiveawayStarted": "> The giveaway has started in {channel} with those settings:\n> Time: {remainingTime}\n> Winners Count: {winnersCount}\n> Prize: {prize}",
   "NoGiveawayChannelFound": "> You need to enter the giveaway channel as the first argument!",
   "RoleAlreadyExistsInTheDatabase": "> This role already exists in the database.",
-  "AddedNewBotJoinRole": "> `{role}` with the id `{id}` has been added to the bots join roles list."
+  "RoleDoesNotExistsInTheDatabase": "> This role does not exist in the database.",
+  "AddedNewBotJoinRole": "> `{role}` with the id `{id}` has been added to the bots join roles list.",
+  "AddedNewMemberJoinRole": "> `{role}` with the id `{id}` has been added to the members join roles list.",
+  "ThereAreNoBotJoinRoles": "> There are no bot join roles in this server.",
+  "BotAutoJoinRole": "Bot Auto Join Roles",
+  "BotAutoJoinRolesDescsription": "Those roles are only gonna be added to bots when they join! New members won't have those roles!",
+  "ThereAreNoMemberJoinRoles": "> There are no member join roles in this server.",
+  "MemberAutoJoinRole": "Member Auto Join Roles",
+  "MemberAutoJoinRolesDescsription": "Those roles are only gonna be added to members when they join! New bots won't have those roles!",
+  "RemovedBotJoinRole": "> `{role}` with the id `{id}` has been removed from the bots join roles list.",
+  "RemovedMemberJoinRole": "> `{role}` with the id `{id}` has been removed from the members join roles list."
 }
