@@ -58,4 +58,10 @@ type categories =
   | "utility"
   | "owner"
   | "birthdays"
-  | "anime";
+  | "anime"
+  | "embeds"
+  | "fun"
+  | "games"
+  | "genshin impact"
+  | "giveaways"
+  | "join roles";

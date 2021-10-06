@@ -13,6 +13,7 @@ import init from "../utils/MongoDB/mongoose";
 import BaseSlashCommand from "../utils/structures/BaseSlashCommand";
 import getOwners from "../utils/constants/getOwners";
 import RankType from "../utils/types/RankType";
+import GiveawaysBase from "../utils/Initlizers/GiveawaysBase";
 type startOptionsType = {
   token: string;
   commandsPath: string;
@@ -44,6 +45,17 @@ export default class DiscordClient extends Client {
   private _currentPlayingSong = new Collection<string, Message>();
   private _owners = new Collection<string, User>();
   private _queueVol = 100;
+  private _giveawaysManager: GiveawaysBase = new GiveawaysBase(this, {
+    updateCountdownEvery: 10000,
+    default: {
+      botsCanWin: false,
+      exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR"],
+      embedColor: "#FF0000",
+      embedColorEnd: "#000000",
+      reaction: "🎉",
+    },
+  });
+
   constructor(options: ClientOptions) {
     super(options);
     if (!this._mainOwner)
@@ -90,6 +102,9 @@ export default class DiscordClient extends Client {
     return this._mongoose(MongoDBURI);
   }
 
+  get giveawaysManager(): GiveawaysBase {
+    return this._giveawaysManager;
+  }
   get commands(): Collection<string, BaseCommand> {
     return this._commands;
   }

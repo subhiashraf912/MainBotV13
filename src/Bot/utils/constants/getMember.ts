@@ -5,8 +5,8 @@ const getMember = async (options: options) => {
   const tagQuery = cachedMembers?.find(
     (mem) => mem.user.tag.toLowerCase() === options.query.toLowerCase()
   );
-  const IdQuery = cachedMembers?.find(
-    (mem) => mem.user.id.toLowerCase() === options.query.toLowerCase()
+  const IdQuery = cachedMembers?.find((mem) =>
+    options.query.toLowerCase().includes(mem.user.id.toLowerCase())
   );
   const usernameQuery = cachedMembers?.find(
     (mem) => mem.user.username.toLowerCase() === options.query.toLowerCase()

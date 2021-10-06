@@ -3,7 +3,7 @@ interface rolePlay {
   FirstMember: string;
   SecMember: string;
   times: number;
-  type: string;
+  Type: string;
 }
 const RolePlaySchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
