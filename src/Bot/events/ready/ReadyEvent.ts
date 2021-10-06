@@ -15,14 +15,16 @@ export default class ReadyEvent extends BaseEvent {
           channel,
           "https://www.youtube.com/channel/UCiOPAnYULQ0P97xmPDB5Zrw"
         );
-        client.distube.setRepeatMode(channel, 2);
+        client.distube.setRepeatMode(channel);
+        client.distube.setRepeatMode(channel);
       } else {
         const channel = await senGuild?.channels.fetch("895340582032007219");
         client.distube.playVoiceChannel(
           channel as StageChannel,
           "https://www.youtube.com/channel/UCiOPAnYULQ0P97xmPDB5Zrw"
         );
-        client.distube.setRepeatMode(channel as StageChannel, 2);
+        client.distube.setRepeatMode(channel as StageChannel);
+        client.distube.setRepeatMode(channel as StageChannel);
       }
     } catch {}
     console.log(
