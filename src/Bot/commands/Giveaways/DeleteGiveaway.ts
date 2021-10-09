@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
       name: "delete-giveaway",
       category: "giveaways",
       aliases: [],
-      userPermissions: [],
+      userPermissions: ["MANAGE_GUILD"],
       botPermissions: [],
       tutorialGif: "",
     });

@@ -11,7 +11,7 @@ type configType = {
   isLevelSystemEnabled: boolean;
   levelsChannels: string[];
   voiceLevelsChannels: string[];
-  voiceLevelRoles: string[];
+  voiceLevelRoles: object;
   disabledCommands: any;
   commandRestricts: any;
   welcomeChannel: string | null;

@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
       name: "member-join-roles",
       category: "join roles",
       aliases: [],
-      userPermissions: [],
+      userPermissions: ["MANAGE_ROLES"],
       botPermissions: [],
       tutorialGif: "",
     });

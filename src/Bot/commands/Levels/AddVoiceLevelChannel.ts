@@ -3,17 +3,17 @@ import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
-import getRole from "../../utils/constants/getRole";
+import getChannel from "../../utils/constants/getChannel";
 import { GuildConfig } from "../../utils/MongoDB/Models";
 import configType from "../../utils/types/GuildConfig";
 
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "add-bot-join-role",
-      category: "join roles",
+      name: "add-voice-level-channel",
+      category: "levels",
       aliases: [],
-      userPermissions: ["MANAGE_ROLES"],
+      userPermissions: ["MANAGE_GUILD"],
       botPermissions: [],
       tutorialGif: "",
     });
@@ -21,52 +21,56 @@ export default class Command extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const cachedConfig = await getConfig(client, message.guild?.id as string);
-    let { botJoinRoles } = cachedConfig;
-    if (!botJoinRoles) botJoinRoles = [];
-    const role = await getRole({
-      message,
-      query: args.join(" "),
-    });
-    if (!role) {
+
+    const language = cachedConfig.language;
+    let voiceLevelsChannels = cachedConfig.voiceLevelsChannels;
+    if (!voiceLevelsChannels) voiceLevelsChannels = [];
+
+    if (!args[0]) {
       message.reply({
-        content: GetLanguage("RoleNotFound", cachedConfig.language),
+        content: GetLanguage("ChannelMentionIsRequired", language),
       });
       return;
     }
-    if (botJoinRoles.includes(role.id)) {
+    const channel = getChannel({ message, query: args.join(" ") });
+
+    if (!channel) {
       message.reply({
-        content: GetLanguage(
-          "RoleAlreadyExistsInTheDatabase",
-          cachedConfig.language
-        ),
+        content: GetLanguage("ChannelNotFound", language),
       });
       return;
     }
-    if (!role.editable) {
+
+    if (channel.type !== "GUILD_VOICE") {
       message.reply({
-        content: GetLanguage(
-          "BotIsMissingEditRolePerms",
-          cachedConfig.language
-        ),
+        content: GetLanguage("VoiceChannelIsRequired", language),
       });
       return;
     }
-    botJoinRoles.push(role.id);
+    if (voiceLevelsChannels.includes(channel.id)) {
+      message.reply({
+        content: GetLanguage("ChannelAlreadyInTheLevelsList", language),
+      });
+      return;
+    }
+    voiceLevelsChannels.push(channel.id);
+
     const config = await GuildConfig.findOneAndUpdate(
       {
         guildId: message.guild?.id,
       },
       {
-        botJoinRoles,
+        voiceLevelsChannels,
       },
       { new: true }
     );
 
     client.configs.set(message.guild?.id as string, config as configType);
-    await message.reply({
-      content: GetLanguage("AddedNewBotJoinRole", cachedConfig.language)
-        .replace("{role}", role.name)
-        .replace("{id}", role.id),
+    message.reply({
+      content: GetLanguage("AddedLevelChannel", language).replace(
+        "{channel}",
+        channel.toString()
+      ),
     });
   }
 }
