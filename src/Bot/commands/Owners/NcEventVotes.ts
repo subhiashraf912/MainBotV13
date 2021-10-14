@@ -1,20 +1,14 @@
-import {
-  Message,
-  MessageActionRow,
-  MessageSelectMenu,
-  TextChannel,
-} from "discord.js";
+import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
-import GetLanguage from "../../utils/Languages";
 import NCVotes from "../../utils/MongoDB/Models/NCVotes";
 
 export default class Command extends BaseCommand {
   constructor() {
     super({
       name: "nc-event-votes",
-      category: "owner",
+      category: "utility",
       aliases: [],
       userPermissions: [],
       botPermissions: [],
@@ -30,7 +24,7 @@ export default class Command extends BaseCommand {
     });
 
     message.reply({
-      content: `Rice:${votes?.rice.length.toString()}\nBlooming Nightcore:${votes?.bloomingnightcore.length.toString()}\nNightcore Senpai Kuan:${votes?.senpai.length.toString()}\nShizu:${votes?.shizu.length.toString()}\nGameChanger Nightcore:${votes?.gamechanger.length.toString()}\n`,
+      content: `> **Rice:** ${votes?.rice.length.toString()}\n> **Blooming Nightcore:** ${votes?.bloomingnightcore.length.toString()}\n> **Nightcore Senpai Kuan:** ${votes?.senpai.length.toString()}\n> **Shizu:** ${votes?.shizu.length.toString()}\n> **GameChanger Nightcore:** ${votes?.gamechanger.length.toString()}\n`,
     });
   }
 }
