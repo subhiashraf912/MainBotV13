@@ -56,52 +56,47 @@ export default class MessageEvent extends BaseEvent {
         });
       if (interaction.values[0]) {
         const selected = interaction.values[0];
+        const riceVotes = ncVotes.rice;
+        const bloomingnightcoreVotes = ncVotes.bloomingnightcore;
+        const shizuVotes = ncVotes.shizu;
+        const gamechangerVotes = ncVotes.gamechanger;
+        const senpaiVotes = ncVotes.senpai;
 
-        if (ncVotes?.bloomingnightcore.includes(memberId as string)) {
-          ncVotes.bloomingnightcore?.splice(
-            ncVotes?.bloomingnightcore.indexOf(
-              interaction.user.id as string
-            ) as number,
-            1
-          );
+        if (riceVotes.includes(memberId as string)) {
+          const index = riceVotes.indexOf(memberId as string);
+          riceVotes.splice(index, 1);
         }
-        if (ncVotes?.rice.includes(memberId as string)) {
-          ncVotes.rice?.splice(
-            ncVotes?.rice.indexOf(interaction.user.id as string) as number,
-            1
-          );
+        if (bloomingnightcoreVotes.includes(memberId as string)) {
+          const index = bloomingnightcoreVotes.indexOf(memberId as string);
+          bloomingnightcoreVotes.splice(index, 1);
         }
-        if (ncVotes?.shizu.includes(memberId as string)) {
-          ncVotes.shizu?.splice(
-            ncVotes?.shizu.indexOf(interaction.user.id as string) as number,
-            1
-          );
+        if (shizuVotes.includes(memberId as string)) {
+          const index = shizuVotes.indexOf(memberId as string);
+          shizuVotes.splice(index, 1);
         }
-        if (ncVotes?.gamechanger.includes(memberId as string)) {
-          ncVotes.gamechanger?.splice(
-            ncVotes?.gamechanger.indexOf(
-              interaction.user.id as string
-            ) as number,
-            1
-          );
+        if (gamechangerVotes.includes(memberId as string)) {
+          const index = gamechangerVotes.indexOf(memberId as string);
+          gamechangerVotes.splice(index, 1);
         }
-        if (ncVotes?.senpai.includes(memberId as string)) {
-          ncVotes.senpai?.splice(
-            ncVotes?.senpai.indexOf(interaction.user.id as string) as number,
-            1
-          );
+        if (senpaiVotes.includes(memberId as string)) {
+          const index = senpaiVotes.indexOf(memberId as string);
+          senpaiVotes.splice(index, 1);
         }
 
         //1
         if (selected === "rice-vote-vid") {
-          const votes = ncVotes?.rice;
-          votes?.push(memberId as string);
+          const votes = riceVotes;
+          votes.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
               guildId: guildId as string,
             },
             {
               rice: votes,
+              bloomingnightcore: bloomingnightcoreVotes,
+              shizu: shizuVotes,
+              gamechanger: gamechangerVotes,
+              senpai: senpaiVotes,
             }
           );
           interaction.reply({
@@ -111,14 +106,18 @@ export default class MessageEvent extends BaseEvent {
         }
         //2
         if (selected === "bloomingnightcore-vote-vid") {
-          const votes = ncVotes?.bloomingnightcore;
+          const votes = bloomingnightcoreVotes;
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
               guildId: guildId as string,
             },
             {
+              rice: riceVotes,
               bloomingnightcore: votes,
+              shizu: shizuVotes,
+              gamechanger: gamechangerVotes,
+              senpai: senpaiVotes,
             }
           );
           interaction.reply({
@@ -128,14 +127,17 @@ export default class MessageEvent extends BaseEvent {
         }
         //3
         if (selected === "senpaikuan-vote-vid") {
-          const votes = ncVotes?.senpai;
-
+          const votes = senpaiVotes;
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
               guildId: guildId as string,
             },
             {
+              rice: riceVotes,
+              bloomingnightcore: bloomingnightcoreVotes,
+              shizu: shizuVotes,
+              gamechanger: gamechangerVotes,
               senpai: votes,
             }
           );
@@ -146,15 +148,18 @@ export default class MessageEvent extends BaseEvent {
         }
         //4
         if (selected === "shizu-vote-vid") {
-          const votes = ncVotes?.shizu;
-
+          const votes = shizuVotes;
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
               guildId: guildId as string,
             },
             {
+              rice: riceVotes,
+              bloomingnightcore: bloomingnightcoreVotes,
               shizu: votes,
+              gamechanger: gamechangerVotes,
+              senpai: senpaiVotes,
             }
           );
           interaction.reply({
@@ -164,15 +169,18 @@ export default class MessageEvent extends BaseEvent {
         }
         //5
         if (selected === "gamechanger-vote-vid") {
-          const votes = ncVotes?.gamechanger;
-
+          const votes = gamechangerVotes;
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
               guildId: guildId as string,
             },
             {
+              rice: riceVotes,
+              bloomingnightcore: bloomingnightcoreVotes,
+              shizu: shizuVotes,
               gamechanger: votes,
+              senpai: senpaiVotes,
             }
           );
           interaction.reply({
