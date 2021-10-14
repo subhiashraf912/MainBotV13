@@ -44,7 +44,16 @@ export default class MessageEvent extends BaseEvent {
       const memberId = interaction.member?.user?.id;
       const guildId = interaction.guildId;
       const guild = client.guilds.cache.get(guildId as string);
-      const ncVotes = await NCVotes.findOne({ guildId: guild?.id });
+      let ncVotes = await NCVotes.findOne({ guildId: guild?.id });
+      if (!ncVotes)
+        ncVotes = await NCVotes.create({
+          guildId: guildId,
+          bloomingnightcore: [],
+          gamechanger: [],
+          shizu: [],
+          senpai: [],
+          rice: [],
+        });
       if (interaction.values[0]) {
         const selected = interaction.values[0];
         //1
@@ -65,7 +74,10 @@ export default class MessageEvent extends BaseEvent {
               rice: votes,
             }
           );
-          interaction.reply({ content: "You have voted Rice" });
+          interaction.reply({
+            content: "You have voted Rice",
+            ephemeral: true,
+          });
         }
         //2
         if (selected === "bloomingnightcore-vote-vid") {
@@ -93,7 +105,10 @@ export default class MessageEvent extends BaseEvent {
               bloomingnightcore: votes,
             }
           );
-          interaction.reply({ content: "You have voted Rice" });
+          interaction.reply({
+            content: "You have voted Blooming Nightcore",
+            ephemeral: true,
+          });
         }
         //3
         if (selected === "senpaikuan-vote-vid") {
@@ -113,7 +128,10 @@ export default class MessageEvent extends BaseEvent {
               senpai: votes,
             }
           );
-          interaction.reply({ content: "You have voted Senpai Kuan" });
+          interaction.reply({
+            content: "You have voted Senpai Kuan",
+            ephemeral: true,
+          });
         }
         //4
         if (selected === "shizu-vote-vid") {
@@ -133,7 +151,10 @@ export default class MessageEvent extends BaseEvent {
               shizu: votes,
             }
           );
-          interaction.reply({ content: "You have voted Shizu" });
+          interaction.reply({
+            content: "You have voted Shizu",
+            ephemeral: true,
+          });
         }
         //5
         if (selected === "gamechanger-vote-vid") {
@@ -159,6 +180,7 @@ export default class MessageEvent extends BaseEvent {
           );
           interaction.reply({
             content: "You have voted GameChanger Nightcore",
+            ephemeral: true,
           });
         }
       }

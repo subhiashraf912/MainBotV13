@@ -28,6 +28,7 @@ export default class Command extends BaseCommand {
     const votes = await NCVotes.findOne({
       guildId: message.guild?.id as string,
     });
+
     message.reply({
       content: `Rice:${votes?.rice.length.toString()}\nBlooming Nightcore:${votes?.bloomingnightcore.length.toString()}\nNightcore Senpai Kuan:${votes?.senpai.length.toString()}\nShizu:${votes?.shizu.length.toString()}\nGameChanger Nightcore:${votes?.gamechanger.length.toString()}\n`,
     });
