@@ -56,15 +56,45 @@ export default class MessageEvent extends BaseEvent {
         });
       if (interaction.values[0]) {
         const selected = interaction.values[0];
+
+        if (ncVotes?.bloomingnightcore.includes(memberId as string)) {
+          ncVotes.bloomingnightcore?.splice(
+            ncVotes?.bloomingnightcore.indexOf(
+              interaction.user.id as string
+            ) as number,
+            1
+          );
+        }
+        if (ncVotes?.rice.includes(memberId as string)) {
+          ncVotes.rice?.splice(
+            ncVotes?.rice.indexOf(interaction.user.id as string) as number,
+            1
+          );
+        }
+        if (ncVotes?.shizu.includes(memberId as string)) {
+          ncVotes.shizu?.splice(
+            ncVotes?.shizu.indexOf(interaction.user.id as string) as number,
+            1
+          );
+        }
+        if (ncVotes?.gamechanger.includes(memberId as string)) {
+          ncVotes.gamechanger?.splice(
+            ncVotes?.gamechanger.indexOf(
+              interaction.user.id as string
+            ) as number,
+            1
+          );
+        }
+        if (ncVotes?.senpai.includes(memberId as string)) {
+          ncVotes.senpai?.splice(
+            ncVotes?.senpai.indexOf(interaction.user.id as string) as number,
+            1
+          );
+        }
+
         //1
         if (selected === "rice-vote-vid") {
           const votes = ncVotes?.rice;
-          if (!((ncVotes?.rice.indexOf(memberId as string) as number) > -1)) {
-            votes?.splice(
-              ncVotes?.rice.indexOf(interaction.user.id as string) as number,
-              1
-            );
-          }
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
@@ -82,20 +112,6 @@ export default class MessageEvent extends BaseEvent {
         //2
         if (selected === "bloomingnightcore-vote-vid") {
           const votes = ncVotes?.bloomingnightcore;
-          if (
-            !(
-              (ncVotes?.bloomingnightcore.indexOf(
-                memberId as string
-              ) as number) > -1
-            )
-          ) {
-            votes?.splice(
-              ncVotes?.bloomingnightcore.indexOf(
-                interaction.user.id as string
-              ) as number,
-              1
-            );
-          }
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
@@ -113,12 +129,7 @@ export default class MessageEvent extends BaseEvent {
         //3
         if (selected === "senpaikuan-vote-vid") {
           const votes = ncVotes?.senpai;
-          if (!((ncVotes?.senpai.indexOf(memberId as string) as number) > -1)) {
-            votes?.splice(
-              ncVotes?.senpai.indexOf(interaction.user.id as string) as number,
-              1
-            );
-          }
+
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
@@ -136,12 +147,7 @@ export default class MessageEvent extends BaseEvent {
         //4
         if (selected === "shizu-vote-vid") {
           const votes = ncVotes?.shizu;
-          if (!((ncVotes?.shizu.indexOf(memberId as string) as number) > -1)) {
-            votes?.splice(
-              ncVotes?.shizu.indexOf(interaction.user.id as string) as number,
-              1
-            );
-          }
+
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
@@ -159,16 +165,7 @@ export default class MessageEvent extends BaseEvent {
         //5
         if (selected === "gamechanger-vote-vid") {
           const votes = ncVotes?.gamechanger;
-          if (
-            !((ncVotes?.gamechanger.indexOf(memberId as string) as number) > -1)
-          ) {
-            votes?.splice(
-              ncVotes?.gamechanger.indexOf(
-                interaction.user.id as string
-              ) as number,
-              1
-            );
-          }
+
           votes?.push(memberId as string);
           await NCVotes.findOneAndUpdate(
             {
