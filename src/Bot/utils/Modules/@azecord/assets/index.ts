@@ -1,7 +1,7 @@
 import fs from "fs";
 const dir = {
-  IMAGES: `src/utils/Modules/@canvacord/assets/data/images`,
-  FONTS: `src/utils/Modules/@canvacord/assets/data/fonts`,
+  IMAGES: `src/utils/Modules/@azecord/assets/data/images`,
+  FONTS: `src/utils/Modules/@azecord/assets/data/fonts`,
 };
 const obj = {
   images: {},

@@ -337,5 +337,8 @@
   "MaxXpPerMessageHasBeenUpdated": "> The maximum XP per message has been set to `{xp}`.",
   "MinimumXPAmount": "> The Minimum XP amount per message is `{xp}`.",
   "MinXpPerMessageHasBeenUpdated": "> The minimum XP per message has been set to `{xp}`.",
-  "MemberDoesNotHaveARank": "> {member} doesn't have a rank."
+  "MemberDoesNotHaveARank": "> {member} doesn't have a rank.",
+  "RankBackgroundHasBeenUpdated": "> Your rank background has been updated.",
+  "MemberNeedsToSendTheBackgroundWithTheMessage": "> You need to send the background with your message as an attachment.",
+  "AttachmentShouldBeLessThan8MB": "> Your background should be less than 8mb."
 }

@@ -1,6 +1,6 @@
 {
-  "name": "new-music-bot",
-  "version": "1.0.0",
+  "name": "main-bot",
+  "version": "61.7.4",
   "description": "",
   "main": "index.js",
   "scripts": {
