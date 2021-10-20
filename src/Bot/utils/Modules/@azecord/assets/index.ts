@@ -1,7 +1,7 @@
 import fs from "fs";
 const dir = {
-  IMAGES: `src/utils/Modules/@azecord/assets/data/images`,
-  FONTS: `src/utils/Modules/@azecord/assets/data/fonts`,
+  IMAGES: `src/Bot/utils/Modules/@azecord/assets/data/images`,
+  FONTS: `src/Bot/utils/Modules/@azecord/assets/data/fonts`,
 };
 const obj = {
   images: {},
