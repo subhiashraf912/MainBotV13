@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 interface profileBanner {
   user: string;
-  rankBackground: string;
+  rankBackground: string | null;
 }
 
 const rankBackgroundSchema = new mongoose.Schema({

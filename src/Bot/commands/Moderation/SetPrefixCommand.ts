@@ -29,7 +29,7 @@ export default class Command extends BaseCommand {
     }
     const guildId = message.guild.id;
     const config: any = await GuildConfig.findOneAndUpdate(
-      { guildId },
+      { guildId, clientId: client.user?.id },
       { prefix },
       { new: true }
     );

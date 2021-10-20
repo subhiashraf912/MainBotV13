@@ -1,9 +1,4 @@
-import {
-  Guild,
-  Message,
-  MessageEmbed,
-  TextChannel,
-} from "discord.js/typings/index.js";
+import { Guild, Message, MessageEmbed, TextChannel } from "discord.js";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import getUser from "../../utils/constants/getUser";

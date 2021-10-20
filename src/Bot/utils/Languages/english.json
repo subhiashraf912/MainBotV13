@@ -330,5 +330,12 @@
   "NoLevelChannelsFound": "Couldn't find any level channels! Level system is gonna work in all the channels.\nUse disable-level-system command to disable the levels.",
   "LevelChannels": "Level Channels",
   "LevelChannelsDescription": "The channels that level system can work in!\nOther channels won't give xp!",
-  "NoLevelRolesWereFound": "> No level roles were found in the database."
+  "NoLevelRolesWereFound": "> No level roles were found in the database.",
+  "LevelRoles": "Level Roles",
+  "LevelRolesDescription": "The roles that are gonna be given to members once they reach the required level!",
+  "MaximumXPAmount": "> The Maximum XP amount per message is `{xp}`.",
+  "MaxXpPerMessageHasBeenUpdated": "> The maximum XP per message has been set to `{xp}`.",
+  "MinimumXPAmount": "> The Minimum XP amount per message is `{xp}`.",
+  "MinXpPerMessageHasBeenUpdated": "> The minimum XP per message has been set to `{xp}`.",
+  "MemberDoesNotHaveARank": "> {member} doesn't have a rank."
 }

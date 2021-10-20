@@ -48,7 +48,7 @@ export default class Command extends BaseCommand {
       });
 
       const DBConfig: any = await GuildConfig.findOneAndUpdate(
-        { guildId: message.guild.id },
+        { guildId: message.guild.id, clientId: client.user?.id },
         { commandRestricts },
         { new: true }
       );
@@ -114,7 +114,7 @@ export default class Command extends BaseCommand {
       }
 
       const DBConfig: any = await GuildConfig.findOneAndUpdate(
-        { guildId: message.guild.id },
+        { guildId: message.guild.id, clientId: client.user?.id },
         { commandRestricts },
         { new: true }
       );

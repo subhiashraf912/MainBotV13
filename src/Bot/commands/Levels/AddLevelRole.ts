@@ -57,7 +57,7 @@ export default class Command extends BaseCommand {
     if (!levelRoles) levelRoles = {};
     levelRoles[level] = role.id;
     const config = await GuildConfig.findOneAndUpdate(
-      { guildId: message.guild?.id },
+      { guildId: message.guild?.id, clientId: client.user?.id },
       { $set: { levelRoles } },
       { new: true }
     );

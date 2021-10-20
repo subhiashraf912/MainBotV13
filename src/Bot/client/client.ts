@@ -14,6 +14,7 @@ import BaseSlashCommand from "../utils/structures/BaseSlashCommand";
 import getOwners from "../utils/constants/getOwners";
 import RankType from "../utils/types/RankType";
 import GiveawaysBase from "../utils/Initlizers/GiveawaysBase";
+import { RankBackgroundType } from "../utils/types/RankBackgroundType";
 type startOptionsType = {
   token: string;
   commandsPath: string;
@@ -38,6 +39,7 @@ export default class DiscordClient extends Client {
   private _events = new Collection<string, BaseEvent>();
   private _ranks = new Collection<string, RankType>();
   private _aliases = new Collection<string, string>();
+  private _rankBackgrounds = new Collection<string, RankBackgroundType>();
   private _distubeEvents = new Collection<string, BaseEvent>();
   private _configs = new Collection<string, configType>();
   private _distube: DisTube = InitDistube(this);
@@ -146,5 +148,8 @@ export default class DiscordClient extends Client {
   }
   get mainPrefix(): string {
     return this._mainPrefix as string;
+  }
+  get rankBackgrounds(): Collection<string, RankBackgroundType> {
+    return this._rankBackgrounds;
   }
 }

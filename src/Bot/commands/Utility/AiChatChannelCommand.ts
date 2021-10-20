@@ -67,7 +67,7 @@ export default class Command extends BaseCommand {
     if (mode === "default") channel = undefined;
     const aiChatChannel = channel ? channel.id : null;
     const config: any = await GuildConfig.findOneAndUpdate(
-      { guildId: message.guild.id },
+      { guildId: message.guild.id, clientId: client.user?.id },
       { aiChatChannel },
       { new: true }
     );

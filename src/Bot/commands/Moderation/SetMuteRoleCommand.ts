@@ -34,7 +34,7 @@ export default class Command extends BaseCommand {
     }
 
     const config: any = await GuildConfig.findOneAndUpdate(
-      { guildId: message.guild.id },
+      { guildId: message.guild.id, clientId: client.user?.id },
       {
         muteRoleId: role.id,
       },
