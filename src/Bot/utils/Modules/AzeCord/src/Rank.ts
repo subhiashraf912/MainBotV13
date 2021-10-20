@@ -224,7 +224,7 @@ class Rank {
     return this;
   }
 
-  setUsername(name: string, color: string) {
+  setUsername(name: string, color?: string) {
     if (typeof name !== "string")
       throw new Error(
         `Expected username to be a string, received ${typeof name}!`
@@ -248,7 +248,7 @@ class Rank {
     return this;
   }
 
-  setProgressBar(color: string, fillType = "COLOR", rounded = true) {
+  setProgressBar(color: string | string[], fillType = "COLOR", rounded = true) {
     switch (fillType) {
       case "COLOR":
         if (typeof color !== "string")
@@ -264,6 +264,7 @@ class Rank {
           throw new Error(
             `Color type must be Array, received ${typeof color}!`
           );
+        //@ts-ignore
         this.data.progressBar.bar.color = color.slice(0, 2);
         this.data.progressBar.bar.type = "gradient";
         this.data.progressBar.rounded = !!rounded;
@@ -394,7 +395,7 @@ class Rank {
     return this;
   }
 
-  setBackground(type: any, data: any) {
+  setBackground(type: "COLOR" | "IMAGE", data: any) {
     if (!data) throw new Error("Missing field : data");
     switch (type) {
       case "COLOR":

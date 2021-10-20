@@ -1,23 +1,16 @@
-import { Activity, GuildMember, Message, MessageAttachment } from "discord.js";
+import { GuildMember, Message, MessageAttachment } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 import getMember from "../../utils/constants/getMember";
-import {
-  BirthdaysSchema,
-  CreditsSchema,
-  RankBackgroundSchema,
-  RankSchema,
-} from "../../utils/MongoDB/Models";
-import RankType from "../../utils/types/RankType";
-import { Profile } from "../../utils/Modules/AzeCord";
-import { GetBirthday } from "../../utils/constants/Functions";
+import { RankBackgroundSchema, RankSchema } from "../../utils/MongoDB/Models";
+import { Rank } from "../../utils/Modules/AzeCord";
 
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "profile",
+      name: "rank",
       category: "levels",
       aliases: [],
       userPermissions: [],
@@ -28,6 +21,7 @@ export default class Command extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const config = await getConfig(client, message.guild?.id as string);
+
     if (!message.guild || !message.member) return;
 
     const member = (await getMember({
@@ -43,13 +37,13 @@ export default class Command extends BaseCommand {
     let memberUserName: string = member.user.username;
     let Discriminator: string = member.user.discriminator;
 
-    let data = client.ranks.get(`${member.user.id}-${member.guild.id}`);
+    let data: any = client.ranks.get(`${member.user.id}-${member.guild.id}`);
     let rankBackground: any = client.rankBackgrounds.get(member.user.id);
     if (!data) {
-      data = (await RankSchema.findOne({
+      data = await RankSchema.findOne({
         user: member.user.id,
         server: member.guild.id,
-      })) as RankType;
+      });
       if (!data) {
         message.reply({
           content: GetLanguage(
@@ -71,19 +65,8 @@ export default class Command extends BaseCommand {
           rankBackground: null,
         });
       }
+      client.rankBackgrounds.set(member.user.id, rankBackground);
       if (!rankBackground) return;
-      client.rankBackgrounds.set(member.id, rankBackground);
-    }
-    let Credits = await CreditsSchema.findOne({
-      user: member.id,
-    });
-
-    if (!Credits) {
-      Credits = await CreditsSchema.create({
-        user: member.id,
-        credits: 0,
-        lastDaily: Date.now(),
-      });
     }
     let color, color2, color3;
 
@@ -108,18 +91,7 @@ export default class Command extends BaseCommand {
       color3 = "#423f00";
     }
 
-    let perms = "Member";
-    if (
-      member.permissions.has("KICK_MEMBERS") ||
-      member.permissions.has("BAN_MEMBERS")
-    )
-      perms = "Moderator";
-    if (member.permissions.has("MANAGE_GUILD")) perms = "Server Manager";
-    if (member.permissions.has("ADMINISTRATOR")) perms = "Server Admin";
-    if (member.id === message.guild.ownerId) perms = "Server Owner";
-
-    const creationDate = new Date(member.user.createdAt).toDateString();
-    const profile = new Profile()
+    const rank = new Rank()
       .setAvatar(memberAvatar)
       .setCurrentXP(data.xp)
       .setRequiredXP(5 * Math.pow(data.level, 2) + 50 * data.level + 100)
@@ -128,32 +100,19 @@ export default class Command extends BaseCommand {
       .setUsername(memberUserName)
       .setDiscriminator(Discriminator)
       .setLevel(data.level)
-      .setCustomStatusColor(color as string)
-      .setCash(Credits.credits, color)
+      .setCustomStatusColor(color)
       .setProgressBar(
         [color as string, color2 as string, color3 as string],
         "GRADIENT"
       )
-      .setLevelColor(undefined, color)
-      .setId(member.id)
-      .setActivities(member.presence?.activities as Activity[])
-      .setCreatedAt(creationDate)
-      .setJoinedAt(new Date(member.joinedAt as Date).toDateString())
-      .setPerms(perms);
+      .setLevelColor(undefined, color);
 
-    const BirthdaySchema = await BirthdaysSchema.findOne({
-      user: member.user.id,
-    });
     if (rankBackground.rankBackground) {
-      profile.setBackground("IMAGE", rankBackground.rankBackground);
+      rank.setBackground("IMAGE", rankBackground.rankBackground);
     }
-    if (BirthdaySchema) {
-      profile.setBirthDay(GetBirthday(BirthdaySchema.birthday));
-    } else {
-      profile.setBirthDay(`no birthday`);
-    }
-    profile.build().then((data: any) => {
-      const attachment = new MessageAttachment(data, "ProfileCard.png");
+
+    rank.build().then((data: any) => {
+      const attachment = new MessageAttachment(data, "RankCard.png");
       message.reply({ files: [attachment] });
     });
   }
