@@ -373,7 +373,7 @@ class Profile {
     return this;
   }
 
-  setLevel(data: number, text = "LEVEL", display = true) {
+  setLevel(data: number, text = "Level", display = true) {
     if (typeof data !== "number")
       throw new Error(`Level data must be a number, received ${typeof data}!`);
     this.data.level.data = data;
@@ -413,7 +413,8 @@ class Profile {
         this.data.status.color = "#593595";
         break;
       default:
-        throw new Error(`Invalid status "${status}"`);
+        this.data.status.type = "offline";
+        this.data.status.color = "#747F8E";
     }
 
     if (width !== false)

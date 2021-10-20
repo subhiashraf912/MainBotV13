@@ -70,25 +70,31 @@ export default class Command extends BaseCommand {
     }
     let color, color2, color3;
 
-    if (member.presence?.status === "offline") {
-      color = "#f2f1ef";
-      color2 = "#abb7b7";
-      color3 = "#dadfe1";
-    }
-    if (member.presence?.status === "online") {
-      color = "#55ff34";
-      color2 = "#199900";
-      color3 = "#87ff70";
-    }
-    if (member.presence?.status === "dnd") {
-      color = "#ff4642";
-      color2 = "#f50500";
-      color3 = "#ffb4b3";
-    }
-    if (member.presence?.status === "idle") {
-      color = "#fff528";
-      color2 = "#b8af00";
-      color3 = "#423f00";
+    switch (member.presence?.status) {
+      case "offline":
+        color = "#f2f1ef";
+        color2 = "#abb7b7";
+        color3 = "#dadfe1";
+      case "online":
+        color = "#55ff34";
+        color2 = "#199900";
+        color3 = "#87ff70";
+      case "dnd":
+        color = "#ff4642";
+        color2 = "#f50500";
+        color3 = "#ffb4b3";
+      case "idle":
+        color = "#fff528";
+        color2 = "#b8af00";
+        color3 = "#423f00";
+      case "invisible":
+        color = "#f2f1ef";
+        color2 = "#abb7b7";
+        color3 = "#dadfe1";
+      default:
+        color = "#f2f1ef";
+        color2 = "#abb7b7";
+        color3 = "#dadfe1";
     }
 
     const rank = new Rank()

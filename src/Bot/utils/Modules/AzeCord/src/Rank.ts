@@ -344,7 +344,7 @@ class Rank {
     this.data.level.color = number;
     return this;
   }
-  setLevel(data: any, text = "LEVEL", display = true) {
+  setLevel(data: any, text = "Level", display = true) {
     if (typeof data !== "number")
       throw new Error(`Level data must be a number, received ${typeof data}!`);
     this.data.level.data = data;
@@ -355,7 +355,7 @@ class Rank {
     return this;
   }
 
-  setCustomStatusColor(color: any) {
+  setCustomStatusColor(color: string) {
     if (!color || typeof color !== "string") throw new Error("Invalid color!");
     this.data.status.color = color;
     return this;
@@ -384,7 +384,8 @@ class Rank {
         this.data.status.color = "#593595";
         break;
       default:
-        throw new Error(`Invalid status "${status}"`);
+        this.data.status.type = "offline";
+        this.data.status.color = "#747F8E";
     }
 
     if (width !== false)
