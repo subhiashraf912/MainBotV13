@@ -69,7 +69,7 @@
   "RequiredUserPermissions": "Required User Permissions",
   "NoPermissionsRequired": "No Permissions are required",
   "BotsCommandsHelpSection": "{bot}'s Commands Help Section",
-  "BotsHelpList": "{bot}'s Help List!**\n\nWhen you select the category type {prefix}help <command name here> without <> to see advanced command help.\n```css\nHere are the categories of the bot.",
+  "BotsHelpList": "{bot}'s Help List!**\n\nWhen you select the category type {prefix}help <command name here> without <> to see advanced command help.\n```css\nHere are the categories of the bot.```",
   "MenuCategoriesValues": "Includes all of the {category} commands.",
   "CategoriesMenuEmbedFooter": "Please choose a category in the dropdown menu.",
   "HelpMenuPlaceHolder": "Please select a category",

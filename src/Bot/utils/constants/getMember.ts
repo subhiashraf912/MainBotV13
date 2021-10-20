@@ -17,16 +17,7 @@ const getMember = async (options: options) => {
   else if (IdQuery) return IdQuery;
   else if (usernameQuery) return usernameQuery;
   else {
-    try {
-      const guildMembers = options.message.guild?.members;
-      const mem = (
-        await guildMembers?.fetch({ query: options.query, limit: 1 })
-      )?.first();
-      if (mem) return mem;
-    } catch {
-      if (options.returnAuthor) return options.message.member as GuildMember;
-      else return null;
-    }
+    return options.message.member as GuildMember;
   }
 };
 export default getMember;

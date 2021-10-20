@@ -166,10 +166,9 @@ export default class HelpCommand extends BaseCommand {
 
     const embed = new MessageEmbed()
       .setDescription(
-        GetLanguage("BotsHelpList", config.language).replace(
-          "{bot}",
-          formatString(client.user?.username as string)
-        )
+        GetLanguage("BotsHelpList", config.language)
+          .replace("{bot}", formatString(client.user?.username as string))
+          .replace("{prefix}", prefix)
       )
       .addFields(
         directories.map((category) => {

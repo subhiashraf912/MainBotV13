@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "nodemon ./src/index.ts",
     "start": "node ./dist/src/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "copy-canvacord-images": "copyfiles --error --up 1 src/Bot/utils/Modules/@azecord/assets/data/images/*.* dist/src",
+    "copy-canvacord-fonts": "copyfiles --error --up 1 src/Bot/utils/Modules/@azecord/assets/data/fonts/*.* dist/src",
+    "copy-aze-canvas-fonts": "copyfiles --error --up 1 src/Bot/utils/Modules/AzeCord/aze-canvas/assets/fonts/*.* dist/src",
+    "copy-aze-canvas-images": "copyfiles --error --up 1 src/Bot/utils/Modules/AzeCord/aze-canvas/assets/img/*.* dist/src",
+    "postbuild": "npm run copy-canvacord-images && npm run copy-canvacord-fonts && npm run copy-aze-canvas-images && npm run copy-aze-canvas-fonts"
   },
   "engines": {
     "node": "16.9.1"
@@ -50,6 +55,7 @@
     "@types/moment-duration-format": "^2.2.3",
     "@types/node": "^16.4.10",
     "@types/node-fetch": "^2.5.12",
+    "copyfiles": "^2.4.1",
     "nodemon": "^2.0.12",
     "typescript": "^4.3.5"
   }
