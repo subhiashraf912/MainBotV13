@@ -15,6 +15,8 @@ import getOwners from "../utils/constants/getOwners";
 import RankType from "../utils/types/RankType";
 import GiveawaysBase from "../utils/Initlizers/GiveawaysBase";
 import { RankBackgroundType } from "../utils/types/RankBackgroundType";
+import VoiceRankType from "../utils/types/VoiceRankType";
+import LogsType from "../utils/types/Logs.Interface";
 type startOptionsType = {
   token: string;
   commandsPath: string;
@@ -42,7 +44,9 @@ export default class DiscordClient extends Client {
   private _rankBackgrounds = new Collection<string, RankBackgroundType>();
   private _distubeEvents = new Collection<string, BaseEvent>();
   private _configs = new Collection<string, configType>();
+  private _voiceRanks = new Collection<string, VoiceRankType>();
   private _distube: DisTube = InitDistube(this);
+  private _logs = new Collection<string, LogsType>();
   private _mongoose = init;
   private _currentPlayingSong = new Collection<string, Message>();
   private _owners = new Collection<string, User>();
@@ -151,5 +155,11 @@ export default class DiscordClient extends Client {
   }
   get rankBackgrounds(): Collection<string, RankBackgroundType> {
     return this._rankBackgrounds;
+  }
+  get voiceRanks(): Collection<string, VoiceRankType> {
+    return this._voiceRanks;
+  }
+  get LogsConfig(): Collection<string, LogsType> {
+    return this._logs;
   }
 }

@@ -2,68 +2,53 @@ import {
   GuildChannel,
   Message,
   MessageEmbed,
-  TextChannel,
-  ThreadChannel,
   User,
+  VoiceChannel,
 } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
-import getChannel from "../../utils/constants/getChannel";
-import pagination from "../../utils/constants/pagination";
 import getDevelopers from "../../utils/constants/GetDevelopers";
+import pagination from "../../utils/constants/pagination";
 
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "level-channels",
+      name: "voice-leaderboard",
       category: "levels",
       aliases: [],
-      userPermissions: ["MANAGE_GUILD"],
+      userPermissions: [],
       botPermissions: [],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const cachedConfig = await getConfig(client, message.guild?.id as string);
-    const levelsChannels: Array<string> = cachedConfig.levelsChannels;
-    if (!levelsChannels) {
-      message.reply(GetLanguage("NoLevelChannelsFound", cachedConfig.language));
-      return;
-    }
-    if (!levelsChannels[0]) {
-      message.reply(GetLanguage("NoLevelChannelsFound", cachedConfig.language));
-      return;
-    }
-
-    const channels: (GuildChannel | ThreadChannel)[] = [];
-    for (const channel of levelsChannels) {
-      const ch = getChannel({
-        message,
-        query: channel,
-      });
-      ch && channels.push(ch);
-    }
-
+    const config = await getConfig(client, message.guild?.id as string);
+    const { language } = config;
     const developer = await getDevelopers({ client });
-    const embeds = generateRolesEmbed(
-      channels,
-      developer,
-      cachedConfig.language
-    );
-    pagination({
-      message,
-      embeds,
-      fastSkip: true,
-      pageTravel: true,
+    const voiceLevelsChannels: Array<string> = config.voiceLevelsChannels;
+    if (!voiceLevelsChannels) {
+      message.reply(GetLanguage("NoLevelChannelsFound", language));
+      return;
+    }
+    if (!voiceLevelsChannels[0]) {
+      message.reply(GetLanguage("NoLevelChannelsFound", language));
+      return;
+    }
+    const channels: VoiceChannel[] = [];
+    voiceLevelsChannels.forEach((c) => {
+      const cnl = message.guild?.channels.cache.find((ch) => ch.id === c);
+      if (cnl && cnl instanceof VoiceChannel) channels.push(cnl);
     });
+    const embeds = generateEmbeds(channels, developer, language);
+    pagination({ embeds, message, fastSkip: true, pageTravel: true });
   }
 }
 
-function generateRolesEmbed(
-  channels: (GuildChannel | ThreadChannel)[],
+function generateEmbeds(
+  channels: VoiceChannel[],
   developer: User,
   language: string
 ) {

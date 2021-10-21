@@ -57,8 +57,7 @@ export default class Command extends BaseCommand {
     bdMembers.sort(compare);
     const embeds = await GenerateEmbeds(client, bdMembers, message.guild);
     pagination({
-      author: message.author,
-      channel: message.channel as TextChannel,
+      message,
       embeds,
       fastSkip: true,
       pageTravel: true,

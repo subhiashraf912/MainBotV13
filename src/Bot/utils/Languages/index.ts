@@ -13,8 +13,8 @@ const GetLanguage = (
       "utf8"
     )
   );
-  if (!translations) return "";
-  if (!translations[title]) return "";
+  if (!translations) return "Hasn't been added yet.";
+  if (!translations[title]) return "Hasn't been added yet.";
   return translations[title] as string;
 };
 

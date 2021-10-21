@@ -65,4 +65,5 @@ type categories =
   | "genshin impact"
   | "giveaways"
   | "join roles"
-  | "levels";
+  | "levels"
+  | "logs";

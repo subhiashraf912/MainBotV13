@@ -33,8 +33,7 @@ export default class Command extends BaseCommand {
     }
     const embeds = generateFilesEmbed(texts, developer);
     pagination({
-      author: message.author,
-      channel: message.channel as TextChannel,
+      message,
       embeds,
       fastSkip: true,
       pageTravel: true,

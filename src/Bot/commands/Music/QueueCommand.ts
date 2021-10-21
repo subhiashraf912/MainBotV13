@@ -50,8 +50,7 @@ export default class QueueCommand extends BaseCommand {
     const current = queue.songs[0];
     const embeds = generateQueueEmbed(queue, current, config.language);
     pagination({
-      author: message.author,
-      channel: message.channel as TextChannel,
+      message,
       embeds,
       pageTravel: true,
       fastSkip: true,

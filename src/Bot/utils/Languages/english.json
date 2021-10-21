@@ -340,5 +340,21 @@
   "MemberDoesNotHaveARank": "> {member} doesn't have a rank.",
   "RankBackgroundHasBeenUpdated": "> Your rank background has been updated.",
   "MemberNeedsToSendTheBackgroundWithTheMessage": "> You need to send the background with your message as an attachment.",
-  "AttachmentShouldBeLessThan8MB": "> Your background should be less than 8mb."
+  "AttachmentShouldBeLessThan8MB": "> Your background should be less than 8mb.",
+  "RemoveLevelRoleWrongSyntax": "> You need to pass in the level that you want to delete.",
+  "LevelWasNotFoundInTheDatabase": "> This level wasn't found in the database. Check your inputs and try again.",
+  "LevelRoleGotRemoved": "> Level `{level}` has been deleted from the level roles!",
+  "VoiceLeaderboardList": "{guild} Voice leaderboard list",
+  "VoiceTime": "Voice Time",
+  "NoDataWereFoundForMember": "> No data were found for {user}.",
+  "VoiceLevelData": "> **{member}** currently has {time} of total voice time.",
+  "AllLogsUpdated": "> {channel} has been set as logs for all of the log types.",
+  "BoostLogsUpdated": "> {channel} has been set as logs for boosts logs.",
+  "ChannelLogsUpdated": "> {channel} has been set as logs for channels logs.",
+  "GuildLogsUpdated": "> {channel} has been set as logs for server logs.",
+  "MemberLogsUpdated": "> {channel} has been set as logs for members logs.",
+  "MessageLogsUpdated": "> {channel} has been set as logs for messages logs.",
+  "RolesLogsUpdated": "> {channel} has been set as logs for roles logs.",
+  "VoiceLogsUpdated": "> {channel} has been set as logs for voice logs.",
+  "NoChannel": "No Channel"
 }

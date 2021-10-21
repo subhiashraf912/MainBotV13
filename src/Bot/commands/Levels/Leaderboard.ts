@@ -54,9 +54,8 @@ export default class Command extends BaseCommand {
       config
     );
     pagination({
-      author: message.author,
       embeds,
-      channel: message.channel as TextChannel,
+      message,
       fastSkip: true,
       pageTravel: true,
     });

@@ -26,8 +26,8 @@ export default class Command extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const cachedConfig = await getConfig(client, message.guild?.id as string);
-    const levelRoles = cachedConfig.levelRoles;
-    if (!levelRoles) {
+    const voiceLevelRoles = cachedConfig.voiceLevelRoles;
+    if (!voiceLevelRoles) {
       message.reply(
         GetLanguage("NoLevelRolesWereFound", cachedConfig.language)
       );
@@ -36,7 +36,7 @@ export default class Command extends BaseCommand {
 
     const RolesObject: `${string}:${string}`[] = [];
 
-    for (const [key, value] of Object.entries(levelRoles)) {
+    for (const [key, value] of Object.entries(voiceLevelRoles)) {
       let role = message.guild?.roles.cache.find((role) => role.id === value);
       const level = key;
       RolesObject.push(`${level}:${role?.toString()}`);
@@ -50,7 +50,7 @@ export default class Command extends BaseCommand {
 
     const developer = await getDevelopers({ client });
 
-    const embeds = generateLevelRolesEmbed(
+    const embeds = generatevoiceLevelRolesEmbed(
       RolesObject,
       cachedConfig.language,
       developer
@@ -64,29 +64,29 @@ export default class Command extends BaseCommand {
   }
 }
 
-function generateLevelRolesEmbed(
-  levelRoles: `${string}:${string}`[],
+function generatevoiceLevelRolesEmbed(
+  voiceLevelRoles: `${string}:${string}`[],
   language: string,
   developer: User
 ) {
   const embeds = [];
   let k = 10;
 
-  for (let i = 0; i < levelRoles.length; i += 10) {
-    const r = levelRoles.slice(i, k);
+  for (let i = 0; i < voiceLevelRoles.length; i += 10) {
+    const r = voiceLevelRoles.slice(i, k);
     let j = i;
     k += 10;
     let info = "";
     r.forEach((levelRole) => {
-      info = `${info}\n> **${++j}-** Level: ${
-        levelRole.split(":")[0]
-      } -> \`Role:\` ${levelRole.split(":")[1]}\n`;
+      info = `${info}\n> **${++j}-** Level: ${millisToMinutesAndSeconds(
+        parseInt(levelRole.split(":")[0])
+      )} -> \`Role:\` ${levelRole.split(":")[1]}\n`;
     });
 
     const embed = new MessageEmbed()
       .setDescription(
         `\`\`\`💢${GetLanguage("LevelRoles", language)}: ${
-          levelRoles.length
+          voiceLevelRoles.length
         }💢\`\`\`\`\`\`⚡${GetLanguage(
           "LevelRolesDescription",
           language
@@ -100,3 +100,8 @@ function generateLevelRolesEmbed(
   }
   return embeds;
 }
+const millisToMinutesAndSeconds = (timeInMiliseconds: number) => {
+  let h;
+  h = Math.floor(timeInMiliseconds / 1000 / 60 / 60);
+  return `${h} Hours`;
+};

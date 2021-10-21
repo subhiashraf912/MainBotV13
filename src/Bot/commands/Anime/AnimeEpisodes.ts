@@ -27,8 +27,7 @@ export default class Command extends BaseCommand {
 
     const embeds = GenerateEpisodesEmbed(episodes, anime, config.language);
     pagination({
-      author: message.author,
-      channel: message.channel as TextChannel,
+      message,
       fastSkip: true,
       embeds,
       pageTravel: true,

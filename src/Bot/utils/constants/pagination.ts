@@ -14,6 +14,8 @@ const defaultStyles: any = {
 };
 import {
   ButtonInteraction,
+  CommandInteraction,
+  Message,
   MessageActionRow,
   MessageButton,
   MessageEmbed,
@@ -29,8 +31,7 @@ interface Button {
 }
 
 interface PaginationOptions {
-  channel: TextChannel;
-  author: User;
+  message: Message;
   embeds: MessageEmbed[];
   button?: Button[];
   pageTravel?: boolean;
@@ -41,8 +42,6 @@ interface PaginationOptions {
 }
 const pagination = async (options: PaginationOptions) => {
   const {
-    author,
-    channel,
     embeds,
     button,
     time,
@@ -50,7 +49,20 @@ const pagination = async (options: PaginationOptions) => {
     customFilter,
     fastSkip,
     pageTravel,
+    message,
   } = options;
+  let author: User;
+  let channel: TextChannel;
+  if (message instanceof CommandInteraction) {
+    author = message.user;
+    channel = message.channel as TextChannel;
+  } else if (message instanceof Message) {
+    author = message.author;
+    channel = message.channel as TextChannel;
+  } else {
+    return;
+  }
+
   let currentPage = 1;
   const getButtonData = (name: string) => {
     return button?.find((btn) => btn.name === name);

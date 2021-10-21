@@ -1,11 +1,5 @@
 import mongoose from "mongoose";
-
-interface voiceRank {
-  user: string;
-  server: string;
-  joinTime: number;
-  voiceTime: number;
-}
+import VoiceRankType from "../../types/VoiceRankType";
 
 const voiceRankSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -32,7 +26,7 @@ const voiceRankSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model<voiceRank>(
+export default mongoose.model<VoiceRankType>(
   "VoiceRank",
   voiceRankSchema,
   "VoiceRank"

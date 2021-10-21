@@ -1,14 +1,6 @@
 import mongoose from "mongoose";
-interface LogsType {
-  guildId: string;
-  ChannelLogs: string;
-  BoostLogs: string;
-  MemberLogs: string;
-  GuildLogs: string;
-  MessageLogs: string;
-  RolesLogs: string;
-  VoiceChannelsLogs: string;
-}
+import LogsType from "../../types/Logs.Interface";
+
 let Schema = new mongoose.Schema({
   guildId: String,
   ChannelLogs: String,

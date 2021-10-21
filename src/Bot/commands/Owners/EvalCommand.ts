@@ -32,8 +32,7 @@ export default class EvalCommand extends BaseCommand {
 
         const embeds = generateFilesEmbed(texts, message.author);
         pagination({
-          author: message.author,
-          channel: message.channel as TextChannel,
+          message,
           embeds,
           pageTravel: true,
           fastSkip: true,

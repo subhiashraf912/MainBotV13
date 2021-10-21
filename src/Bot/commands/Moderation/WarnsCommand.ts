@@ -46,8 +46,7 @@ export default class Command extends BaseCommand {
         member?.user as User
       );
       pagination({
-        author: message.author,
-        channel: message.channel as TextChannel,
+        message,
         embeds,
         fastSkip: true,
         pageTravel: true,

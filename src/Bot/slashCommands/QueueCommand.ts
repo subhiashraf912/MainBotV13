@@ -36,10 +36,7 @@ export default class QueueCommand extends BaseSlashCommand {
       content: "Here's the queue of this server:",
     });
     pagination({
-      author: member.user,
-      channel: member.guild.channels.cache.get(
-        interaction.channelId
-      ) as TextChannel,
+      message: interaction,
       embeds,
       pageTravel: true,
       fastSkip: true,
