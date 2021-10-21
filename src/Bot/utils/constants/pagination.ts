@@ -31,7 +31,7 @@ interface Button {
 }
 
 interface PaginationOptions {
-  message: Message;
+  message: Message | CommandInteraction;
   embeds: MessageEmbed[];
   button?: Button[];
   pageTravel?: boolean;
