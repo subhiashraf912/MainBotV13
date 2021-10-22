@@ -28,14 +28,20 @@ export default class Command extends BaseCommand {
 			});
 			return;
 		}
-		message.guild?.stickers.create(
-			sticker.url,
-			sticker.name,
-			(sticker.tags as string[])[0],
-			{
-				description: sticker.description,
-				reason: `By ${message.author}`,
-			},
-		);
+		try {
+			await message.guild?.stickers.create(
+				sticker.url,
+				sticker.name,
+				(sticker.tags as string[])[0],
+				{
+					description: sticker.description,
+					reason: `By ${message.author}`,
+				},
+			);
+			message.react("☑");
+		} catch (err: any) {
+			message.channel.send({ content: err.message });
+			message.react("✖");
+		}
 	}
 }
