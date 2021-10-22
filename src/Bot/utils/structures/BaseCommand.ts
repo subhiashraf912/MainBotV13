@@ -2,13 +2,14 @@ import { Message } from "discord.js";
 import DiscordClient from "../../client/client";
 import { PermissionString } from "discord.js";
 import GetLanguage from "../Languages";
+import CategoryString from "../types/category.type";
 export default abstract class BaseCommand {
   constructor(private options: commandOptions) {}
 
   getName(): string {
     return this.options.name;
   }
-  getCategory(): categories {
+  getCategory(): CategoryString {
     return this.options.category;
   }
   getAliases(): Array<string> {
@@ -44,26 +45,9 @@ export default abstract class BaseCommand {
 }
 type commandOptions = {
   name: string;
-  category: categories;
+  category: CategoryString;
   aliases?: string[];
   userPermissions?: PermissionString[];
   botPermissions?: PermissionString[];
   tutorialGif?: string;
 };
-
-type categories =
-  | "moderation"
-  | "music"
-  | "test"
-  | "utility"
-  | "owner"
-  | "birthdays"
-  | "anime"
-  | "embeds"
-  | "fun"
-  | "games"
-  | "genshin impact"
-  | "giveaways"
-  | "join roles"
-  | "levels"
-  | "logs";

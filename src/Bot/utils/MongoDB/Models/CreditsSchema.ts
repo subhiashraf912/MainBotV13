@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
-
-interface creditsType {
-  user: string;
-  credits: number;
-  lastDaily: number;
-}
+import Credits from "../../types/Credits.interface";
 
 const creditsSchema = new mongoose.Schema({
   user: {
@@ -24,4 +19,4 @@ const creditsSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model<creditsType>("Credits", creditsSchema, "Credits");
+export default mongoose.model<Credits>("Credits", creditsSchema, "Credits");

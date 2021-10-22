@@ -9,6 +9,7 @@ const client = new DiscordClient({
     repliedUser: false,
   },
 });
+
 (async () => {
   await client.start({
     commandsPath: "../commands",

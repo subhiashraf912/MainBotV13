@@ -17,6 +17,8 @@ import GiveawaysBase from "../utils/Initlizers/GiveawaysBase";
 import { RankBackgroundType } from "../utils/types/RankBackgroundType";
 import VoiceRankType from "../utils/types/VoiceRankType";
 import LogsType from "../utils/types/Logs.Interface";
+import ExtendMessage from "../DiscordLibReg/message";
+ExtendMessage();
 type startOptionsType = {
   token: string;
   commandsPath: string;
