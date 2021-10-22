@@ -399,5 +399,6 @@
 	"SongNotFound": "> Couldn't find that song.",
 	"LinkShouldBeYoutubeLink": "> This link should be a youtube link.",
 	"DoneDownloadingSong": "> Downloading song has completed.",
-	"NoteHasBeenSentToDMS": "> The note has been sent to your direct messages."
+	"NoteHasBeenSentToDMS": "> The note has been sent to your direct messages.",
+	"MemberNeedsToSendStickerWithTheMessage": "> You need to send the sticker with your message."
 }
