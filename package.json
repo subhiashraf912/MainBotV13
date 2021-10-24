@@ -6,8 +6,7 @@
 	"scripts": {
 		"dev": "nodemon ./src/Bot/app.ts",
 		"devjs": "nodemon ./dist/src/Bot/app.js",
-		"start": "npm run pm2 && npm run logs",
-		"logs": "pm2 logs",
+		"start": "pm2-runtime ./dist/src/Bot/app.js",
 		"build": "tsc",
 		"pm2": "pm2 start ./dist/src/index.js",
 		"lint": "eslint src",
