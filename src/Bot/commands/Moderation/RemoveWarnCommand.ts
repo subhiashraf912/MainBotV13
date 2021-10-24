@@ -79,7 +79,7 @@ export default class Command extends BaseCommand {
 			memberWarns = await WarnsSchema.findOneAndUpdate(
 				{
 					user: member.user.id,
-					guild: message.guild?.id,
+					guild: message.guild?.id as string,
 				},
 				{
 					warns,

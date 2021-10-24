@@ -41,7 +41,7 @@ export default class Command extends BaseCommand {
 		delete levelRoles[args[0]];
 
 		const config = await GuildConfig.findOneAndUpdate(
-			{ guildId: message.guild?.id, clientId: client.user?.id },
+			{ guildId: message.guild?.id as string, clientId: client.user?.id },
 			{ $set: { levelRoles } },
 			{ new: true },
 		);

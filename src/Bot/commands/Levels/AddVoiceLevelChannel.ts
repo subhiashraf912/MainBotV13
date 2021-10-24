@@ -57,7 +57,7 @@ export default class Command extends BaseCommand {
 
 		const config = await GuildConfig.findOneAndUpdate(
 			{
-				guildId: message.guild?.id,
+				guildId: message.guild?.id as string,
 				clientId: client.user?.id,
 			},
 			{

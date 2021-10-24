@@ -1,5 +1,4 @@
 import { UserFlags } from "discord.js";
-
 export default (flags: UserFlags): string => {
 	let description = "User Badges:";
 	flags.toArray().forEach((flag) => {

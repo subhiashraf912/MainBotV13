@@ -54,7 +54,7 @@ export default class Command extends BaseCommand {
 		botJoinRoles.push(role.id);
 		const config = await GuildConfig.findOneAndUpdate(
 			{
-				guildId: message.guild?.id,
+				guildId: message.guild?.id as string,
 				clientId: client.user?.id,
 			},
 			{

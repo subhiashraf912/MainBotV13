@@ -26,6 +26,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"@discordjs/opus": "^0.5.3",
+		"@discordjs/rest": "^0.1.0-canary.0",
 		"@discordjs/voice": "^0.5.6",
 		"@distube/soundcloud": "^0.2.2",
 		"@distube/spotify": "^0.6.3",
@@ -34,6 +35,7 @@
 		"aki-api": "^6.0.8",
 		"canvas": "^2.8.0",
 		"chalk": "^4.1.2",
+		"discord-api-types": "^0.24.0",
 		"discord-button-pages": "^1.1.9",
 		"discord-canvas": "^1.4.1",
 		"discord-giveaways": "^4.5.1",
