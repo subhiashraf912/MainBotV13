@@ -1,4 +1,4 @@
-import { VoiceChannel } from "discord.js/typings/index.js";
+import { VoiceChannel } from "discord.js";
 import express from "express";
 import DiscordClient from "../client/client";
 import { registerGetRoutes } from "../utils/registry";
