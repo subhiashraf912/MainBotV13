@@ -1,17 +1,20 @@
-import DiscordClient from "../../../../../client/client";
+import DiscordClient from "../../../../client/client";
 import { Express, Request, Response } from "express";
-import BaseGet from "../../../../classes/bases/BaseGet";
-import getConfig from "../../../../../utils/constants/getConfig";
+import BaseGet from "../../../classes/bases/BaseGet";
+import getConfig from "../../../../utils/constants/getConfig";
 import { VoiceChannel } from "discord.js/typings/index.js";
 const GetGuilds = async (app: Express, client: DiscordClient) => {
 	const route = "/music/play/:guild/:channel/:song";
 	const callBack = async (Request: Request, Response: Response) => {
 		const { guild, channel, song } = Request.params;
-		if (!guild) {
+		if (!guild || !client.guilds.cache.get(guild)) {
 			Response.status(400).send({ message: "Guild is required" });
 			return {};
 		}
-		if (!channel) {
+		if (
+			!channel ||
+			!client.guilds.cache.get(guild)?.channels.cache.get(channel)
+		) {
 			Response.status(400).send({ message: "Channel is required" });
 			return {};
 		}
