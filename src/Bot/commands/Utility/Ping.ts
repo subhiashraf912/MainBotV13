@@ -14,7 +14,6 @@ export default class PingCommand extends BaseCommand {
 
 	async run(client: DiscordClient, message: Message, args: Array<string>) {
 		const config = await getConfig(client, message.guild?.id as string);
-		message.author.bannerURL({ dynamic: true, size: 4096 });
 		const embed = new MessageEmbed().setDescription(
 			`\`\`\`${GetLanguage("Latency", config.language)}: ${
 				((Date.now() - message.createdTimestamp) / 3).toString().split(".")[0]

@@ -45,7 +45,7 @@ export default class Command extends BaseCommand {
 		});
 		const userAvatarEmbed: MessageEmbed = new MessageEmbed()
 			.setDescription(
-				`\`\`\`${GetLanguage("RequestedBy", language).replace(
+				`\`\`\`${GetLanguage("RequestedBy", language).replaceAll(
 					"{user}",
 					message.author.tag,
 				)}\`\`\``,
@@ -58,7 +58,7 @@ export default class Command extends BaseCommand {
 			.setImage(userAvatar);
 		const GuildAvatarEmbed: MessageEmbed = new MessageEmbed()
 			.setDescription(
-				`\`\`\`${GetLanguage("RequestedBy", language).replace(
+				`\`\`\`${GetLanguage("RequestedBy", language).replaceAll(
 					"{user}",
 					message.author.tag,
 				)}\`\`\``,

@@ -7,55 +7,55 @@ import { GuildConfig } from "../../utils/MongoDB/Models";
 import configType from "../../utils/types/GuildConfig";
 
 export default class Command extends BaseCommand {
-  constructor() {
-    super({
-      name: "max-xp",
-      category: "levels",
-      aliases: [],
-      userPermissions: ["MANAGE_GUILD"],
-      botPermissions: [],
-      tutorialGif: "",
-    });
-  }
+	constructor() {
+		super({
+			name: "max-xp",
+			category: "levels",
+			aliases: [],
+			userPermissions: ["MANAGE_GUILD"],
+			botPermissions: [],
+			tutorialGif: "",
+		});
+	}
 
-  async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.guild || !message.member) return;
-    const cachedConfig = await getConfig(client, message.guild?.id as string);
-    if (!cachedConfig) return;
-    const { language } = cachedConfig;
-    let maxXpPerMessage: number = cachedConfig.maxXpPerMessage;
-    if (!maxXpPerMessage) maxXpPerMessage = 15;
+	async run(client: DiscordClient, message: Message, args: Array<string>) {
+		if (!message.guild || !message.member) return;
+		const cachedConfig = await getConfig(client, message.guild?.id as string);
+		if (!cachedConfig) return;
+		const { language } = cachedConfig;
+		let maxXpPerMessage: number = cachedConfig.maxXpPerMessage;
+		if (!maxXpPerMessage) maxXpPerMessage = 15;
 
-    if (!args[0]) {
-      message.reply(
-        GetLanguage("MaximumXPAmount", language).replace(
-          "{xp}",
-          maxXpPerMessage.toString()
-        )
-      );
-      return;
-    }
+		if (!args[0]) {
+			message.reply(
+				GetLanguage("MaximumXPAmount", language).replaceAll(
+					"{xp}",
+					maxXpPerMessage.toString(),
+				),
+			);
+			return;
+		}
 
-    const newAmount = parseInt(args[0], 10);
-    if (isNaN(newAmount)) {
-      message.reply(GetLanguage("NumberIsRequired", language));
-      return;
-    }
-    const config = await GuildConfig.findOneAndUpdate(
-      {
-        guildId: message.guild.id,
-        clientId: client.user?.id,
-      },
-      { $set: { maxXpPerMessage: newAmount } },
-      { new: true }
-    );
+		const newAmount = parseInt(args[0], 10);
+		if (isNaN(newAmount)) {
+			message.reply(GetLanguage("NumberIsRequired", language));
+			return;
+		}
+		const config = await GuildConfig.findOneAndUpdate(
+			{
+				guildId: message.guild.id,
+				clientId: client.user?.id,
+			},
+			{ $set: { maxXpPerMessage: newAmount } },
+			{ new: true },
+		);
 
-    client.configs.set(message.guild.id, config as configType);
-    message.reply(
-      GetLanguage("MaxXpPerMessageHasBeenUpdated", language).replace(
-        "{xp}",
-        newAmount.toString()
-      )
-    );
-  }
+		client.configs.set(message.guild.id, config as configType);
+		message.reply(
+			GetLanguage("MaxXpPerMessageHasBeenUpdated", language).replaceAll(
+				"{xp}",
+				newAmount.toString(),
+			),
+		);
+	}
 }
