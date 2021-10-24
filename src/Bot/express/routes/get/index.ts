@@ -4,7 +4,7 @@ import BaseGet from "../../classes/bases/BaseGet";
 import { join } from "path";
 import express from "express";
 const GetGuilds = async (app: Express, client: DiscordClient) => {
-	const route = "/";
+	const route = "";
 	const callBack = (Request: Request, Response: Response) => {
 		const distPath = join(process.cwd(), "/dashboard");
 		app.use(express.static(distPath));
