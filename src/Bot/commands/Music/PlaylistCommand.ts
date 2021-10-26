@@ -9,7 +9,7 @@ export default class PlayCommand extends BaseCommand {
 		super({
 			name: "playlist",
 			category: "music",
-			aliases: ["p"],
+			aliases: [],
 			botPermissions: ["CONNECT", "SPEAK", "SEND_MESSAGES"],
 			userPermissions: ["CONNECT"],
 			tutorialGif: "",
