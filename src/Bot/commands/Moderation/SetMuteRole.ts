@@ -7,46 +7,46 @@ import getRole from "../../utils/constants/getRole";
 import { GuildConfig } from "../../utils/MongoDB/Models";
 
 export default class Command extends BaseCommand {
-	constructor() {
-		super({
-			name: "set-mute-role",
-			category: "moderation",
-			aliases: [],
-			userPermissions: ["MANAGE_ROLES"],
-			botPermissions: [],
-			tutorialGif: "",
-		});
-	}
+  constructor() {
+    super({
+      name: "set-mute-role",
+      category: "moderation",
+      aliases: [],
+      userPermissions: ["MANAGE_ROLES"],
+      botPermissions: [],
+      tutorialGif: "",
+    });
+  }
 
-	async run(client: DiscordClient, message: Message, args: Array<string>) {
-		if (!message.guild) return;
-		if (!message.member) return;
-		const cachedConfig = await getConfig(client, message.guild.id);
-		const { language } = cachedConfig;
-		let role = await getRole({
-			message,
-			query: args[0],
-		});
+  async run(client: DiscordClient, message: Message, args: Array<string>) {
+    if (!message.guild) return;
+    if (!message.member) return;
+    const cachedConfig = await getConfig(client, message.guild.id);
+    const { language } = cachedConfig;
+    let role = await getRole({
+      message,
+      query: args[0],
+    });
 
-		if (!role) {
-			message.reply(GetLanguage("RoleNotFound", language));
-			return;
-		}
+    if (!role) {
+      message.reply(GetLanguage("RoleNotFound", language));
+      return;
+    }
 
-		const config: any = await GuildConfig.findOneAndUpdate(
-			{ guildId: message.guild.id, clientId: client.user?.id },
-			{
-				muteRoleId: role.id,
-			},
-			{ new: true },
-		);
+    const config: any = await GuildConfig.findOneAndUpdate(
+      { guildId: message.guild.id, clientId: client.user?.id },
+      {
+        muteRoleId: role.id,
+      },
+      { new: true }
+    );
 
-		client.configs.set(message.guild.id, config);
-		message.reply({
-			content: GetLanguage("MuteRoleGotSet", language).replaceAll(
-				"{roleName}",
-				role.name,
-			),
-		});
-	}
+    client.configs.set(message.guild.id, config);
+    message.reply({
+      content: GetLanguage("MuteRoleGotSet", language).replaceAll(
+        "{roleName}",
+        role.name
+      ),
+    });
+  }
 }

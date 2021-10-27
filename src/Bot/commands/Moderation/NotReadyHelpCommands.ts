@@ -3,8 +3,6 @@ import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
-import getMember from "../../utils/constants/getMember";
-import getRole from "../../utils/constants/getRole";
 import pagination from "../../utils/constants/pagination";
 
 export default class Command extends BaseCommand {
