@@ -1,28 +1,21 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import { DisTubeVoiceManager } from "distube";
-import GetLanguage from "../../utils/Languages";
 import getConfig from "../../utils/constants/getConfig";
+import GetLanguage from "../../utils/Languages";
 
-export default class StopCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "stop",
+      name: "play-skip",
       category: "music",
-      aliases: ["dc", "leave", "disconnect"],
+      aliases: ["playskip", "ps"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (
-      !client.distube ||
-      !message.member ||
-      !message.guild ||
-      !message.guild.me
-    )
-      return;
+    if (!message.member || !message.guild || !message.guild.me) return;
     const config = await getConfig(client, message.guild?.id as string);
     if (!message.member?.voice.channel) {
       message.reply({
@@ -50,11 +43,27 @@ export default class StopCommand extends BaseCommand {
       });
       return;
     }
-    client.distube.stop(message);
-    const dtVoiceManager = new DisTubeVoiceManager(client.distube);
-    dtVoiceManager.voices.leave(message.member.voice.channel);
-    message.reply({
-      content: GetLanguage("TheMusicGotStopped", config.language),
-    });
+    let songURL: string | undefined = "";
+    if (message.attachments.first()) songURL = message.attachments.first()?.url;
+    if (!args[0] && message.attachments.first())
+      return client.distube?.play(message, songURL as string).catch((err) => {
+        message.reply({ content: `${err.message}` });
+      });
+
+    if (!args.join(" ").includes("http")) {
+      const search = await client.distube.search(args.join(" "), {
+        limit: 1,
+        type: "video",
+      });
+      if (!search[0]) {
+        message.reply({
+          content: GetLanguage("NoDataWereFound", config.language),
+        });
+        return;
+      }
+      client.distube?.play(message, search[0].url, { skip: true });
+    } else {
+      client.distube?.play(message, args.join(" "), { skip: true });
+    }
   }
 }

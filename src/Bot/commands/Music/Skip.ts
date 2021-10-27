@@ -1,27 +1,21 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import GetLanguage from "../../utils/Languages";
 import getConfig from "../../utils/constants/getConfig";
+import GetLanguage from "../../utils/Languages";
 
-export default class SetFilterCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "filter",
+      name: "skip",
       category: "music",
-      aliases: ["set-filter", "setfilter"],
+      aliases: ["sk"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (
-      !client.distube ||
-      !message.member ||
-      !message.guild ||
-      !message.guild.me
-    )
-      return;
+    if (!message.member || !message.guild || !message.guild.me) return;
     const config = await getConfig(client, message.guild?.id as string);
     if (!message.member?.voice.channel) {
       message.reply({
@@ -49,20 +43,17 @@ export default class SetFilterCommand extends BaseCommand {
       });
       return;
     }
-    if (args[0] === "off" && queue.filters)
-      client.distube.setFilter(message, false);
-    else if (Object.keys(client.distube.filters).includes(args[0]))
-      client.distube.setFilter(message, args[0]);
-    else if (args[0]) {
-      message.reply({
-        content: GetLanguage("NotAValidFilter", config.language),
-      });
+    if (
+      !queue.songs[1] &&
+      client.distube.getQueue(message.guild?.id)?.autoplay
+    ) {
+      client.distube.skip(message.guildId as string);
       return;
     }
-    message.reply(
-      `${GetLanguage("CurrentQueueFilter", config.language)}: \`${
-        queue.filters[0] ? queue.filters : GetLanguage("Off", config.language)
-      }\``
-    );
+    if (!queue.songs[1]) return client.distube.stop(message.guildId as string);
+    client.distube.skip(message);
+    message.reply({
+      content: GetLanguage("CurrentSongGotSkipped", config.language),
+    });
   }
 }

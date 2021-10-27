@@ -4,12 +4,12 @@ import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 
-export default class SkipCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "skip",
+      name: "previous",
       category: "music",
-      aliases: ["sk"],
+      aliases: ["pre"],
       tutorialGif: "",
     });
   }
@@ -43,17 +43,6 @@ export default class SkipCommand extends BaseCommand {
       });
       return;
     }
-    if (
-      !queue.songs[1] &&
-      client.distube.getQueue(message.guild?.id)?.autoplay
-    ) {
-      client.distube.skip(message.guildId as string);
-      return;
-    }
-    if (!queue.songs[1]) return client.distube.stop(message.guildId as string);
-    client.distube.skip(message);
-    message.reply({
-      content: GetLanguage("CurrentSongGotSkipped", config.language),
-    });
+    client.distube.previous(message);
   }
 }

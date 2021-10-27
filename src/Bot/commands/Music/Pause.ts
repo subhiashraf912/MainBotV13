@@ -1,22 +1,20 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
-
-export default class JumpCommand extends BaseCommand {
+import GetConfig from "../../utils/constants/getConfig";
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "jump",
+      name: "pause",
       category: "music",
-      aliases: ["skipto", "skip-to"],
+      aliases: ["pa"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.member || !message.guild || !message.guild.me) return;
-    const config = await getConfig(client, message.guild.id);
+    const config = await GetConfig(client, message.guild?.id as string);
     if (!message.member?.voice.channel) {
       message.reply({
         content: GetLanguage("MemberNeedsToBeInAVoiceChannel", config.language),
@@ -43,32 +41,18 @@ export default class JumpCommand extends BaseCommand {
       });
       return;
     }
-    if (!args[0]) {
+    if (client.distube.getQueue(message.guild?.id as string)?.paused) {
       message.reply({
-        content: GetLanguage("SongsToJumpNumberRequired", config.language),
+        content: GetLanguage("QueueIsAlreadyPaused", config.language),
       });
       return;
     }
-    const songsNumber = parseInt(args[0], 10);
-    if (isNaN(songsNumber)) {
-      message.reply({
-        content: GetLanguage(
-          "ArgumentIsNotANumber",
-          config.language
-        ).replaceAll("{argument}", args[0]),
-      });
-      return;
-    }
-
-    if (queue.songs.length < songsNumber) {
-      message.reply({
-        content: GetLanguage(
-          "SongsAmountShouldBeLessThanTheQueueLength",
-          config.language
-        ),
-      });
-      return;
-    }
-    client.distube.jump(message, songsNumber);
+    client.distube.pause(message);
+    message.reply({
+      content: GetLanguage("QueueGotPaused", config.language).replaceAll(
+        "{member}",
+        message.author.toString()
+      ),
+    });
   }
 }

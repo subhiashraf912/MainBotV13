@@ -1,23 +1,22 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
+import getConfig from "../../utils/constants/getConfig";
 
-export default class AutoPlayCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "auto-play",
+      name: "resume",
       category: "music",
-      aliases: ["autoplay", "ap", "a-p"],
+      aliases: ["re"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.member || !message.guild || !message.guild.me) return;
-    const config = await getConfig(client, message.guild.id);
-    if (!message.member.voice.channel) {
+    const config = await getConfig(client, message.guild?.id as string);
+    if (!message.member?.voice.channel) {
       message.reply({
         content: GetLanguage("MemberNeedsToBeInAVoiceChannel", config.language),
       });
@@ -25,7 +24,7 @@ export default class AutoPlayCommand extends BaseCommand {
     }
 
     if (
-      message.guild.me.voice.channel &&
+      message.guild?.me?.voice.channel &&
       message.member.voice.channel.id !== message.guild.me.voice.channel.id
     ) {
       message.reply({
@@ -36,7 +35,6 @@ export default class AutoPlayCommand extends BaseCommand {
       });
       return;
     }
-
     const queue = client.distube.getQueue(message);
     if (!queue) {
       message.reply({
@@ -44,12 +42,17 @@ export default class AutoPlayCommand extends BaseCommand {
       });
       return;
     }
-
-    const mode = client.distube.toggleAutoplay(message);
-    message.reply({
-      content: GetLanguage("AutoPlayModeChange", config.language).replaceAll(
-        "{mode}",
-        GetLanguage(mode ? "On" : "Off", config.language)
+    if (!client.distube.getQueue(message.guild?.id as string)?.paused) {
+      message.reply({
+        content: GetLanguage("SongIsNotPaused", config.language),
+      });
+      return;
+    }
+    client.distube.resume(message);
+    message.channel.send({
+      content: GetLanguage("QueueGotResumed", config.language).replaceAll(
+        "{member}",
+        message.author.toString()
       ),
     });
   }

@@ -1,15 +1,15 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
+import getConfig from "../../utils/constants/getConfig";
 
-export default class PreviousCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "previous",
+      name: "volume",
       category: "music",
-      aliases: ["pre"],
+      aliases: ["v"],
       tutorialGif: "",
     });
   }
@@ -43,6 +43,45 @@ export default class PreviousCommand extends BaseCommand {
       });
       return;
     }
-    client.distube.previous(message);
+    if (!args[0]) {
+      message.reply({
+        content: GetLanguage("VolumeAmount", config.language).replaceAll(
+          "{volume}",
+          queue.volume.toString()
+        ),
+      });
+      return;
+    }
+    const volume = parseInt(args[0]);
+    if (isNaN(volume)) {
+      message.reply({
+        content: GetLanguage(
+          "ArgumentIsNotANumber",
+          config.language
+        ).replaceAll("{argument}", volume.toString()),
+      });
+      return;
+    }
+    if (volume > 100) {
+      message.reply({
+        content: GetLanguage("MaxVolumeIs100", config.language),
+      });
+      return;
+    }
+    if (volume < 0) {
+      message.reply({
+        content: GetLanguage("MinVolumeIs0", config.language),
+      });
+      return;
+    }
+    client.distube.setVolume(message, volume);
+    client.queueVolume = volume;
+
+    message.reply({
+      content: GetLanguage("VolumeGotChanged", config.language).replaceAll(
+        "{volume}",
+        volume.toString()
+      ),
+    });
   }
 }

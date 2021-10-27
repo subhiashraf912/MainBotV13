@@ -4,7 +4,7 @@ import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 
-export default class RepeatCommand extends BaseCommand {
+export default class Repeat extends BaseCommand {
   constructor() {
     super({
       name: "repeat",

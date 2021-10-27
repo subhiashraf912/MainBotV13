@@ -4,7 +4,7 @@ import DiscordClient from "../../client/client";
 import GetLanguage from "../../utils/Languages";
 import getConfig from "../../utils/constants/getConfig";
 
-export default class PlayCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
       name: "playlist",

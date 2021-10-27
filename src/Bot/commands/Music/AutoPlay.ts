@@ -1,21 +1,23 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
+import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
-import GetConfig from "../../utils/constants/getConfig";
-export default class PauseCommand extends BaseCommand {
+
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "pause",
+      name: "auto-play",
       category: "music",
-      aliases: ["pa"],
+      aliases: ["autoplay", "ap", "a-p"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const config = await GetConfig(client, message.guild?.id as string);
-    if (!message.member?.voice.channel) {
+    if (!message.member || !message.guild || !message.guild.me) return;
+    const config = await getConfig(client, message.guild.id);
+    if (!message.member.voice.channel) {
       message.reply({
         content: GetLanguage("MemberNeedsToBeInAVoiceChannel", config.language),
       });
@@ -23,7 +25,7 @@ export default class PauseCommand extends BaseCommand {
     }
 
     if (
-      message.guild?.me?.voice.channel &&
+      message.guild.me.voice.channel &&
       message.member.voice.channel.id !== message.guild.me.voice.channel.id
     ) {
       message.reply({
@@ -34,6 +36,7 @@ export default class PauseCommand extends BaseCommand {
       });
       return;
     }
+
     const queue = client.distube.getQueue(message);
     if (!queue) {
       message.reply({
@@ -41,17 +44,12 @@ export default class PauseCommand extends BaseCommand {
       });
       return;
     }
-    if (client.distube.getQueue(message.guild?.id as string)?.paused) {
-      message.reply({
-        content: GetLanguage("QueueIsAlreadyPaused", config.language),
-      });
-      return;
-    }
-    client.distube.pause(message);
+
+    const mode = client.distube.toggleAutoplay(message);
     message.reply({
-      content: GetLanguage("QueueGotPaused", config.language).replaceAll(
-        "{member}",
-        message.author.toString()
+      content: GetLanguage("AutoPlayModeChange", config.language).replaceAll(
+        "{mode}",
+        GetLanguage(mode ? "On" : "Off", config.language)
       ),
     });
   }

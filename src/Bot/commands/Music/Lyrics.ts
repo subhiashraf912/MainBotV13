@@ -6,7 +6,7 @@ import pagination from "../../utils/constants/pagination";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 const lyricsFinder = new Genius.Client();
-export default class LyricsCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
       name: "lyrics",

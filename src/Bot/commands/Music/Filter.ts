@@ -1,21 +1,27 @@
 import { Message } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
+import getConfig from "../../utils/constants/getConfig";
 
-export default class PlaySkipCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "play-skip",
+      name: "filter",
       category: "music",
-      aliases: ["playskip", "ps"],
+      aliases: ["set-filter", "setfilter"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.member || !message.guild || !message.guild.me) return;
+    if (
+      !client.distube ||
+      !message.member ||
+      !message.guild ||
+      !message.guild.me
+    )
+      return;
     const config = await getConfig(client, message.guild?.id as string);
     if (!message.member?.voice.channel) {
       message.reply({
@@ -43,27 +49,20 @@ export default class PlaySkipCommand extends BaseCommand {
       });
       return;
     }
-    let songURL: string | undefined = "";
-    if (message.attachments.first()) songURL = message.attachments.first()?.url;
-    if (!args[0] && message.attachments.first())
-      return client.distube?.play(message, songURL as string).catch((err) => {
-        message.reply({ content: `${err.message}` });
+    if (args[0] === "off" && queue.filters)
+      client.distube.setFilter(message, false);
+    else if (Object.keys(client.distube.filters).includes(args[0]))
+      client.distube.setFilter(message, args[0]);
+    else if (args[0]) {
+      message.reply({
+        content: GetLanguage("NotAValidFilter", config.language),
       });
-
-    if (!args.join(" ").includes("http")) {
-      const search = await client.distube.search(args.join(" "), {
-        limit: 1,
-        type: "video",
-      });
-      if (!search[0]) {
-        message.reply({
-          content: GetLanguage("NoDataWereFound", config.language),
-        });
-        return;
-      }
-      client.distube?.play(message, search[0].url, { skip: true });
-    } else {
-      client.distube?.play(message, args.join(" "), { skip: true });
+      return;
     }
+    message.reply(
+      `${GetLanguage("CurrentQueueFilter", config.language)}: \`${
+        queue.filters[0] ? queue.filters : GetLanguage("Off", config.language)
+      }\``
+    );
   }
 }

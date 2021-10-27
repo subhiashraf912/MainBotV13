@@ -6,7 +6,7 @@ import { Queue } from "distube";
 import pagination from "../../utils/constants/pagination";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
-export default class QueueCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
       name: "queue",

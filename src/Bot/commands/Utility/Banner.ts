@@ -1,10 +1,4 @@
-import {
-  Message,
-  MessageEmbed,
-  MessageComponentInteraction,
-  MessageButton,
-  MessageActionRow,
-} from "discord.js";
+import { Message, MessageEmbed } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
@@ -35,7 +29,7 @@ export default class Command extends BaseCommand {
         message,
         query: args.join(" "),
       })) || message.author;
-
+    await target.fetch();
     const banner = target.bannerURL({ dynamic: true, size: 4096 });
     if (!banner) {
       message.reply(GetLanguage("MemberDoesNotHaveBanner", language));

@@ -4,14 +4,12 @@ import DiscordClient from "../../client/client";
 import GetLanguage from "../../utils/Languages";
 import getConfig from "../../utils/constants/getConfig";
 
-export default class PlayCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "play",
+      name: "seek",
       category: "music",
-      aliases: ["p"],
-      botPermissions: ["CONNECT", "SPEAK", "SEND_MESSAGES"],
-      userPermissions: ["CONNECT"],
+      aliases: [],
       tutorialGif: "",
     });
   }
@@ -38,34 +36,23 @@ export default class PlayCommand extends BaseCommand {
       });
       return;
     }
-
-    let songURL: string | undefined = "";
-    if (message.attachments.first()) songURL = message.attachments.first()?.url;
-    if (!args[0] && message.attachments.first())
-      return client.distube?.play(message, songURL as string).catch((err) => {
-        message.reply({ content: `${err.message}` });
-      });
-
-    if (!args[0]) {
+    const queue = client.distube.getQueue(message);
+    if (!queue) {
       message.reply({
-        content: GetLanguage("SongIsRequiredToPlayMusic", config.language),
+        content: GetLanguage("NoQueue", config.language),
       });
       return;
     }
-    if (!args.join(" ").includes("http")) {
-      const search = await client.distube.search(args.join(" "), {
-        limit: 1,
-        type: "video",
+
+    if (!args[0]) {
+      message.reply({
+        content: GetLanguage(
+          "MemberNeedsToEnterTheDurationOfTheSongToGoTo",
+          config.language
+        ),
       });
-      if (!search[0]) {
-        message.reply({
-          content: GetLanguage("NoDataWereFound", config.language),
-        });
-        return;
-      }
-      client.distube?.play(message, search[0].url);
-    } else {
-      client.distube?.play(message, args.join(" "));
     }
+    const SeekAmount = parseInt(args[0], 10);
+    client.distube.seek(message, SeekAmount);
   }
 }

@@ -1,47 +1,33 @@
 import { Message, MessageEmbed, User } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
-import getConfig from "../../utils/constants/getConfig";
-import GetLanguage from "../../utils/Languages";
 import pagination from "../../utils/constants/pagination";
 
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "not-ready-help-commands",
-      category: "moderation",
+      name: "valid-filters",
+      category: "music",
       aliases: [],
-      userPermissions: ["MANAGE_ROLES"],
-      botPermissions: ["MANAGE_ROLES"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    const config = await getConfig(client, message.guildId as string);
-    let output = "";
-    client.commands.forEach((command) => {
-      if (
-        GetLanguage(`${command.getName()}_description`, config.language) ===
-        "Hasn't been added yet."
-      ) {
-        output = `${output}\n${command.getName()}_description`;
-      }
-      if (
-        GetLanguage(`${command.getName()}_usage`, config.language) ===
-        "Hasn't been added yet."
-      ) {
-        output = `${output}\n${command.getName()}_usage`;
-      }
-    });
-
-    const length = output.length;
+    let filters = "";
+    for (const filter of Object.keys(client.distube.filters)) {
+      filters = `${filters}\n${filter}`;
+    }
+    const length = filters.length;
     const texts = [];
     const parts = length / 2000;
     for (let i = 0; i < parts; i++) {
-      texts.push(output.substring(i * 2000, (i + 1) * 2000));
+      texts.push(filters.substring(i * 2000, (i + 1) * 2000));
     }
-    const embeds = generateFilesEmbed(texts, message.author);
+    const embeds = generateEmbeds(
+      Object.keys(client.distube.filters),
+      message.author
+    );
     pagination({
       message,
       embeds,
@@ -51,7 +37,7 @@ export default class Command extends BaseCommand {
   }
 }
 
-function generateFilesEmbed(texts: string[], author: User): MessageEmbed[] {
+function generateEmbeds(texts: string[], author: User): MessageEmbed[] {
   const embeds = [];
   let k = 1;
   for (let i = 0; i < texts.length; i += 1) {

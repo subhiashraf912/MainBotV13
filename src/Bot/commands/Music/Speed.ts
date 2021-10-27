@@ -4,18 +4,24 @@ import DiscordClient from "../../client/client";
 import GetLanguage from "../../utils/Languages";
 import getConfig from "../../utils/constants/getConfig";
 
-export default class VolumeCommand extends BaseCommand {
+export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "volume",
+      name: "speed",
       category: "music",
-      aliases: ["v"],
+      aliases: ["sp"],
       tutorialGif: "",
     });
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
-    if (!message.member || !message.guild || !message.guild.me) return;
+    if (
+      !client.distube ||
+      !message.member ||
+      !message.guild ||
+      !message.guild.me
+    )
+      return;
     const config = await getConfig(client, message.guild?.id as string);
     if (!message.member?.voice.channel) {
       message.reply({
@@ -45,42 +51,51 @@ export default class VolumeCommand extends BaseCommand {
     }
     if (!args[0]) {
       message.reply({
-        content: GetLanguage("VolumeAmount", config.language).replaceAll(
-          "{volume}",
-          queue.volume.toString()
+        content: GetLanguage(
+          "MemberNeedsToEnterTheSpeedOfTheSong",
+          config.language
         ),
       });
       return;
     }
-    const volume = parseInt(args[0]);
-    if (isNaN(volume)) {
+    const speedNum = parseInt(args[0], 10);
+    if (isNaN(speedNum)) {
       message.reply({
         content: GetLanguage(
           "ArgumentIsNotANumber",
           config.language
-        ).replaceAll("{argument}", volume.toString()),
+        ).replaceAll("{argument}", args[0]),
       });
       return;
     }
-    if (volume > 100) {
+    let supportedSpeeds = [
+      "0.25",
+      "0.5",
+      "0.75",
+      "1",
+      "1.25",
+      "1.5",
+      "1.75",
+      "2",
+    ];
+    let supportedSpeedMessage = "";
+    supportedSpeeds.forEach((sp) => {
+      supportedSpeedMessage = `${supportedSpeedMessage} \`${sp}\``;
+    });
+    if (!supportedSpeeds.includes(args[0])) {
       message.reply({
-        content: GetLanguage("MaxVolumeIs100", config.language),
+        content: GetLanguage("SpeedIsNotSupported", config.language).replaceAll(
+          "{arguments}",
+          supportedSpeedMessage
+        ),
       });
       return;
     }
-    if (volume < 0) {
-      message.reply({
-        content: GetLanguage("MinVolumeIs0", config.language),
-      });
-      return;
-    }
-    client.distube.setVolume(message, volume);
-    client.queueVolume = volume;
-
+    client.distube.setFilter(message, args[0]);
     message.reply({
-      content: GetLanguage("VolumeGotChanged", config.language).replaceAll(
-        "{volume}",
-        volume.toString()
+      content: GetLanguage("TheSpeedGotChanged", config.language).replaceAll(
+        "{speed}",
+        args[0]
       ),
     });
   }

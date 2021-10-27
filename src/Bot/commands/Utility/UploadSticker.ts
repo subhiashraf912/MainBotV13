@@ -7,7 +7,7 @@ import GetLanguage from "../../utils/Languages";
 export default class Command extends BaseCommand {
   constructor() {
     super({
-      name: "steal-sticker",
+      name: "upload-sticker",
       category: "utility",
       aliases: [],
       userPermissions: ["MANAGE_EMOJIS_AND_STICKERS"],
