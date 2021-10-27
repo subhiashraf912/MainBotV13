@@ -4,7 +4,6 @@ import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 import getUser from "../../utils/constants/getUser";
-import BirthdayType from "../../utils/types/BirthdayType";
 import { BirthdaysSchema } from "../../utils/MongoDB/Models";
 import { GetBirthday } from "../../utils/constants/Functions";
 

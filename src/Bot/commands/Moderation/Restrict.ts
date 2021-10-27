@@ -40,7 +40,7 @@ export default class Command extends BaseCommand {
 
 		if (args[0] === "all") {
 			client.commands.forEach((command) => {
-				if (command.getCategory().toLowerCase() === "admins") return;
+				if (command.getCategory() === "moderation") return;
 				if (!commandRestricts[command.getName()])
 					commandRestricts[command.getName()] = [];
 				if (commandRestricts[command.getName()].includes(channel.id)) return;

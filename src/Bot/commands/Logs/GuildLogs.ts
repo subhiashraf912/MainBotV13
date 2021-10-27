@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 		super({
 			name: "guild-logs",
 			category: "logs",
-			aliases: [],
+			aliases: ["server-logs"],
 			userPermissions: ["MANAGE_CHANNELS"],
 			botPermissions: [],
 			tutorialGif: "",

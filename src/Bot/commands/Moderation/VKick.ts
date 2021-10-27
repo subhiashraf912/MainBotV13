@@ -4,7 +4,6 @@ import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 import getMember from "../../utils/constants/getMember";
-import DJSVoice from "@discordjs/voice";
 export default class Command extends BaseCommand {
 	constructor() {
 		super({

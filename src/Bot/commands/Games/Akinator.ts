@@ -10,7 +10,6 @@ import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
 import { akiEmojis, colors, emojis } from "../../utils/constants/Emojis";
-import filters from "../../utils/constants/filters";
 const Started = new Set();
 const { Aki } = require("aki-api");
 

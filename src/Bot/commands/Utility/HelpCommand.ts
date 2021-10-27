@@ -92,7 +92,6 @@ export default class HelpCommand extends BaseCommand {
 					`\`\`\`${command
 						.getUsage(config.language)
 						.replaceAll("<prefix>", prefix)}\`\`\``,
-					true,
 				)
 				.addField(
 					`> ${GetLanguage("Aliases", config.language)}:`,
