@@ -15,5 +15,6 @@ interface Category {
 	levels: "🎚";
 	logs: "🔐";
 	"role playing": "🎭";
+	"sen-server-commands": "🎅";
 }
 export default Category;
