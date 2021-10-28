@@ -9,6 +9,7 @@ export default class MessageEvent extends BaseEvent {
 	}
 
 	async run(client: DiscordClient, message: Message) {
+		if (message.author.bot) return;
 		if (client.autoTranslate.get(message.channel.id)) {
 			let TextToBeTranslated = message.content;
 			let language = "en";
