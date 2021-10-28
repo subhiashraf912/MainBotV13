@@ -26,12 +26,7 @@ export default class MessageEvent extends BaseEvent {
 						`Translated from: ${res.from.language.iso} To: ${language}`,
 					);
 				message.reply({ embeds: [embed] });
-			} catch (err: any) {
-				{
-					message.reply(err.message);
-					return;
-				}
-			}
+			} catch (err: any) {}
 		}
 	}
 }
