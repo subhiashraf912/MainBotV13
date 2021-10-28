@@ -18,6 +18,7 @@ export default class MessageEvent extends BaseEvent {
 				const res = await translate(TextToBeTranslated, {
 					to: language,
 				});
+				if (res.from.language.iso === language) return;
 				let embed = new MessageEmbed()
 					.setDescription(res.text)
 					.setColor("RANDOM")
