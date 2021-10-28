@@ -70,7 +70,7 @@ export default class Command extends BaseCommand {
 		];
 
 		const embed = new MessageEmbed()
-			.setDescription(
+			.setThumbnail(
 				"```Community Roles```\nChoose the role that tells what do you work as.\nThose are the avaliable roles:",
 			)
 			.setImage(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");

@@ -69,7 +69,7 @@ export default class Command extends BaseCommand {
 			.setDescription(
 				"```Age Roles```\nChoose the role that tells your gender.\nThose are the avaliable roles:",
 			)
-			.setImage(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
+			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
 		await message.reply({
 			embeds: [embed],
 			components: components(false),
