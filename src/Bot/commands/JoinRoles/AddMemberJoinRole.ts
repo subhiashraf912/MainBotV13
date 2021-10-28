@@ -16,7 +16,7 @@ export default class Command extends BaseCommand {
 			userPermissions: ["MANAGE_ROLES"],
 			botPermissions: [],
 			tutorialGif:
-				"https://cdn.discordapp.com/attachments/849666813545283645/903177707825799188/bandicam_2021-10-28_09-58-54-080.gif",
+				"https://cdn.discordapp.com/attachments/900321704289656872/903183733933346816/AddMemberJoinRole.gif",
 		});
 	}
 

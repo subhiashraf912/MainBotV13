@@ -15,7 +15,8 @@ export default class Command extends BaseCommand {
 			aliases: [],
 			userPermissions: ["MANAGE_ROLES"],
 			botPermissions: [],
-			tutorialGif: "",
+			tutorialGif:
+				"https://cdn.discordapp.com/attachments/900321704289656872/903190591666548757/RemoveMemberJoinRole.gif",
 		});
 	}
 
