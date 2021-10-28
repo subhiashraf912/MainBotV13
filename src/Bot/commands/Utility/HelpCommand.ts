@@ -39,6 +39,7 @@ export default class HelpCommand extends BaseCommand {
 			levels: "🎚",
 			logs: "🔐",
 			"role playing": "🎭",
+			"sen-server-commands": "🎅",
 		};
 		return categories;
 	}
