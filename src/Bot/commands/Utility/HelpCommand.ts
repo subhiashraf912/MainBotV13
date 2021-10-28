@@ -113,6 +113,7 @@ export default class HelpCommand extends BaseCommand {
 					`> ${GetLanguage("Usage", config.language)}:`,
 					`\`\`\`${command
 						.getUsage(config.language)
+						.replaceAll("{prefix}", prefix)
 						.replaceAll("<prefix>", prefix)}\`\`\``,
 				)
 				.addField(
