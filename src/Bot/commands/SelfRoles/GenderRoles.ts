@@ -61,7 +61,7 @@ export default class Command extends BaseCommand {
 				"```Gender Roles```\nYou can choose your gender role from here. So other members can know your gender by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
-		await message.reply({
+		await message.channel.send({
 			embeds: [embed],
 			components: components(false),
 		});

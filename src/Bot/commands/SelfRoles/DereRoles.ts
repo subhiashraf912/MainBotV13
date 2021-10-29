@@ -61,7 +61,7 @@ export default class Command extends BaseCommand {
 				"```Dere Roles```\nYou can choose your dere roles from here. So other members can know your dere type by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
-		await message.reply({
+		await message.channel.send({
 			embeds: [embed],
 			components: components(false),
 		});

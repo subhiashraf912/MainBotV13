@@ -24,7 +24,7 @@ export default class Command extends BaseCommand {
 	async run(client: DiscordClient, message: Message, args: Array<string>) {
 		const config = await getConfig(client, message.guild?.id as string);
 		if (message.guild?.id !== "783991881028993045") {
-			message.reply("This command is only for sen nightcore server");
+			message.channel.send("This command is only for sen nightcore server");
 			return;
 		}
 		const actualRoles = [
@@ -61,7 +61,7 @@ export default class Command extends BaseCommand {
 				"```Age Roles```\nYou can choose your age role from here. So other members can know your age by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
-		await message.reply({
+		await message.channel.send({
 			embeds: [embed],
 			components: components(false),
 		});

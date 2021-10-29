@@ -61,7 +61,7 @@ export default class Command extends BaseCommand {
 				"```Pings Roles```\nYou can choose your ping roles from here. Once the moderators have updates or announces about something related to those roles you'll get pinged!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
-		await message.reply({
+		await message.channel.send({
 			embeds: [embed],
 			components: components(false),
 		});
