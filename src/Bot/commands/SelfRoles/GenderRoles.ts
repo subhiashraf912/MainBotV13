@@ -7,7 +7,7 @@ import {
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
-
+import genderRoles from "../../utils/constants/SenServerRoles/genderRoles";
 export default class Command extends BaseCommand {
 	constructor() {
 		super({
@@ -26,16 +26,7 @@ export default class Command extends BaseCommand {
 			message.reply("This command is only for sen nightcore server");
 			return;
 		}
-		const roles = [
-			{
-				emoji: "👦",
-				role: "784001500950822942",
-			},
-			{
-				emoji: "👧",
-				role: "784001541366743040",
-			},
-		];
+		const roles = genderRoles;
 		const actualRoles = [
 			...new Set(
 				roles.map((role) => message.guild?.roles.cache.get(role.role)),
@@ -45,8 +36,8 @@ export default class Command extends BaseCommand {
 		const components = (state: boolean) => [
 			new MessageActionRow().addComponents(
 				new MessageSelectMenu()
-					.setCustomId("roles")
-					.setMaxValues(roles.length)
+					.setCustomId("roles_gender")
+					.setMaxValues(1)
 					.setMinValues(0)
 					.setPlaceholder("Please select a role")
 					.setDisabled(state)
@@ -67,7 +58,7 @@ export default class Command extends BaseCommand {
 
 		const embed = new MessageEmbed()
 			.setDescription(
-				"```Age Roles```\nChoose the role that tells your gender.\nThose are the avaliable roles:",
+				"```Gender Roles```\nYou can choose your gender role from here. So other members can know your gender by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
 		await message.reply({

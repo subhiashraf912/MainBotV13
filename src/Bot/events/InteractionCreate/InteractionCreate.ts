@@ -1,8 +1,9 @@
 import BaseEvent from "../../utils/structures/BaseEvent";
 import { GuildMember, Interaction, Role } from "discord.js";
 import DiscordClient from "../../client/client";
-import NCVotes from "../../utils/MongoDB/Models/NCVotes";
-
+import ageRoles from "../../utils/constants/SenServerRoles/ageRoles";
+import communityRoles from "../../utils/constants/SenServerRoles/communityRoles";
+import genderRoles from "../../utils/constants/SenServerRoles/genderRoles";
 export default class MessageEvent extends BaseEvent {
 	constructor() {
 		super("interactionCreate");
@@ -40,7 +41,10 @@ export default class MessageEvent extends BaseEvent {
 			if (command) command.run(client, interaction, []);
 		}
 
-		if (interaction.isSelectMenu() && interaction.customId === "roles") {
+		if (
+			interaction.isSelectMenu() &&
+			interaction.customId.startsWith("roles")
+		) {
 			await interaction.deferReply({ ephemeral: true });
 			const memberId = interaction.member?.user?.id;
 			const guildId = interaction.guildId;
@@ -49,30 +53,47 @@ export default class MessageEvent extends BaseEvent {
 				const member = guild.members.cache.get(memberId as string);
 				if (member) {
 					const values = interaction.values;
-					const removedRoles: Role[] = [];
+					const removedRoles: string[] = [];
 					const addedRoles: Role[] = [];
+					let roles;
+					if (interaction.customId === "roles_community") {
+						roles = communityRoles;
+					} else if (interaction.customId === "roles_age") {
+						roles = ageRoles;
+					} else roles = genderRoles;
+					roles.forEach((roleObject) => {
+						if (
+							!interaction.values.includes(roleObject.role) &&
+							member.roles.cache.has(roleObject.role)
+						) {
+							removedRoles.push(roleObject.role);
+						}
+					});
 					for (const value of values) {
 						const role = guild.roles.cache.get(value);
 						if (role) {
 							if (member.roles.cache.get(role.id)) {
-								await member.roles.remove(role);
-								removedRoles.push(role);
 							} else {
 								await member.roles.add(role.id);
 								addedRoles.push(role);
 							}
 						}
 					}
-					interaction.editReply({
-						content: `${
+					for (const roleToBeRemoved of removedRoles) {
+						await member.roles.remove(roleToBeRemoved);
+					}
+
+					interaction.reply({
+						content: `Roles:\n> Added: ${
 							addedRoles[0]
-								? `Added the roles ${addedRoles.map((role) => role)}`
-								: "No Roles were added."
-						}\n${
+								? ` ${addedRoles.map((role) => role)}`
+								: "No added roles"
+						}\n> Removed: ${
 							removedRoles[0]
-								? `Removed the roles ${removedRoles.map((role) => role)}`
-								: "No Roles were removed."
+								? ` ${removedRoles.map((role) => `<@&${role}>`)}`
+								: " No removed roles"
 						}`,
+						ephemeral: true,
 					});
 				}
 			}

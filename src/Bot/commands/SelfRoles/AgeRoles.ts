@@ -7,6 +7,7 @@ import {
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
+import roles from "../../utils/constants/SenServerRoles/ageRoles";
 
 export default class Command extends BaseCommand {
 	constructor() {
@@ -26,16 +27,6 @@ export default class Command extends BaseCommand {
 			message.reply("This command is only for sen nightcore server");
 			return;
 		}
-		const roles = [
-			{
-				emoji: "⬆",
-				role: "784001570467479582",
-			},
-			{
-				emoji: "⬇",
-				role: "784001621910355988",
-			},
-		];
 		const actualRoles = [
 			...new Set(
 				roles.map((role) => message.guild?.roles.cache.get(role.role)),
@@ -45,8 +36,8 @@ export default class Command extends BaseCommand {
 		const components = (state: boolean) => [
 			new MessageActionRow().addComponents(
 				new MessageSelectMenu()
-					.setCustomId("roles")
-					.setMaxValues(roles.length)
+					.setCustomId("roles_age")
+					.setMaxValues(1)
 					.setMinValues(0)
 					.setPlaceholder("Please select a role")
 					.setDisabled(state)
@@ -67,7 +58,7 @@ export default class Command extends BaseCommand {
 
 		const embed = new MessageEmbed()
 			.setDescription(
-				"```Age Roles```\nChoose the role that tells your age.\nThose are the avaliable roles:",
+				"```Age Roles```\nYou can choose your age role from here. So other members can know your age by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
 		await message.reply({

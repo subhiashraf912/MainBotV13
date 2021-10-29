@@ -7,7 +7,7 @@ import {
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
-
+import roles from "../../utils/constants/SenServerRoles/communityRoles";
 export default class Command extends BaseCommand {
 	constructor() {
 		super({
@@ -26,20 +26,7 @@ export default class Command extends BaseCommand {
 			message.reply("This command is only for sen nightcore server");
 			return;
 		}
-		const roles = [
-			{
-				emoji: "🖌",
-				role: "784001915607580683",
-			},
-			{
-				emoji: "🎥",
-				role: "784001875582124042",
-			},
-			{
-				emoji: "🎶",
-				role: "784001805365018655",
-			},
-		];
+
 		const actualRoles = [
 			...new Set(
 				roles.map((role) => message.guild?.roles.cache.get(role.role)),
@@ -49,7 +36,7 @@ export default class Command extends BaseCommand {
 		const components = (state: boolean) => [
 			new MessageActionRow().addComponents(
 				new MessageSelectMenu()
-					.setCustomId("roles")
+					.setCustomId("roles_community")
 					.setMaxValues(roles.length)
 					.setMinValues(0)
 					.setPlaceholder("Please select a role")
@@ -71,7 +58,7 @@ export default class Command extends BaseCommand {
 
 		const embed = new MessageEmbed()
 			.setThumbnail(
-				"```Community Roles```\nChoose the role that tells what do you work as.\nThose are the avaliable roles:",
+				"```Community Roles```\nYou can choose your community roles from here. So other members can know your community by clicking on your profile!",
 			)
 			.setImage(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
 		await message.reply({
