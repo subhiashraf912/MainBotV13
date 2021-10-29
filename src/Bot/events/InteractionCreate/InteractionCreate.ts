@@ -66,7 +66,7 @@ export default class MessageEvent extends BaseEvent {
 					} else if (interaction.customId === "roles_color") {
 						roles = colorRoles;
 					} else if (interaction.customId === "roles_boosters_color") {
-						if (member.roles.cache.get("784000503620960266"))
+						if (!member.roles.cache.get("784000503620960266"))
 							return interaction.reply({
 								content: "This color is only for boosters.",
 								ephemeral: true,
