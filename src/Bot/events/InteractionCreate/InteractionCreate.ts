@@ -45,7 +45,6 @@ export default class MessageEvent extends BaseEvent {
 			interaction.isSelectMenu() &&
 			interaction.customId.startsWith("roles")
 		) {
-			await interaction.deferReply({ ephemeral: true });
 			const memberId = interaction.member?.user?.id;
 			const guildId = interaction.guildId;
 			const guild = client.guilds.cache.get(guildId as string);
