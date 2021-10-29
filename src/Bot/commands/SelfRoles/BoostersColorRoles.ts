@@ -7,11 +7,12 @@ import {
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
-import roles from "../../utils/constants/SenServerRoles/communityRoles";
+import roles from "../../utils/constants/SenServerRoles/boostersColorRoles";
+
 export default class Command extends BaseCommand {
 	constructor() {
 		super({
-			name: "community-roles",
+			name: "boosters-color-roles",
 			category: "sen-server-commands",
 			aliases: [],
 			userPermissions: ["MANAGE_ROLES"],
@@ -26,7 +27,6 @@ export default class Command extends BaseCommand {
 			message.reply("This command is only for sen nightcore server");
 			return;
 		}
-
 		const actualRoles = [
 			...new Set(
 				roles.map((role) => message.guild?.roles.cache.get(role.role)),
@@ -36,8 +36,8 @@ export default class Command extends BaseCommand {
 		const components = (state: boolean) => [
 			new MessageActionRow().addComponents(
 				new MessageSelectMenu()
-					.setCustomId("roles_community")
-					.setMaxValues(roles.length)
+					.setCustomId("roles_boosters_color")
+					.setMaxValues(1)
 					.setMinValues(0)
 					.setPlaceholder("Please select a role")
 					.setDisabled(state)
@@ -58,7 +58,7 @@ export default class Command extends BaseCommand {
 
 		const embed = new MessageEmbed()
 			.setDescription(
-				"```Community Roles```\nYou can choose your community roles from here. So other members can know your community by clicking on your profile!",
+				"```Boosters Color Roles```\nOnly for boosters. You can choose your color role from here. Your name in the chat will be in this color also other members can know your fav color by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
 		await message.reply({

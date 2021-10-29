@@ -4,6 +4,10 @@ import DiscordClient from "../../client/client";
 import ageRoles from "../../utils/constants/SenServerRoles/ageRoles";
 import communityRoles from "../../utils/constants/SenServerRoles/communityRoles";
 import genderRoles from "../../utils/constants/SenServerRoles/genderRoles";
+import colorRoles from "../../utils/constants/SenServerRoles/colorRoles";
+import boosterColorRoles from "../../utils/constants/SenServerRoles/boostersColorRoles";
+import pingsRoles from "../../utils/constants/SenServerRoles/pingsRoles";
+import dereRoles from "../../utils/constants/SenServerRoles/dereRoles";
 export default class MessageEvent extends BaseEvent {
 	constructor() {
 		super("interactionCreate");
@@ -59,6 +63,19 @@ export default class MessageEvent extends BaseEvent {
 						roles = communityRoles;
 					} else if (interaction.customId === "roles_age") {
 						roles = ageRoles;
+					} else if (interaction.customId === "roles_color") {
+						roles = colorRoles;
+					} else if (interaction.customId === "roles_boosters_color") {
+						if (member.roles.cache.get("784000503620960266"))
+							return interaction.reply({
+								content: "This color is only for boosters.",
+								ephemeral: true,
+							});
+						roles = boosterColorRoles;
+					} else if (interaction.customId === "roles_pings") {
+						roles = pingsRoles;
+					} else if (interaction.customId === "roles_dere") {
+						roles = dereRoles;
 					} else roles = genderRoles;
 					roles.forEach((roleObject) => {
 						if (
@@ -83,14 +100,14 @@ export default class MessageEvent extends BaseEvent {
 					}
 
 					interaction.reply({
-						content: `Roles:\n> Added: ${
+						content: `> Your new roles: ${
 							addedRoles[0]
 								? ` ${addedRoles.map((role) => role)}`
-								: "No added roles"
-						}\n> Removed: ${
+								: "No roles were added"
+						}\n> Your removed roles: ${
 							removedRoles[0]
 								? ` ${removedRoles.map((role) => `<@&${role}>`)}`
-								: " No removed roles"
+								: " No roles were removed"
 						}`,
 						ephemeral: true,
 					});

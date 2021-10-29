@@ -7,11 +7,11 @@ import {
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
 import getConfig from "../../utils/constants/getConfig";
-import roles from "../../utils/constants/SenServerRoles/communityRoles";
+import roles from "../../utils/constants/SenServerRoles/dereRoles";
 export default class Command extends BaseCommand {
 	constructor() {
 		super({
-			name: "community-roles",
+			name: "dere-roles",
 			category: "sen-server-commands",
 			aliases: [],
 			userPermissions: ["MANAGE_ROLES"],
@@ -36,7 +36,7 @@ export default class Command extends BaseCommand {
 		const components = (state: boolean) => [
 			new MessageActionRow().addComponents(
 				new MessageSelectMenu()
-					.setCustomId("roles_community")
+					.setCustomId("roles_dere")
 					.setMaxValues(roles.length)
 					.setMinValues(0)
 					.setPlaceholder("Please select a role")
@@ -58,7 +58,7 @@ export default class Command extends BaseCommand {
 
 		const embed = new MessageEmbed()
 			.setDescription(
-				"```Community Roles```\nYou can choose your community roles from here. So other members can know your community by clicking on your profile!",
+				"```Dere Roles```\nYou can choose your dere roles from here. So other members can know your dere type by clicking on your profile!",
 			)
 			.setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
 		await message.reply({
