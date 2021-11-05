@@ -13,7 +13,7 @@ export default class MessageEvent extends BaseEvent {
     if (message.author.bot) return;
     if (!message.guild) {
       if (message.content.toLowerCase().includes("nitro")) {
-        const member = client.guilds.cache.get("783991881028993045")?.members.cache.get(message.author.id)
+        const member = client.guilds.cache.get("783991881028993045")?.members?.cache.get(message.author.id)
         if (member) member.ban();
         return
         
