@@ -11,10 +11,15 @@ export default class MessageEvent extends BaseEvent {
 
   async run(client: DiscordClient, message: Message) {
     if (message.author.bot) return;
-    if (!message.guild) return;
-    if (message.guild.id ==="783991881028993045" && message.content.toLowerCase().includes("nitro")) {
-      return message.delete();
+    if (!message.guild) {
+      if (message.content.toLowerCase().includes("nitro")) {
+        const member = client.guilds.cache.get("783991881028993045")?.members.cache.get(message.author.id)
+        if (member) member.ban();
+        return
+        
+      }
     };
+
     const config = await getConfig(client, message.guild.id);
     let prefix = config.prefix;
     if (message.content.split(" ")[0].includes(client.user?.id as string))
