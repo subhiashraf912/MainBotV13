@@ -17,7 +17,7 @@ export default class ReadyEvent extends BaseEvent {
         );
         client.distube.setRepeatMode(channel, 2);
       } else {
-        const channel = await senGuild?.channels.fetch("895926753166520330");
+        const channel = await senGuild?.channels.fetch("835843120708714526");
         await client.distube.playVoiceChannel(
           channel as StageChannel,
           "https://www.youtube.com/channel/UCiOPAnYULQ0P97xmPDB5Zrw"
