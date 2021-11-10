@@ -35,12 +35,16 @@ export default class Command extends BaseCommand {
       message.reply(
         "You need to send the video in your message as an attachment"
       );
+          client.setRendering();
+
       return;
     }
     const rsmbAmountString = args[0] || "2";
     const rsmbAmount = parseInt(rsmbAmountString);
     if (rsmbAmount > 10 || !(rsmbAmount > 1)) {
       message.reply("You can only choose the value from above 1 to 10, ");
+          client.setRendering();
+
       return;
     }
     const downloading = download(attachment);
