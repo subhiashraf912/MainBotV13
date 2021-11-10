@@ -59,6 +59,8 @@ export default class DiscordClient extends Client {
 	private _currentPlayingSong = new Collection<string, Message>();
 	private _owners = new Collection<string, User>();
 	private _queueVol = 100;
+	  private _rendering = false;
+
 	private _giveawaysManager: GiveawaysBase = new GiveawaysBase(this, {
 		updateCountdownEvery: 10000,
 		default: {
@@ -175,4 +177,13 @@ export default class DiscordClient extends Client {
 	get LogsConfig(): Collection<string, LogsType> {
 		return this._logs;
 	}
+	  setRendering() {
+    this._rendering = true;
+  }
+  setNotRendering() {
+    this._rendering = false;
+  }
+  get rendering() {
+    return this._rendering;
+  }
 }

@@ -7,6 +7,17 @@ import {
   UserFlags,
 } from "discord.js";
 
+import request from "request";
+import fs from "fs";
+import { MessageAttachment } from "discord.js";
+export const download = (attachment: MessageAttachment) => {
+  const re = request
+    .get(attachment.url)
+    .on("error", console.error)
+    .pipe(fs.createWriteStream("Rsmb.mp4"));
+  return re;
+};
+
 export const GetBirthday = (bd: string) => {
   let day = bd.split("-")[0];
   let month = bd.split("-")[1];
