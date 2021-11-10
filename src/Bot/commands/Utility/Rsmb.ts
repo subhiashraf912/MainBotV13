@@ -76,7 +76,6 @@ export default class Command extends BaseCommand {
           .on("end", async (end: any) => {
             await msg.edit({
               content: `Here's your edit:\nYou can use the link for same quality\n${end.shortened_url}`,
-              files: ["output.mp4"],
             });
             try {
               client.setNotRendering();
