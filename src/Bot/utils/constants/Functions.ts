@@ -6,16 +6,24 @@ import {
   User,
   UserFlags,
 } from "discord.js";
+const { downloadPipe } = require('wetransfert');
 
 import request from "request";
 import fs from "fs";
 import { MessageAttachment } from "discord.js";
-export const download = (attachment: MessageAttachment) => {
+export const download = async (attachment: string, name: string) => {
+  if (attachment.toLowerCase().includes('wetransfer')) {
+    const files = await downloadPipe(attachment, null)
+    files.pipe(fs.createWriteStream(name));
+    return files
+  } else {
   const re = request
-    .get(attachment.url)
+    .get(attachment)
     .on("error", console.error)
-    .pipe(fs.createWriteStream("Rsmb.mp4"));
-  return re;
+    .pipe(fs.createWriteStream(name));
+  return re;  
+  };
+  
 };
 
 export const GetBirthday = (bd: string) => {
