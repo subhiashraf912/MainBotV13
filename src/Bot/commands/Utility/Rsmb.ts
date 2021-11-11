@@ -43,10 +43,12 @@ export default class Command extends BaseCommand {
     if (url.includes('http')) {
       if (!url.includes("discord") && !url.includes("wetransfer")) {
         message.reply("You can only use wetransfer/discord links, note that you can send attachment")
+          client.setRendering();
         return;
       }
     } else {
       message.reply("You need 2 arguments, the first one is the rsmb amount (2-10) and the 2nd one is rsmb video or link (you can pass it as an attachment too)")
+          client.setRendering();
       return;
     }
     const rsmbAmountString = args[0] || "2";
