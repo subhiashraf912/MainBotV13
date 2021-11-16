@@ -36,4 +36,4 @@ export default async (image: string | Buffer, TRIGGERED: string | Buffer) => {
   }
   GIF.finish();
   return GIF.out.getData();
-};
+}

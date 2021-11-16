@@ -27,10 +27,10 @@ const getUser = async (options: options) => {
       return undefined;
     }
   }
-};
+}
 export default getUser;
 
 type options = {
   message: Message;
   query: string;
-};
+}

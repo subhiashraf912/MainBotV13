@@ -12,4 +12,4 @@ export default async (client: DiscordClient) => {
       (await client.users.fetch(owner.userId));
     client.owners.set(owner.userId, user);
   }
-};
+}

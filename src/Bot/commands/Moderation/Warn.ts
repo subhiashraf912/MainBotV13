@@ -65,7 +65,7 @@ export default class Command extends BaseCommand {
         : GetLanguage("NoReason", language);
       let date: number = Date.now();
       let warns = memberWarns.warns;
-      let newWarn = { by, reason, date };
+      let newWarn = { by, reason, date }
       warns.push(newWarn);
 
       memberWarns = await WarnsSchema.findOneAndUpdate(

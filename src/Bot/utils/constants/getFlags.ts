@@ -31,4 +31,4 @@ export default (flags: UserFlags): string => {
   });
 
   return description;
-};
+}

@@ -8,10 +8,10 @@ const getGuild = (options: options) => {
     ) ||
     (options.message.guild as Guild);
   return guild;
-};
+}
 
 export default getGuild;
 type options = {
   query: string;
   message: Message;
-};
+}

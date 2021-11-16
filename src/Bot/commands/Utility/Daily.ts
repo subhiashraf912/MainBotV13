@@ -44,7 +44,7 @@ export default class Command extends BaseCommand {
         const updatedObject = {
           credits,
           lastDaily: Date.now(),
-        };
+        }
         memberData = (await CreditsSchema.findOneAndUpdate(
           { user: message.author.id },
           updatedObject,
@@ -81,4 +81,4 @@ const millisToMinutesAndSeconds = (timeInMiliseconds: number) => {
   m = Math.floor((timeInMiliseconds / 1000 / 60 / 60 - h) * 60);
   s = Math.floor(((timeInMiliseconds / 1000 / 60 / 60 - h) * 60 - m) * 60);
   return `${h}:${m}:${s}`;
-};
+}

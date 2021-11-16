@@ -15,4 +15,4 @@ export default async (client: DiscordClient, guildId: string) => {
     client.configs.set(guildId, config as configType);
   }
   return config as configType;
-};
+}

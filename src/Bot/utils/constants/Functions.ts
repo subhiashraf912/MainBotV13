@@ -6,25 +6,24 @@ import {
   User,
   UserFlags,
 } from "discord.js";
-const { downloadPipe } = require('wetransfert');
+const { downloadPipe } = require("wetransfert");
 
 import request from "request";
 import fs from "fs";
 import { MessageAttachment } from "discord.js";
 export const download = async (attachment: string, name: string) => {
-  if (attachment.toLowerCase().includes('wetransfer')) {
-    const files = await downloadPipe(attachment, null)
+  if (attachment.toLowerCase().includes("wetransfer")) {
+    const files = await downloadPipe(attachment, null);
     files.pipe(fs.createWriteStream(name));
-    return files
+    return files;
   } else {
-  const re = request
-    .get(attachment)
-    .on("error", console.error)
-    .pipe(fs.createWriteStream(name));
-  return re;  
-  };
-  
-};
+    const re = request
+      .get(attachment)
+      .on("error", console.error)
+      .pipe(fs.createWriteStream(name));
+    return re;
+  }
+}
 
 export const GetBirthday = (bd: string) => {
   let day = bd.split("-")[0];
@@ -76,7 +75,7 @@ export const GetBirthday = (bd: string) => {
   if (day === "30") day = "30th";
   if (day === "31") day = "31st";
   return `${day} of ${month} ${year || ""}`;
-};
+}
 
 export const GetPerms = (perms: PermissionString) => {
   let NewPermissionsText = "";
@@ -121,7 +120,7 @@ export const GetPerms = (perms: PermissionString) => {
   else if (perms === "VIEW_GUILD_INSIGHTS")
     NewPermissionsText = "View Server Insights";
   return NewPermissionsText;
-};
+}
 
 export const getFlags = (flags: UserFlags): string => {
   let description = "User Badges:";
@@ -153,4 +152,4 @@ export const getFlags = (flags: UserFlags): string => {
   });
 
   return description;
-};
+}

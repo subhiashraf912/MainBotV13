@@ -19,11 +19,11 @@ const getMember = async (options: options) => {
   else {
     return options.message.member as GuildMember;
   }
-};
+}
 export default getMember;
 
 type options = {
   message: Message;
   query: string;
   returnAuthor?: boolean;
-};
+}

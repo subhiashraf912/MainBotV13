@@ -5,4 +5,4 @@ export default () => {
       return "Rik is hentai";
     },
   });
-};
+}

@@ -82,7 +82,7 @@ class Util {
       length = length || 2;
       let arr = [length].join("0");
       return (arr + txt).slice(-length);
-    };
+    }
 
     const finalHex = `#${pad(r, undefined)}${pad(g, undefined)}${pad(
       b,

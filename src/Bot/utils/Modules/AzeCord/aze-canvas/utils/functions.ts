@@ -10,7 +10,7 @@ export const formatVariable = (prefix: any, variable: string) => {
     )
     .join("");
   return prefix + formattedVariable;
-};
+}
 
 export const applyText = (
   canvas: Canvas,
@@ -24,4 +24,4 @@ export const applyText = (
     ctx.font = `${(defaultFontSize -= 1)}px ${font}`;
   } while (ctx.measureText(text).width > width);
   return ctx.font;
-};
+}

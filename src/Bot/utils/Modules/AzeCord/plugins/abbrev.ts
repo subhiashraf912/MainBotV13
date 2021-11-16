@@ -16,4 +16,4 @@ export default (num: any) => {
     }
   }
   return num;
-};
+}

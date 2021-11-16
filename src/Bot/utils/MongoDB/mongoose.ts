@@ -22,5 +22,5 @@ const init = async (mongoURI: string): Promise<void> => {
     connectTimeoutMS: 10000,
     family: 4,
   });
-};
+}
 export default init;

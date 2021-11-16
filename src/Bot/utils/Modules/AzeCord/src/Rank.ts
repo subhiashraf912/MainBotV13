@@ -6,50 +6,50 @@ class Rank {
   data: {
     width: number;
     height: number;
-    background: { type: string; image: string };
+    background: { type: string; image: string }
     progressBar: {
       rounded: boolean;
       x: number;
       y: number;
       height: number;
       width: number;
-      track: { color: string };
-      bar: { type: string; color: string };
-    };
-    overlay: { display: boolean; level: number; color: string };
+      track: { color: string }
+      bar: { type: string; color: string }
+    }
+    overlay: { display: boolean; level: number; color: string }
     avatar: {
       source: null;
       x: number;
       y: number;
       height: number;
       width: number;
-    };
+    }
     status: {
       width: boolean | number;
       type: string;
       color: string;
       circle: boolean;
-    };
+    }
     rank: {
       display: boolean;
       data: number;
       textColor: string;
       color: string;
       displayText: string;
-    };
+    }
     level: {
       display: boolean;
       data: number;
       textColor: string;
       color: string;
       displayText: string;
-    };
-    currentXP: { data: number; color: string };
-    requiredXP: { data: number; color: string };
-    discriminator: { discrim: string | number | null; color: string };
-    username: { name: string | null; color: string };
+    }
+    currentXP: { data: number; color: string }
+    requiredXP: { data: number; color: string }
+    discriminator: { discrim: string | number | null; color: string }
+    username: { name: string | null; color: string }
     renderEmojis: boolean;
-  };
+  }
 
   constructor() {
     this.data = {
@@ -122,7 +122,7 @@ class Rank {
         color: "#FFFFFF",
       },
       renderEmojis: false,
-    };
+    }
 
     // Load default fonts
     this.registerFonts();

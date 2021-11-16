@@ -39,7 +39,7 @@ const MSX = {
   Sepia,
   Threshold,
   Trigger,
-};
+}
 
 const write = Canvacord.write;
 export {
@@ -53,4 +53,4 @@ export {
   assets as Assets,
   MSX,
   write,
-};
+}

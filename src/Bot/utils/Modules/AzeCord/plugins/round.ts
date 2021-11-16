@@ -25,4 +25,4 @@ export default (
   ctx.fill();
 
   return ctx;
-};
+}

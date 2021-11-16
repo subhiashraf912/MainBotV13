@@ -1,47 +1,46 @@
-import { VoiceChannel } from "discord.js";
 import express from "express";
 import DiscordClient from "../client/client";
-import { registerGetRoutes } from "../utils/registry";
+import routes from "./routes";
+import session from "express-session";
+import DiscordOAuth2UserDetails from "../utils/types/DiscordOAuth2UserDetails";
+import { deserializeSession } from "./sessions/deserializeSession";
+import cookieParser from "cookie-parser";
+declare module "express-session" {
+  interface SessionData {
+    user?: DiscordOAuth2UserDetails;
+  }
+}
+
+declare module "express" {
+  interface Request {
+    user?: DiscordOAuth2UserDetails;
+    client?: DiscordClient;
+  }
+}
 
 const initExpress = (client: DiscordClient) => {
   const app = express();
-  registerGetRoutes(client, "../express/routes/get");
   const port = process.env.PORT ? parseInt(process.env.PORT) : 3001;
-  app.use("music/play/:guild/:channel/:song", async (req, res) => {
-    const { guild, channel, song } = req.params;
-    if (!guild || !client.guilds.cache.get(guild)) {
-      res.status(400).send({ message: "Guild is required" });
-      return {};
-    }
-    if (
-      !channel ||
-      !client.guilds.cache.get(guild)?.channels.cache.get(channel)
-    ) {
-      res.status(400).send({ message: "Channel is required" });
-      return {};
-    }
-    if (!song) {
-      res.status(400).send({ message: "Song is required" });
-      return {};
-    }
-    const channelObj = client.channels.cache.get(channel);
-    if (!(channelObj instanceof VoiceChannel)) {
-      res.status(400).send({
-        message: "Channel should be a voice channel",
-      });
-      return {};
-    }
-    try {
-      await client.distube.playVoiceChannel(channelObj, song);
-      res.status(200).send("Playing song");
-    } catch (err: any) {
-      res.status(400).send({ error: err.message });
-    }
-    return {};
-  });
+
+  app.use(cookieParser());
+  app.use(
+    session({
+      secret: "!@$@!BestPas$WorDTomak3MyA99S3cure-12@!#!",
+      name: "DISCORD_OAUTH2_SESSION_ID",
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 3600000 * 24,
+      },
+    })
+  );
+  app.use(deserializeSession);
+  app.use("/api", routes(client));
+  app.locals.client = client;
   app.listen(port, () => {
-    console.log(`Our app is running on port ${port}`);
+    console.log(`Backend API Server is running on the port "${port}"`);
   });
   return app;
-};
+}
+
 export default initExpress;

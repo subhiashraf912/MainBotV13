@@ -7,60 +7,60 @@ class Profile {
   data: {
     width: number;
     height: number;
-    background: { type: string; image: string };
+    background: { type: string; image: string }
     progressBar: {
       rounded: boolean;
       x: number;
       y: number;
       height: number;
       width: number;
-      track: { color: string };
-      bar: { type: string; color: string[] | string };
-    };
-    overlay: { display: boolean; level: number; color: string };
+      track: { color: string }
+      bar: { type: string; color: string[] | string }
+    }
+    overlay: { display: boolean; level: number; color: string }
     avatar: {
       source: string | null;
       x: number;
       y: number;
       height: number;
       width: number;
-    };
+    }
     status: {
       width: boolean | number;
       type: string;
       color: string;
       circle: boolean;
-    };
+    }
     rank: {
       display: boolean;
       data: number;
       textColor: string;
       color: string;
       displayText: string;
-    };
+    }
     level: {
       display: boolean;
       data: number;
       textColor: string;
       color: string;
       displayText: string;
-    };
-    currentXP: { data: number; color: string };
-    requiredXP: { data: number; color: string };
-    discriminator: { discrim: string | number | null; color: string };
-    userId: { data: string | number | null; color: string };
-    username: { name: string | null; color: string };
-    birthday: { value: string | null; color: string };
-    cash: { amount: number | null; color: string };
+    }
+    currentXP: { data: number; color: string }
+    requiredXP: { data: number; color: string }
+    discriminator: { discrim: string | number | null; color: string }
+    userId: { data: string | number | null; color: string }
+    username: { name: string | null; color: string }
+    birthday: { value: string | null; color: string }
+    cash: { amount: number | null; color: string }
     activity: {
       array: { type: string; state: any; emoji: any }[] | null;
       color: string;
-    };
-    createdAt: { date: string | null; color: string };
-    joinedAt: { date: string | null; color: string };
-    perms: { perms: string | null; color: string };
+    }
+    createdAt: { date: string | null; color: string }
+    joinedAt: { date: string | null; color: string }
+    perms: { perms: string | null; color: string }
     renderEmojis: boolean;
-  };
+  }
   constructor() {
     this.data = {
       width: 934,
@@ -160,7 +160,7 @@ class Profile {
         color: "#FFFFFF",
       },
       renderEmojis: true,
-    };
+    }
 
     this.registerFonts();
   }

@@ -25,6 +25,6 @@ type configType = {
     rolesCount: string | null;
     memberCount: string | null;
     botCount: string | null;
-  };
-};
+  }
+}
 export default configType;

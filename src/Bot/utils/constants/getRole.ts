@@ -10,11 +10,11 @@ const getRole = async (options: options) => {
     options.message.guild?.roles.fetch(options.query) ||
     null;
   return role;
-};
+}
 
 export default getRole;
 
 type options = {
   message: Message;
   query: string;
-};
+}

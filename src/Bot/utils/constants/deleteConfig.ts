@@ -4,7 +4,7 @@ type configType = {
   guildId: string;
   clientId: string;
   prefix: string;
-};
+}
 export default async (client: DiscordClient, guildId: string) => {
   await GuildConfig.deleteMany({
     guildId,
@@ -13,4 +13,4 @@ export default async (client: DiscordClient, guildId: string) => {
   client.configs.delete(guildId);
 
   return true;
-};
+}

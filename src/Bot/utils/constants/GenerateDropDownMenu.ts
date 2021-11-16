@@ -4,7 +4,7 @@ type menuType = {
   label: string;
   description: string;
   value: string;
-};
+}
 const create_mh = (array: Array<string>) => {
   if (!array)
     throw new Error(
@@ -27,7 +27,7 @@ const create_mh = (array: Array<string>) => {
     ticket: ":ticket:",
     utility: ":gear:",
     moderation: ":tools:",
-  };
+  }
 
   // now lets run it
   array.forEach((cca) => {
@@ -53,7 +53,7 @@ const create_mh = (array: Array<string>) => {
   return {
     smenu: [select_menu],
     sid: id,
-  };
-};
+  }
+}
 
 export default create_mh;

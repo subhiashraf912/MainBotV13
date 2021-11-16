@@ -36,32 +36,36 @@ export default class Command extends BaseCommand {
       message.reply(
         "You need to send the edit in your message as an attachment or the edit link uploaded on discord or uploaded on `https://wetransfer.com/`."
       );
-          client.setRendering();
+      client.setRendering();
 
       return;
     }
-    if (url.includes('http')) {
+    if (url.includes("http")) {
       if (!url.includes("discord") && !url.includes("wetransfer")) {
-        message.reply("You can only use wetransfer/discord links, note that you can send attachment")
-          client.setRendering();
+        message.reply(
+          "You can only use wetransfer/discord links, note that you can send attachment"
+        );
+        client.setRendering();
         return;
       }
     } else {
-      message.reply("You need 2 arguments, the first one is the rsmb amount (2-10) and the 2nd one is rsmb video or link (you can pass it as an attachment too)")
-          client.setRendering();
+      message.reply(
+        "You need 2 arguments, the first one is the rsmb amount (2-10) and the 2nd one is rsmb video or link (you can pass it as an attachment too)"
+      );
+      client.setRendering();
       return;
     }
     const rsmbAmountString = args[0] || "2";
     const rsmbAmount = parseInt(rsmbAmountString);
     if (rsmbAmount > 10 || !(rsmbAmount > 1)) {
       message.reply("You can only choose the value from above 1 to 10, ");
-          client.setRendering();
+      client.setRendering();
 
       return;
     }
 
     const downloadedVideoName = `${message.author.username}${message.author.discriminator}'s video.mp4`;
-    const finalVideoName = `${message.author.username}${message.author.discriminator}'s final video.mp4`
+    const finalVideoName = `${message.author.username}${message.author.discriminator}'s final video.mp4`;
     const downloading = await download(url, downloadedVideoName);
     const msg = await message.reply("Downloading your video, please wait...");
     downloading.on("close", async () => {
@@ -77,7 +81,8 @@ export default class Command extends BaseCommand {
       command.videoCodec("libx264");
       command.on("progress", async (progress) => {
         await msg.edit(
-          `In progress...\n> rendered frames:${progress.frames.toString()}\n> Current time: ${progress.timemark
+          `In progress...\n> rendered frames:${progress.frames.toString()}\n> Current time: ${
+            progress.timemark
           }`
         );
       });
@@ -113,8 +118,8 @@ export default class Command extends BaseCommand {
       });
       command.run();
     });
-    downloading.on('error', (err:Error) => {
+    downloading.on("error", (err: Error) => {
       console.log(err);
-    })
+    });
   }
 }

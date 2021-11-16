@@ -598,7 +598,7 @@ class Canvacord {
       bar: color.bar || "black",
       x: color.x || "red",
       o: color.o || "blue",
-    };
+    }
 
     const canvas = Canvas.createCanvas(2048, 2048);
     const ctx = canvas.getContext("2d");
@@ -616,7 +616,7 @@ class Canvacord {
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.stroke();
-    };
+    }
 
     const drawX = (x: number, y: number) => {
       ctx.strokeStyle = color.x;
@@ -628,7 +628,7 @@ class Canvacord {
       ctx.moveTo(x + offset, y + 682 - offset);
       ctx.lineTo(x + 682 - offset, y + offset);
       ctx.stroke();
-    };
+    }
 
     const params = {
       a1: {
@@ -667,7 +667,7 @@ class Canvacord {
         x: 1364,
         y: 1364,
       },
-    };
+    }
 
     // background
     ctx.fillStyle = color.bg;
@@ -1013,7 +1013,7 @@ class Canvacord {
         1 / 11,
         1 / 11,
       ],
-    };
+    }
   }
 
   static get Util() {

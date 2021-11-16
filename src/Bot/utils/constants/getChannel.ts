@@ -12,10 +12,10 @@ export default (options: optionsType) => {
     channel = options.message.channel as TextChannel;
   }
   return channel as GuildChannel;
-};
+}
 
 type optionsType = {
   message: Message;
   query: string;
   returnMessageChannel?: boolean;
-};
+}

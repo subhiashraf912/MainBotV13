@@ -55,7 +55,7 @@ export default class Command extends BaseCommand {
         SecMember: secMember?.id as string,
         Type: "hug",
         times: 0,
-      };
+      }
     let cuddle: any = await RolePlaySchema.findOne({
       FirstMember: firstMember.id,
       SecMember: secMember?.id,
@@ -67,7 +67,7 @@ export default class Command extends BaseCommand {
         SecMember: secMember?.id,
         Type: "cuddle",
         times: 0,
-      };
+      }
     let pat: any = await RolePlaySchema.findOne({
       FirstMember: firstMember.id,
       SecMember: secMember?.id,
@@ -79,7 +79,7 @@ export default class Command extends BaseCommand {
         SecMember: secMember?.id,
         Type: "pet",
         times: 0,
-      };
+      }
     let kiss: any = await RolePlaySchema.findOne({
       FirstMember: firstMember.id,
       SecMember: secMember?.id,
@@ -91,7 +91,7 @@ export default class Command extends BaseCommand {
         SecMember: secMember?.id,
         Type: "kiss",
         times: 0,
-      };
+      }
 
     let handsHold: any = await RolePlaySchema.findOne({
       FirstMember: firstMember.id,
@@ -104,7 +104,7 @@ export default class Command extends BaseCommand {
         SecMember: secMember?.id,
         Type: "handhold",
         times: 0,
-      };
+      }
 
     let hug2: any = await RolePlaySchema.findOne({
       FirstMember: secMember?.id,
@@ -114,7 +114,7 @@ export default class Command extends BaseCommand {
     if (!hug2)
       hug2 = {
         times: 0,
-      };
+      }
     let cuddle2: any = await RolePlaySchema.findOne({
       FirstMember: secMember?.id,
       SecMember: firstMember.id,
@@ -123,7 +123,7 @@ export default class Command extends BaseCommand {
     if (!cuddle2)
       cuddle2 = {
         times: 0,
-      };
+      }
     let pat2: any = await RolePlaySchema.findOne({
       FirstMember: secMember?.id,
       SecMember: firstMember.id,
@@ -132,7 +132,7 @@ export default class Command extends BaseCommand {
     if (!pat2)
       pat2 = {
         times: 0,
-      };
+      }
     let kiss2: any = await RolePlaySchema.findOne({
       FirstMember: secMember?.id,
       SecMember: firstMember.id,
@@ -141,7 +141,7 @@ export default class Command extends BaseCommand {
     if (!kiss2)
       kiss2 = {
         times: 0,
-      };
+      }
 
     let handsHold2: any = await RolePlaySchema.findOne({
       FirstMember: secMember?.id,
@@ -154,7 +154,7 @@ export default class Command extends BaseCommand {
         SecMember: firstMember.id,
         Type: "handhold",
         times: 0,
-      };
+      }
 
     const hugs = hug.times + hug2.times;
     const cuddles = cuddle.times + cuddle2.times;

@@ -4,6 +4,6 @@ type WarnsType = {
   by: string;
   reason: string;
   date: number;
-};
+}
 
 export default WarnsType;

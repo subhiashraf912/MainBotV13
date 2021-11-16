@@ -26,6 +26,6 @@ const initDistube = (client: DiscordClient) => {
       nightcore: "asetrate=48000*1.15,aresample=48000",
     },
   });
-};
+}
 
 export default initDistube;

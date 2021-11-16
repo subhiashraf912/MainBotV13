@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
     if (!message.guild || !message.member) return;
     const config = await getConfig(client, message.guild.id);
     let commandRestricts = config.commandRestricts;
-    if (!commandRestricts) commandRestricts = {};
+    if (!commandRestricts) commandRestricts = {}
     const channel = message.mentions.channels.first();
     if (!channel) {
       message.reply({
@@ -30,7 +30,7 @@ export default class Command extends BaseCommand {
       });
       return;
     }
-    let commandsObj: any = {};
+    let commandsObj: any = {}
 
     client.commands.map((command) => {
       !commandsObj[command.getCategory()] &&

@@ -20,4 +20,4 @@ import Welcome from "./src/greetings/Welcome";
 import Goodbye from "./src/greetings/Goodbye";
 import RankCard from "./src/rank/Rank";
 
-export { Base, Welcome, Goodbye, RankCard };
+export { Base, Welcome, Goodbye, RankCard }
