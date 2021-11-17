@@ -14,7 +14,7 @@ export default (client: DiscordClient) => {
     if (code) {
       try {
         const host = req.get('host')!;
-        const redirect_uri = `${host.startsWith('localhost') ? "http" : "https"}://${req.get(
+        const redirect_uri = `${host.includes('localhost') ? "http" : "https"}://${req.get(
           "host"
         )}/api/auth/discord/redirect`;
         const response = await exchangeAcessCodeForCredentials({
