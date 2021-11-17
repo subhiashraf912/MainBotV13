@@ -7,7 +7,7 @@ export default (client: DiscordClient) => {
   return async (req: Request, res: Response) => {
     if (!req.user) return res.sendStatus(STATUS_CODES.UNAUTHORIZED);
     try {
-      await revokeTokenService(req);
+      await revokeTokenService(req, res);
       res.sendStatus(STATUS_CODES.OK);
     } catch (err) {
       res.sendStatus(STATUS_CODES.BAD_REQUEST);

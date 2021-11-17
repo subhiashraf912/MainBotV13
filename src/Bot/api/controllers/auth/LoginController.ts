@@ -3,7 +3,7 @@ import DiscordClient from "../../../client/client";
 import STATUS_CODES from "../../types/StatusCodes";
 export default (client: DiscordClient) => {
   return function loginController(req: Request, res: Response) {
-    if (req.user) return res.send(STATUS_CODES.OK);
+    if (req.user) return res.sendStatus(STATUS_CODES.OK);
     const clientId = process.env.DISCORD_CLIENT_ID;
     const host = req.get('host')!;
     const protocol = host.includes('localhost') ? "http" : "https";
