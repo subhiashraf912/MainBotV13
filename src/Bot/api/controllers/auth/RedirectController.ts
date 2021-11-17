@@ -36,8 +36,8 @@ export default (client: DiscordClient) => {
         await serializeSession(req, newUser);
         res.sendStatus(STATUS_CODES.OK);
       } catch (err) {
-        res.send(err);
-        // res.sendStatus(STATUS_CODES.BAD_REQUEST);
+        res.sendStatus(STATUS_CODES.BAD_REQUEST);
+        
       }
     }
   };

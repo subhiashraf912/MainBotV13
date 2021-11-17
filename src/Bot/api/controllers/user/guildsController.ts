@@ -16,8 +16,8 @@ export default (client: DiscordClient) => {
       );
       res.send(guilds);
     } catch (err) {
-      res.send(err);
-      // res.sendStatus(STATUS_CODES.BAD_REQUEST);
+      res.sendStatus(STATUS_CODES.BAD_REQUEST);
+      
     }
   };
 };
