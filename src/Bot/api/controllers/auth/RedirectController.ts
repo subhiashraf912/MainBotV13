@@ -34,7 +34,8 @@ export default (client: DiscordClient) => {
         );
         client.accessTokens.set(loggedUser.id, data);
         await serializeSession(req, newUser);
-        res.sendStatus(STATUS_CODES.OK);
+        res.redirect(process.env.DASHBOARD_MAIN_URL!);
+
       } catch (err) {
         res.sendStatus(STATUS_CODES.BAD_REQUEST);
         
