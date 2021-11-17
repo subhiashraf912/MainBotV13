@@ -10,7 +10,8 @@ export default (client: DiscordClient) => {
       await revokeTokenService(req);
       res.sendStatus(STATUS_CODES.OK);
     } catch (err) {
-      res.sendStatus(STATUS_CODES.BAD_REQUEST);
+      res.send(err);
+      // res.sendStatus(STATUS_CODES.BAD_REQUEST);
     }
   };
 };
