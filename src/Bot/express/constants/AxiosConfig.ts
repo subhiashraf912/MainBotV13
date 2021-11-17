@@ -5,3 +5,4 @@ export const axiosConfig: AxiosRequestConfig = {
     "Content-Type": "application/x-www-form-urlencoded",
   },
 }
+

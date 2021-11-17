@@ -11,7 +11,7 @@ export async function deserializeSession(
   const sessionId = cookieParser
     .signedCookie(
       DISCORD_OAUTH2_SESSION_ID,
-      "!@$@!BestPas$WorDTomak3MyA99S3cure-12@!#!"
+      process.env.COOKIE_SECRET_KEY!
     )
     .toString();
   const sessionDB = await SessionsSchema.findOne({
@@ -20,13 +20,10 @@ export async function deserializeSession(
   if (!sessionDB) return next();
   const currentTime = new Date();
   if (sessionDB.expiresAt < currentTime) {
-    console.log("Session Expired");
     await sessionDB.delete({
       sessionId,
     });
-    console.log("session deleted");
   } else {
-    console.log("Session not expired");
     const data = JSON.parse(sessionDB.data);
     req.user = data;
   }

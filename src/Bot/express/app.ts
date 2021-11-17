@@ -25,7 +25,7 @@ const initExpress = (client: DiscordClient) => {
   app.use(cookieParser());
   app.use(
     session({
-      secret: "!@$@!BestPas$WorDTomak3MyA99S3cure-12@!#!",
+      secret:process.env.COOKIE_SECRET_KEY!,
       name: "DISCORD_OAUTH2_SESSION_ID",
       resave: false,
       saveUninitialized: false,

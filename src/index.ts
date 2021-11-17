@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config();
+import './Bot/app';
+
+
+/**
 import { bots } from "../configs.json";
 
 import processManager from "pm2";
@@ -31,3 +37,5 @@ bots.forEach((element) => {
     }
   );
 });
+
+*/
