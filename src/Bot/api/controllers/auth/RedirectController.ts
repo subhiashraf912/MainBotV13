@@ -13,7 +13,7 @@ export default (client: DiscordClient) => {
     const { code } = req.query;
     if (code) {
       try {
-        const redirect_uri = `${req.protocol}${req.get(
+        const redirect_uri = `${req.protocol}://${req.get(
           "host"
         )}/api/auth/discord/redirect`;
         const response = await exchangeAcessCodeForCredentials({
