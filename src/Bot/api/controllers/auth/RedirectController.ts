@@ -1,9 +1,9 @@
 import DiscordClient from "../../../client/client";
-import buildUserService from "../../services/auth/buildUser";
-import createUser from "../../services/auth/createUser";
-import encryptTokensService from "../../services/auth/encryptTokens";
-import { exchangeAcessCodeForCredentials } from "../../services/auth/exchangeAcessCodeForCredentials";
-import { getDiscordUserDetails } from "../../services/auth/getDiscordUserDetails";
+import buildUserService from "../../services/auth/buildUser.service";
+import createUser from "../../services/auth/createUser.service";
+import encryptTokensService from "../../services/auth/encryptTokens.service";
+import { exchangeAcessCodeForCredentials } from "../../services/auth/exchangeAcessCodeForCredentials.service";
+import { getDiscordUserDetails } from "../../services/auth/getDiscordUserDetails.service";
 import { serializeSession } from "../../sessions/serializeSession";
 import { Request, Response } from "express";
 import STATUS_CODES from "../../types/StatusCodes";

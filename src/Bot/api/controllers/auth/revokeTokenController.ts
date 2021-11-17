@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import DiscordClient from "../../../client/client";
-import revokeTokenService from "../../services/auth/revokeToken";
+import revokeTokenService from "../../services/auth/revokeToken.service";
 import STATUS_CODES from "../../types/StatusCodes";
 
 export default (client: DiscordClient) => {
