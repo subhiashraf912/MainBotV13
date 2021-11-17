@@ -4,12 +4,12 @@ import BaseYoutubeEvent from "../utils/structures/BaseYoutubeEvent";
 type dataType = {
   channel: {
     name: string;
-  }
+  };
   video: {
     title: string;
     link: string;
-  }
-}
+  };
+};
 
 export default class Notified extends BaseYoutubeEvent {
   constructor() {

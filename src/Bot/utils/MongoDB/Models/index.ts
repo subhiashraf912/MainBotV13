@@ -23,4 +23,4 @@ export {
   SenCooldownSchema,
   VoiceRankSchema,
   InventorySchema,
-}
+};

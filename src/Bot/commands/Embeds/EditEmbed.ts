@@ -119,4 +119,4 @@ const getArray = (Collected: Collection<string, Message>) => {
   const array: Message[] = [];
   Collected.forEach((value) => array.push(value));
   return array;
-}
+};

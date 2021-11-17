@@ -50,4 +50,4 @@ type commandOptions = {
   userPermissions?: PermissionString[];
   botPermissions?: PermissionString[];
   tutorialGif?: string;
-}
+};

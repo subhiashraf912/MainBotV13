@@ -6,4 +6,4 @@ export default (ctx: NodeCanvasRenderingContext2D, w: number, h: number) => {
   ctx.closePath();
   ctx.fill();
   return ctx;
-}
+};

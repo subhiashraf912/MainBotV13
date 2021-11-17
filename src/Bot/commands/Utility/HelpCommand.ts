@@ -40,7 +40,7 @@ export default class HelpCommand extends BaseCommand {
       logs: "🔐",
       "role playing": "🎭",
       "sen-server-commands": "🎅",
-    }
+    };
     return categories;
   }
 
@@ -170,12 +170,12 @@ export default class HelpCommand extends BaseCommand {
           return {
             name: cmd.getName(),
             description: cmd.getDescription(config.language),
-          }
+          };
         });
       return {
         directory: formatString(dir),
         commands: getCommands,
-      }
+      };
     });
 
     const embed = new MessageEmbed()
@@ -195,7 +195,7 @@ export default class HelpCommand extends BaseCommand {
               config.language
             ).replaceAll("{category}", category)}\`\`\``,
             inline: true,
-          }
+          };
         })
       )
       .setFooter(GetLanguage("CategoriesMenuEmbedFooter", config.language));
@@ -230,7 +230,7 @@ export default class HelpCommand extends BaseCommand {
                   this.categories[
                     cmd.directory.toLowerCase() as keyof Category
                   ] || "",
-              }
+              };
             })
           )
       ),
@@ -241,7 +241,7 @@ export default class HelpCommand extends BaseCommand {
     });
     const filter = (interaction: Interaction): boolean => {
       return interaction.user.id === message.author.id;
-    }
+    };
     const collector = message.channel.createMessageComponentCollector({
       filter,
       componentType: "SELECT_MENU",
@@ -284,7 +284,7 @@ export default class HelpCommand extends BaseCommand {
               name: `${cmd.name}`,
               value: `\`${cmd.description}\``,
               inline: true,
-            }
+            };
           })
         );
       interaction.update({ embeds: [categoryEmbed] });

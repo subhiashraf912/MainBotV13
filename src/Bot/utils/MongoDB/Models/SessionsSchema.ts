@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import SessionType from "../../../express/types/SessionType";
+import SessionType from "../../../api/types/SessionType";
 
 const SessionSchema = new mongoose.Schema({
   sessionId: {

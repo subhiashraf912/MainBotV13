@@ -1,7 +1,6 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
-import './Bot/app';
-
+import "./Bot/app";
 
 /**
 import { bots } from "../configs.json";

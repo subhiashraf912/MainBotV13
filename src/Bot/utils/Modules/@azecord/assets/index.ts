@@ -2,15 +2,15 @@ import fs, { readdirSync } from "fs";
 const dir = {
   IMAGES: `src/Bot/utils/Modules/@azecord/assets/data/images`,
   FONTS: `src/Bot/utils/Modules/@azecord/assets/data/fonts`,
-}
+};
 const obj = {
   images: {},
   fonts: {},
-}
+};
 
 const clean = (str: string) => {
   return str.toUpperCase().split(" ").join("_");
-}
+};
 
 const imagesFiles = fs.readdirSync(dir.IMAGES);
 if (!imagesFiles.length)
@@ -51,4 +51,4 @@ export default (type: "FONT" | "IMAGE") => {
     default:
       throw new Error("CANVACORD_INVALID_ASSETS_TYPE");
   }
-}
+};

@@ -7,4 +7,4 @@ export default async (
   y: number
 ) => {
   return await fillTextWithTwemoji(ctx, message, x, y);
-}
+};

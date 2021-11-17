@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
     const config = await getConfig(client, message.guild.id);
     const { language } = config;
     let disabledCommands = config?.disabledCommands;
-    if (!disabledCommands) disabledCommands = {}
+    if (!disabledCommands) disabledCommands = {};
     const command =
       client.commands.get(args[0]) ||
       client.commands.get(client.aliases.get(args[0]) as string);

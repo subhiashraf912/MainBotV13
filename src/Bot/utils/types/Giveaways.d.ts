@@ -25,8 +25,8 @@ interface giveawaySchema {
       hours: String;
       days: String;
       pluralS: Boolean;
-    }
-  }
+    };
+  };
   hostedBy: String;
   winnerIDs: [String];
   reaction: mongoose.Schema.Types.Mixed;
@@ -42,7 +42,7 @@ interface giveawaySchema {
     content: String;
     threshold: Number;
     embedColor: mongoose.Schema.Types.Mixed;
-  }
+  };
 }
 
 export default giveawaySchema;

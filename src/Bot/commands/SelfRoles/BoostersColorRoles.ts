@@ -50,7 +50,7 @@ export default class Command extends BaseCommand {
                 emoji:
                   roles.find((roleObj) => roleObj.role === role?.id)?.emoji ||
                   "",
-              }
+              };
             })
           )
       ),

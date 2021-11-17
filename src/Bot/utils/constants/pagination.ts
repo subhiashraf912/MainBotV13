@@ -4,14 +4,14 @@ const defaultEmojis: any = {
   next: "▶️",
   last: "➡️",
   number: "#️⃣",
-}
+};
 const defaultStyles: any = {
   first: "PRIMARY",
   previous: "PRIMARY",
   next: "PRIMARY",
   last: "PRIMARY",
   number: "SUCCESS",
-}
+};
 import {
   ButtonInteraction,
   CommandInteraction,
@@ -66,7 +66,7 @@ const pagination = async (options: PaginationOptions) => {
   let currentPage = 1;
   const getButtonData = (name: string) => {
     return button?.find((btn) => btn.name === name);
-  }
+  };
   const generateButtons = (state: boolean) => {
     const checkState = (name: string) => {
       if (["first", "previous"].includes(name) && currentPage === 1)
@@ -74,7 +74,7 @@ const pagination = async (options: PaginationOptions) => {
       if (["next", "last"].includes(name) && currentPage === embeds.length)
         return true;
       return false;
-    }
+    };
     let names = ["previous", "next"];
     if (fastSkip) names = ["first", ...names, "last"];
     if (pageTravel) names.push("number");
@@ -88,7 +88,7 @@ const pagination = async (options: PaginationOptions) => {
       );
       return accumulator;
     }, []);
-  }
+  };
   const components = (state: boolean) => [
     new MessageActionRow().addComponents(generateButtons(state)),
   ];
@@ -102,7 +102,7 @@ const pagination = async (options: PaginationOptions) => {
       );
     }
     return newEmbed.setFooter(`Page ${currentPage} of ${embeds.length}`);
-  }
+  };
   const initialMessage = await channel.send({
     embeds: [changeFooter()],
     components: components(false),
@@ -110,17 +110,17 @@ const pagination = async (options: PaginationOptions) => {
   const defaultFilter = (interaction: any) => {
     if (!interaction.deferred) interaction.deferUpdate();
     return interaction.user.id === author.id;
-  }
+  };
   const filter = customFilter || defaultFilter;
   const collectorOptions = () => {
     const opt: any = {
       filter,
       componentType: "BUTTON",
-    }
+    };
     if (max) opt["max"] = max;
     if (time) opt["time"] = time;
     return opt;
-  }
+  };
   const collector = channel.createMessageComponentCollector(collectorOptions());
   const pageTravelling = new Set();
   const numberTravel = async () => {
@@ -153,7 +153,7 @@ const pagination = async (options: PaginationOptions) => {
       if (numberTravelMessage.deletable) numberTravelMessage.delete();
       pageTravelling.delete(author.id);
     });
-  }
+  };
   collector.on("collect", async (interaction) => {
     const id = interaction.customId;
     if (id === "first") currentPage = 1;
@@ -171,6 +171,6 @@ const pagination = async (options: PaginationOptions) => {
       components: components(true),
     });
   });
-}
+};
 
 export default pagination;

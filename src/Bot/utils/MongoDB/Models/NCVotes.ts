@@ -41,7 +41,7 @@ type ncVotesType = {
   shizu: string[];
   gamechanger: string[];
   guildId: string;
-}
+};
 
 export default mongoose.model<ncVotesType>(
   "nc-votes",

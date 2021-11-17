@@ -9,8 +9,8 @@ class Spotify {
   album: string | null;
   start: number | null;
   end: number | null;
-  background: { type: number; data: string | Buffer | Canvas.Image }
-  progressBar: { bgColor: string; color: string }
+  background: { type: number; data: string | Buffer | Canvas.Image };
+  progressBar: { bgColor: string; color: string };
   constructor() {
     this.title = null;
     this.image = null;
@@ -21,11 +21,11 @@ class Spotify {
     this.background = {
       type: 0,
       data: "#2F3136",
-    }
+    };
     this.progressBar = {
       bgColor: "#E8E8E8",
       color: "#1DB954",
-    }
+    };
 
     this.__registerFonts();
   }

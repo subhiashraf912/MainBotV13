@@ -50,4 +50,4 @@ export default (
 
   ctx.putImageData(output, 0, 0);
   return ctx;
-}
+};

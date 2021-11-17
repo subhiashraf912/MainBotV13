@@ -4,6 +4,6 @@ type DiscordOAuth2CredentialsResponse = {
   refresh_token: string;
   scope: string;
   token_type: string;
-}
+};
 
 export default DiscordOAuth2CredentialsResponse;

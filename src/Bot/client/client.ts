@@ -19,7 +19,7 @@ import VoiceRankType from "../utils/types/VoiceRankType";
 import LogsType from "../utils/types/Logs.Interface";
 import ExtendMessage from "../DiscordLibReg/message";
 import { Express } from "express";
-import SessionType from "../express/types/SessionType";
+import SessionType from "../api/types/SessionType";
 ExtendMessage();
 type startOptionsType = {
   token: string;
@@ -28,15 +28,15 @@ type startOptionsType = {
   musicManagerEventsPath: string;
   mongoDbURI: string;
   slashCommandsPath: string;
-}
+};
 type configType = {
   guildId: string;
   clientId: string;
   prefix: string;
-}
+};
 
 import config from "../config.json";
-import initExpress from "../express/app";
+import initExpress from "../api/app";
 import apiCodeResponse from "../utils/types/DiscordOAuth2CredentialsResponse";
 
 export default class DiscordClient extends Client {

@@ -85,4 +85,4 @@ const searchSong = async (query: string, distube: DisTube) => {
   }
   let result = results[0];
   return result;
-}
+};

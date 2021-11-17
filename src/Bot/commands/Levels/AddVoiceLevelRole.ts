@@ -59,7 +59,7 @@ export default class Command extends BaseCommand {
       });
       return;
     }
-    if (!voiceLevelRoles) voiceLevelRoles = {}
+    if (!voiceLevelRoles) voiceLevelRoles = {};
     voiceLevelRoles[level] = role.id;
     const config = await GuildConfig.findOneAndUpdate(
       { guildId: message.guild?.id as string, clientId: client.user?.id },
@@ -80,4 +80,4 @@ const millisToMinutesAndSeconds = (timeInMiliseconds: number) => {
   let h;
   h = Math.floor(timeInMiliseconds / 1000 / 60 / 60);
   return `${h} Hours`;
-}
+};

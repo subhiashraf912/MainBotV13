@@ -54,7 +54,7 @@ export default class Command extends BaseCommand {
       message.reply(GetLanguage("BotIsMissingEditRolePerms", language));
       return;
     }
-    if (!levelRoles) levelRoles = {}
+    if (!levelRoles) levelRoles = {};
     levelRoles[level] = role.id;
     const config = await GuildConfig.findOneAndUpdate(
       { guildId: message.guild?.id as string, clientId: client.user?.id },

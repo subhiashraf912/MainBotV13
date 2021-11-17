@@ -16,6 +16,6 @@ const GetLanguage = (
   if (!translations) return "Hasn't been added yet.";
   if (!translations[title]) return "Hasn't been added yet.";
   return translations[title] as string;
-}
+};
 
 export default GetLanguage;

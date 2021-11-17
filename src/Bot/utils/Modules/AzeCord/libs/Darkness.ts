@@ -17,4 +17,4 @@ export default async (img: string | Buffer, amount: number) => {
   ctx.putImageData(imgData, 0, 0);
 
   return canvas.toBuffer();
-}
+};

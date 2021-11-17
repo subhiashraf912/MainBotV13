@@ -3,5 +3,5 @@ type DiscordOAuth2UserDetails = {
   guilds: any[];
   refreshToken: string;
   accessToken: string;
-}
+};
 export default DiscordOAuth2UserDetails;

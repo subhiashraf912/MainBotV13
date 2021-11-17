@@ -37,4 +37,4 @@ export default (
   }
   ctx.closePath();
   return ctx;
-}
+};

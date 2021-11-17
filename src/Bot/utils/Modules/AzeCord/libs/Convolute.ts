@@ -18,4 +18,4 @@ export default async (
   }
 
   return canvas.toBuffer();
-}
+};

@@ -59,4 +59,4 @@ const millisToMinutesAndSeconds = (timeInMiliseconds: number) => {
   h = Math.floor(timeInMiliseconds / 1000 / 60 / 60);
 
   return `${h} Hours`;
-}
+};
