@@ -74,6 +74,7 @@
     "node-url-shortener": "^2.0.0",
     "pm2": "^5.1.1",
     "request": "^2.88.2",
+    "smart-botto": "^1.1.1",
     "string-progressbar": "^1.0.4",
     "tiny-typed-emitter": "^2.1.0",
     "ts-node": "^10.4.0",
