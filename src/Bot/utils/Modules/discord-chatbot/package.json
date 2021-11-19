@@ -1,0 +1,60 @@
+{
+  "_from": "discord-chatbot",
+  "_id": "discord-chatbot@2.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-CpFkfRCLnwFdfRl61O9Q90wLTWs1cx3jMLSUzc6ko4j1AqJMHELh80Be0F/ddj2VISwGstWy5ZBLemASVDNpnQ==",
+  "_location": "/discord-chatbot",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "discord-chatbot",
+    "name": "discord-chatbot",
+    "escapedName": "discord-chatbot",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/discord-chatbot/-/discord-chatbot-2.0.2.tgz",
+  "_shasum": "c9cd2089d5013b2aeb477d3307a916ed7f83d36f",
+  "_spec": "discord-chatbot",
+  "_where": "C:\\Users\\Roach\\Desktop\\Senria",
+  "author": {
+    "name": "Udit Shrivastava",
+    "email": "udit@udit.gq"
+  },
+  "bugs": {
+    "url": "https://github.com/udit2303/discord-chatbot/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "deprecated": false,
+  "description": "A simple Chatbot for your Discord bot",
+  "homepage": "https://github.com/udit2303/discord-chatbot#readme",
+  "keywords": [
+    "chatbot",
+    "discord.js",
+    "discord",
+    "bot",
+    "ai",
+    "ai",
+    "chatbot"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "discord-chatbot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udit2303/discord-chatbot.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.2"
+}
