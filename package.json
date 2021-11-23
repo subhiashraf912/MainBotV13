@@ -2,6 +2,9 @@
   "name": "dashboard",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.13.0"
+  },
   "scripts": {
     "build:server": "tsc --project tsconfig.server.json",
     "build:next": "next build",
