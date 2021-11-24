@@ -46,6 +46,7 @@
     "genius-lyrics": "^4.3.4",
     "genshin-db": "^3.12.0",
     "gifencoder": "^2.0.1",
+    "glur": "^1.1.2",
     "js-cookie": "^3.0.1",
     "mal-scraper": "^2.11.3",
     "mathjs": "^10.0.0",
