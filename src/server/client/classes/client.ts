@@ -28,14 +28,11 @@ type startOptionsType = {
   mongoDbURI: string;
   slashCommandsPath: string;
 };
-type configType = {
-  guildId: string;
-  clientId: string;
-  prefix: string;
-};
+
 
 import config from "../config.json";
 import initServer from "../../api";
+import configType from "../../../types/GuildConfig";
 
 export default class DiscordClient extends Client {
   private _express = initServer(this);
