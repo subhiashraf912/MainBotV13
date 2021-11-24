@@ -1,7 +1,6 @@
-import { Guild, MessageEmbed } from 'discord.js';
+import { Guild, MessageEmbed, TextChannel } from 'discord.js';
 import BaseEvent from '../../../utils/structures/BaseEvent';
 import DiscordClient from '../../../classes/client';
-import { GuildConfig, LogsSchema } from '../../../utils/MongoDB/Models';
 
 export default class GuildDeleteEvent extends BaseEvent {
       constructor() {
@@ -9,11 +8,13 @@ export default class GuildDeleteEvent extends BaseEvent {
       }
 
       async run(client: DiscordClient, guild: Guild) {
+            const ownerId = guild.ownerId;
+            const ownerUser = await client.users.fetch(ownerId);
             const icon = guild.iconURL({ size: 4096, format: 'png' }) || '';
-            const channel: any = await client.channels.fetch(
-                  '854015039823937537',
+            const channel = await client.channels.fetch(
+                  '913084124703645716',
             );
-            if (channel.type !== 'text') return;
+            if (channel?.type !== 'GUILD_TEXT') return;
             if (!channel) return;
             const embed = new MessageEmbed()
                   .setTitle(`${client.user?.username} Leave Logs`)
@@ -26,15 +27,15 @@ export default class GuildDeleteEvent extends BaseEvent {
     Server ID: ${guild.id}
     \`\`\`
     \`\`\`
-    Server Owner: ${guild.owner?.user.tag}
+    Server Owner: ${ownerUser.tag}
     \`\`\`
     \`\`\`
     \`\`\`
-    Owner: ${guild.owner}
+    Owner: ${ownerUser}
       `,
                   )
                   .setTimestamp()
                   .setAuthor(`${guild.name}`, icon);
-            channel.send(embed);
+            (channel as TextChannel).send({embeds:[embed]});
       }
 }
