@@ -3,7 +3,7 @@ import { Message, MessageEmbed, TextChannel } from "discord.js";
 import DiscordClient from "../../../classes/client";
 export default class MessageEvent extends BaseEvent {
   constructor() {
-    super("message");
+    super("messageCreate");
   }
 
   async run(client: DiscordClient, message: Message) {
