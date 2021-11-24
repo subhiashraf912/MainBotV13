@@ -1,9 +1,4 @@
-import {
-  GuildMember,
-  MessageAttachment,
-  Role,
-  TextChannel,
-} from "discord.js";
+import { GuildMember, MessageAttachment, Role, TextChannel } from "discord.js";
 import BaseEvent from "../../utils/structures/BaseEvent";
 import DiscordClient from "../../classes/client";
 import Canvas from "canvas";
@@ -11,7 +6,7 @@ import vibarnt from "node-vibrant";
 import glur from "glur";
 import getConfig from "../../utils/constants/getConfig";
 import { RankSchema } from "../../utils/MongoDB/Models";
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import configType from "../../../../types/GuildConfig";
 import invite from "../../utils/Modules/InviteTracker/invite";
 
@@ -55,7 +50,7 @@ export default class GuildMemberAddEvent extends BaseEvent {
       const afctx = avlf.getContext("2d");
       afctx.drawImage(avatar, 0, 0, 128, 128);
 
-      vibarnt.from(avlf.toBuffer()).getPalette(async(err, palette) => {
+      vibarnt.from(avlf.toBuffer()).getPalette(async (err, palette) => {
         if (err || !palette) return console.log("err");
 
         let size = 450;
@@ -128,8 +123,8 @@ export default class GuildMemberAddEvent extends BaseEvent {
           `${Date.now()}-${member.id}-welcome.png`
         );
         member.guild.id === "890707791541579857";
-        const guildInvites = await member.guild.invites.fetch({cache:true});
-    let inviterInviteTimes: number = 0;
+        const guildInvites = await member.guild.invites.fetch({ cache: true });
+        let inviterInviteTimes: number = 0;
         guildInvites.forEach((inv) => {
           if (invite.inviter && inv.inviter) {
             if (invite.inviter.id === inv.inviter.id) {
@@ -145,77 +140,70 @@ export default class GuildMemberAddEvent extends BaseEvent {
             .replace("{member-username}", member.user.username)
             .replace("{member-tag}", member.user.tag)
             .replace("{member-count}", member.guild.memberCount.toString())
-             .replace(
-          "{inviter-ping}",
-          (invite).inviter
-            ? `${invite.inviter.toString()}`
-            : "Unknown"
-        )
-        .replace(
-          "{inviter-tag}",
-          invite.inviter
-            ? invite.inviter.tag
-            : "Unknown"
-        )
-        .replace(
-          "{inviter-username}",
-          invite.inviter
-            ? invite.inviter.username
-            : "Unknown"
-        )
-        .replace(
-          "{inviter-total-invites}",
-          invite.uses ? inviterInviteTimes.toString() : "Unknown"
-        )
-        .replace(
-          "{invite-code}",
-          invite.code ? invite.code : "Unknown"
-        )
-          ,
+            .replace(
+              "{inviter-ping}",
+              invite.inviter ? `${invite.inviter.toString()}` : "Unknown"
+            )
+            .replace(
+              "{inviter-tag}",
+              invite.inviter ? invite.inviter.tag : "Unknown"
+            )
+            .replace(
+              "{inviter-username}",
+              invite.inviter ? invite.inviter.username : "Unknown"
+            )
+            .replace(
+              "{inviter-total-invites}",
+              invite.uses ? inviterInviteTimes.toString() : "Unknown"
+            )
+            .replace("{invite-code}", invite.code ? invite.code : "Unknown"),
         });
       });
       return;
     }
   }
 
-
- async giveOldRank(client: DiscordClient, member: GuildMember, config:configType) {
-    
-   let rank = client.ranks.get(`${member.id}-${member.guild.id}`) || null;
-  if (!rank) {
-    rank = await RankSchema.findOne({
-      user: member.id,
-      server: member.guild.id,
-    });
-
+  async giveOldRank(
+    client: DiscordClient,
+    member: GuildMember,
+    config: configType
+  ) {
+    let rank = client.ranks.get(`${member.id}-${member.guild.id}`) || null;
     if (!rank) {
-      rank = await RankSchema.create({
-        _id: new mongoose.Types.ObjectId(),
+      rank = await RankSchema.findOne({
         user: member.id,
         server: member.guild.id,
-        level: 0,
-        xp: 0,
-        lastMessage: Date.now(),
       });
+
+      if (!rank) {
+        rank = await RankSchema.create({
+          _id: new mongoose.Types.ObjectId(),
+          user: member.id,
+          server: member.guild.id,
+          level: 0,
+          xp: 0,
+          lastMessage: Date.now(),
+        });
+      }
+    }
+    if (!rank) return;
+    else client.ranks.set(`${member.id}-${member.guild.id}`, rank);
+    const levelRoles = config.levelRoles;
+    const deservedRoles: Role[] = [];
+    for (const [key, value] of Object.entries(levelRoles)) {
+      const level = parseInt(key);
+      let role = member.guild?.roles.cache.find((role) => role.id === value);
+      if (rank.level >= level) {
+        role && deservedRoles.push(role);
+      }
+    }
+    if (deservedRoles.length !== 0) {
+      await member.roles.add(
+        deservedRoles,
+        "Member's Old roles before leaving the server."
+      );
     }
   }
-  if (!rank) return;
-  else client.ranks.set(`${member.id}-${member.guild.id}`, rank);
-   const levelRoles = config.levelRoles;
-   const deservedRoles:Role[] = [];
-   for (const [key, value] of Object.entries(levelRoles)) {
-     const level = parseInt(key);
-     let role = member.guild?.roles.cache.find((role) => role.id === value);
-     if (rank.level >= level) {
-       role && deservedRoles.push(role);
-    }
-   }
-   if (deservedRoles.length !== 0) {
-     await member.roles.add(deservedRoles,"Member's Old roles before leaving the server.");
-   }
-  }
-
-
 }
 //
 

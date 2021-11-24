@@ -1,13 +1,11 @@
 import { Client, Guild } from "discord.js";
 import invite from "./invite";
 
-declare module 'discord.js' {
-  interface ClientEvents{
-    guildMemberAddWithInvite:[member: GuildMember, invite:invite]
+declare module "discord.js" {
+  interface ClientEvents {
+    guildMemberAddWithInvite: [member: GuildMember, invite: invite];
   }
 }
-
-
 
 export default class InviteTracker {
   private client;
@@ -37,8 +35,7 @@ export default class InviteTracker {
 
             this.guildInvites.set(guild.id, codeUses);
           })
-          .catch((err) => {
-          });
+          .catch((err) => {});
       });
     });
 

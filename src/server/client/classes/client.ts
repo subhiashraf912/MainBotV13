@@ -29,7 +29,6 @@ type startOptionsType = {
   slashCommandsPath: string;
 };
 
-
 import config from "../config.json";
 import initServer from "../../api";
 import configType from "../../../types/GuildConfig";
