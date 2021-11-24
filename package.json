@@ -10,6 +10,7 @@
     "build:next": "next build",
     "build": "npm run build:next && npm run build:server",
     "start": "NODE_ENV=production node dist/server/app.js",
+    "dev": "NODE_ENV=production nodemon src/server/app.ts",
     "copy-canvacord-images": "copyfiles --error --up 2 src/server/client/utils/Modules/@azecord/assets/data/images/*.* dist/server",
     "copy-canvacord-fonts": "copyfiles --error --up 2 src/server/client/utils/Modules/@azecord/assets/data/fonts/*.* dist/server",
     "copy-aze-canvas-fonts": "copyfiles --error --up 2 src/server/client/utils/Modules/AzeCord/aze-canvas/assets/fonts/*.* dist/server",
@@ -18,7 +19,6 @@
     "lint": "eslint src",
     "prettier": "prettier --write src/**/*",
     "lint:fix": "eslint src --fix"
-  
   },
   "dependencies": {
     "@distube/soundcloud": "^1.0.0",
@@ -38,6 +38,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "ffmpeg-static": "^4.4.0",
     "fluent-ffmpeg": "^2.1.2",
     "genius-lyrics": "^4.3.4",
     "genshin-db": "^3.12.0",
@@ -53,6 +54,7 @@
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
     "node-kitsu": "^1.1.1",
     "node-url-shortener": "^2.0.0",
+    "nodemon": "^2.0.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "request": "^2.88.2",
