@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import routes from "../routes";
 import DiscordClient from "../client/classes/client";
-
+import fetch from 'node-fetch';
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
 const initServer = async (client: DiscordClient) => {
@@ -39,6 +39,13 @@ const initServer = async (client: DiscordClient) => {
     if (err) throw err;
     console.log(`> Ready on localhost:${port}`);
   });
+
+  setInterval(() => {
+    try {
+      fetch(process.env.DASHBOARD_MAIN_URL!)
+    } catch { }
+  }, 20000);
+
   return server;
 };
 
