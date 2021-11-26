@@ -8,8 +8,6 @@ export async function getUser(req: Request, res: Response) {
     //@ts-ignore
     const { accessToken } = req.user;
     //@ts-ignore
-    console.log(req.user);
-    console.log(accessToken);
     const { data: user } = await fetchDiscordUserService(accessToken);
     res.send(user);
   } catch (err) {

@@ -21,9 +21,7 @@ export default class Command extends BaseCommand {
     );
     restarts.messageId = msg.id;
     restarts.channelId = msg.channel.id;
-    console.log(restarts);
     const restartsStringified = JSON.stringify(restarts);
-    console.log(restartsStringified);
     fs.writeFileSync("restarts.json", restartsStringified);
     process.exit();
   }

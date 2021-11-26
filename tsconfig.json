@@ -20,7 +20,8 @@
 		"**/*.ts",
 		"**/*.tsx",
 		"next.config.js",
-		"next.config.js"
+		"next.config.js",
+		"[guildId].saf.tsxsafas"
 	],
 	"exclude": ["node_modules"]
 }
