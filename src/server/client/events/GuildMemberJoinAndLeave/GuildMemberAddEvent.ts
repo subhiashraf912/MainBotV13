@@ -12,6 +12,7 @@ import invite from "../../utils/Modules/InviteTracker/invite";
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {
+    //@ts-ignore
     super("guildMemberAddWithInvite");
   }
 

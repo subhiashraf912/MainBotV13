@@ -33,6 +33,5 @@ export default (client: DiscordClient) => {
       req.client = client;
     }
     next();
-  }
-
-}
+  };
+};

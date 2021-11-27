@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import configType from "../../../../../types/GuildConfig";
 
 const guildSchema = new mongoose.Schema({
-  guildId:String,
+  guildId: String,
   clientId: { type: String, required: true, unique: false },
   levelMessageChannel: { type: String, required: false, unique: true },
   prefix: {

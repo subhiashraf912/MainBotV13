@@ -6,6 +6,6 @@ import getClientUser from "../../controllers/client/user";
 export default (client: DiscordClient) => {
   const router = Router();
   router.get("/configs/:id", clientConfigsController(client));
-  router.get('/user', getClientUser(client));
+  router.get("/user", getClientUser(client));
   return router;
 };

@@ -24,7 +24,6 @@ const client = new DiscordClient({
   },
 });
 
-
 import config from "./client/config.json";
 import youtubeNotifications from "./client/utils/Modules/youtube-notification-module";
 import DiscordOAuth2UserDetails from "../types/DiscordOAuth2UserDetails";
