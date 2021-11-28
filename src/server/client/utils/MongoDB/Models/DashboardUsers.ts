@@ -19,9 +19,7 @@ const DashboardUsers = new mongoose.Schema({
     type: String,
     required: true,
   },
-}).index( { "expireAt": 1 }, { expireAfterSeconds: 86400 } );
-
-
+}).index({ expireAt: 1 }, { expireAfterSeconds: 86400 });
 
 export default mongoose.model<DiscordOAuth2UserDetails>(
   "dashboard-users",

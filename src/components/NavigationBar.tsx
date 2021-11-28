@@ -40,7 +40,7 @@ const NavigationBar = (props: {
             variant="h6"
             noWrap
             component="div"
-            color='white'
+            color="white"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             {botData.username}
@@ -96,9 +96,7 @@ const NavigationBar = (props: {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navLinks.map((page, index) => (
               <Link key={index} href={page.path.replace("{botId}", botData.id)}>
-                <Button
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
+                <Button sx={{ my: 2, color: "white", display: "block" }}>
                   {page.name.replace("{BotName}", botData.username)}
                 </Button>
               </Link>

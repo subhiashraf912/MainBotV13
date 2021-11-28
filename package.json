@@ -28,6 +28,7 @@
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@mui/icons-material": "^5.2.0",
     "@mui/material": "^5.2.1",
+    "@mui/system": "^5.2.1",
     "@types/ms": "^0.7.31",
     "@vitalets/google-translate-api": "^7.0.0",
     "aki-api": "^6.0.8",

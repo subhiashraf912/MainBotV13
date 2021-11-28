@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { ClientUser } from "discord.js";
-import Link from 'next/link';
+import Link from "next/link";
 import UserResponse from "../types/UserResponse";
 
 type props = {
@@ -37,17 +37,20 @@ const UserHeader = (props: props) => {
   };
 
   if (user) {
-    const settings = [{
-      text: "Profile",
-      path:'/api/user/profile'
-    }, {
-      text:"Account",
-        path: "/api/user/account"
+    const settings = [
+      {
+        text: "Profile",
+        path: "/api/user/profile",
+      },
+      {
+        text: "Account",
+        path: "/api/user/account",
       },
       {
         text: "Logout",
-        path:'api/auth/token/revoke'
-      }];
+        path: "api/auth/token/revoke",
+      },
+    ];
 
     return (
       <Box sx={{ flexGrow: 0 }}>
@@ -75,7 +78,7 @@ const UserHeader = (props: props) => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          {settings.map((setting,index) => (
+          {settings.map((setting, index) => (
             <MenuItem key={index} onClick={handleCloseNavMenu}>
               <Link href={setting.path}>{setting.text}</Link>
             </MenuItem>
@@ -84,10 +87,12 @@ const UserHeader = (props: props) => {
       </Box>
     );
   } else {
-    const settings = [{
-      text: "Login",
-      path:'/api/auth/login'
-    }];
+    const settings = [
+      {
+        text: "Login",
+        path: "/api/auth/login",
+      },
+    ];
 
     return (
       <Box sx={{ flexGrow: 0 }}>
@@ -115,7 +120,7 @@ const UserHeader = (props: props) => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          {settings.map((setting,index) => (
+          {settings.map((setting, index) => (
             <MenuItem key={index}>
               <Link href={setting.path}>{setting.text}</Link>
             </MenuItem>

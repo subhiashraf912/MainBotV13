@@ -13,7 +13,7 @@ const SessionSchema = new mongoose.Schema({
   data: {
     type: String,
   },
-});
+}).index({ expireAt: 1 }, { expireAfterSeconds: 86400 });
 
 export default mongoose.model<SessionType>(
   "sessions",
