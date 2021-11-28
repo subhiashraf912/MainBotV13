@@ -1,7 +1,5 @@
 const navLinks = [
-  { name: "Home", 
-   path: "/" 
-  },
+  { name: "Home", path: "/" },
   {
     name: "Invite bot",
     path: "https://top.gg/bot/{botId}/invite",
@@ -19,4 +17,4 @@ const navLinks = [
     path: "https://discord.gg/nQ55ZUSavA",
   },
 ];
-export default navLinks
+export default navLinks;

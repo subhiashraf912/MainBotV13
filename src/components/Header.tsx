@@ -1,5 +1,4 @@
 import UserResponse from "../types/UserResponse";
-import HeaderUser from "./HeaderUser";
 import { ClientUser } from "discord.js";
 import NavigationBar from "./NavigationBar";
 type props = {
@@ -8,12 +7,11 @@ type props = {
 };
 const Header = (props: props) => {
   const { userData, botData } = props;
-    return (
-        <>
-            <NavigationBar botData={botData} />
-            <HeaderUser userData={userData} botData={botData} />
-        </>
-    );
+  return (
+    <>
+      <NavigationBar userData={userData} botData={botData} />
+    </>
+  );
 };
 
 export default Header;

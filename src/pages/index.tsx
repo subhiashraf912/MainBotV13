@@ -30,8 +30,7 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { req, res } = ctx;
   const { cookies } = req;
-  const clientUserResponse = await fetch(
-    `${config.dashboard}/api/client/user`);
+  const clientUserResponse = await fetch(`${config.dashboard}/api/client/user`);
   const clientUserData: ClientUser = await clientUserResponse.json();
 
   try {
@@ -53,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         data: null,
-        clientUserData
+        clientUserData,
       },
     };
   }
