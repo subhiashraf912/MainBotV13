@@ -8,15 +8,14 @@ import getConfig from "../../utils/constants/getConfig";
 import { RankSchema } from "../../utils/MongoDB/Models";
 import mongoose from "mongoose";
 import configType from "../../../../types/GuildConfig";
-import invite from "../../utils/Modules/InviteTracker/invite";
 
 export default class GuildMemberAddEvent extends BaseEvent {
   constructor() {
     //@ts-ignore
-    super("guildMemberAddWithInvite");
+    super("guildMemberAdd");
   }
 
-  async run(client: DiscordClient, member: GuildMember, invite: invite) {
+  async run(client: DiscordClient, member: GuildMember) {
     const config = await getConfig(client, member.guild.id);
     if (!config) return;
     await this.giveOldRank(client, member, config);
@@ -125,15 +124,7 @@ export default class GuildMemberAddEvent extends BaseEvent {
           `${Date.now()}-${member.id}-welcome.png`
         );
         member.guild.id === "890707791541579857";
-        const guildInvites = await member.guild.invites.fetch({ cache: true });
-        let inviterInviteTimes: number = 0;
-        guildInvites.forEach((inv) => {
-          if (invite.inviter && inv.inviter) {
-            if (invite.inviter.id === inv.inviter.id) {
-              inviterInviteTimes += inv.uses ? inv.uses : 0;
-            }
-          }
-        });
+
         (channel as TextChannel).send({
           files: [attachment],
           content: (welcomeMessage as string)
@@ -142,23 +133,7 @@ export default class GuildMemberAddEvent extends BaseEvent {
             .replace("{member-username}", member.user.username)
             .replace("{member-tag}", member.user.tag)
             .replace("{member-count}", member.guild.memberCount.toString())
-            .replace(
-              "{inviter-ping}",
-              invite.inviter ? `${invite.inviter.toString()}` : "Unknown"
-            )
-            .replace(
-              "{inviter-tag}",
-              invite.inviter ? invite.inviter.tag : "Unknown"
-            )
-            .replace(
-              "{inviter-username}",
-              invite.inviter ? invite.inviter.username : "Unknown"
-            )
-            .replace(
-              "{inviter-total-invites}",
-              invite.uses ? inviterInviteTimes.toString() : "Unknown"
-            )
-            .replace("{invite-code}", invite.code ? invite.code : "Unknown"),
+
         });
       });
       return;
