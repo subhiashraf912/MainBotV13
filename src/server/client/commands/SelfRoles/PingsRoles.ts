@@ -25,8 +25,8 @@ export default class Command extends BaseCommand {
       emoji: string,
       role: string,
     }[];
-    if (message.guildId === '783991881028993045') roles = require('../../utils/constants/SenServerRoles/pingsRoles')
-    else if (message.guildId === "915782009270435900") roles = require("../../utils/constants/TetsukunServerRoles/pingsRoles");
+    if (message.guildId === '783991881028993045') roles = (await import('../../utils/constants/SenServerRoles/pingsRoles')).default
+    else if (message.guildId === "915782009270435900") roles = (await import("../../utils/constants/TetsukunServerRoles/pingsRoles")).default;
     else {
             message.channel.send("This command is only for sen nightcore server");
       return;
