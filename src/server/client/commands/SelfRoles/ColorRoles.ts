@@ -65,7 +65,7 @@ export default class Command extends BaseCommand {
       .setDescription(
         "```Color Roles```\nYou can choose your color role from here. Your name in the chat will be in this color also other members can know your fav color by clicking on your profile!"
       )
-      .setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
+      .setThumbnail(message.guild?.iconURL({ dynamic: true, size: 4096 }) || "");
     await message.channel.send({
       embeds: [embed],
       components: components(false),

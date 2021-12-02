@@ -66,7 +66,7 @@ export default class Command extends BaseCommand {
       .setDescription(
         "```Age Roles```\nYou can choose your age role from here. So other members can know your age by clicking on your profile!"
       )
-      .setThumbnail(message.guild.iconURL({ dynamic: true, size: 4096 }) || "");
+      .setThumbnail(message.guild?.iconURL({ dynamic: true, size: 4096 }) || "");
     await message.channel.send({
       embeds: [embed],
       components: components(false),
