@@ -47,7 +47,7 @@ export default class WelcomeChannelCommand extends BaseCommand {
                   { welcomeChannel },
                   { new: true },
             );
-            client.configs.set(message.guild.id, config);
+            client.configs.set(message.guild.id, config!);
             channel
                   ? message.reply(
                           'The welcome channel has been updated!',

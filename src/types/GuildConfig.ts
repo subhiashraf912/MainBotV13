@@ -16,7 +16,7 @@ type configType = {
   commandRestricts: any;
   welcomeChannel: string | null;
   welcomeImageBackground: string | null;
-  welcomeMessage: string;
+  welcomeMessage: string | null;
   memberJoinRoles: string[];
   botJoinRoles: string[];
   aiChatChannel: string | null;

@@ -29,7 +29,7 @@ export default class WelcomeMessageCommand extends BaseCommand {
                   { welcomeMessage },
                   { new: true },
             );
-            client.configs.set(message.guild.id, config);
+            client.configs.set(message.guild.id, config!);
             welcomeMessage
                   ? message.reply(
                           'The welcome message text has been updated!',
