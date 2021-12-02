@@ -7,7 +7,6 @@ import {
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../classes/client";
 import getConfig from "../../utils/constants/getConfig";
-import roles from "../../utils/constants/SenServerRoles/ageRoles";
 
 export default class Command extends BaseCommand {
   constructor() {
@@ -23,10 +22,17 @@ export default class Command extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const config = await getConfig(client, message.guild?.id as string);
-    if (message.guild?.id !== "783991881028993045") {
-      message.channel.send("This command is only for sen nightcore server");
+    let roles:{
+      emoji: string,
+      role: string,
+    }[];
+    if (message.guildId === '783991881028993045') roles = require('../../utils/constants/SenServerRoles/ageRoles')
+    else if (message.guildId === "915782009270435900") roles = require("../../utils/constants/TetsukunServerRoles/ageRoles");
+    else {
+            message.channel.send("This command is only for sen nightcore server");
       return;
     }
+    
     const actualRoles = [
       ...new Set(
         roles.map((role) => message.guild?.roles.cache.get(role.role))
