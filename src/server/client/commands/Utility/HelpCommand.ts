@@ -40,6 +40,8 @@ export default class HelpCommand extends BaseCommand {
       logs: "🔐",
       "role playing": "🎭",
       "sen-server-commands": "🎅",
+        "Welcomes":"🙋‍♂️"
+
     };
     return categories;
   }

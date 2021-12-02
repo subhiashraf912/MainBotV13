@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
+		"target": "ES2021",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
@@ -21,7 +21,6 @@
 		"**/*.tsx",
 		"next.config.js",
 		"next.config.js",
-		"[guildId].saf.tsxsafas"
 	],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "src/server"]
 }
