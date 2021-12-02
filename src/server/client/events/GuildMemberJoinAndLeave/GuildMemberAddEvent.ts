@@ -35,7 +35,8 @@ export default class GuildMemberAddEvent extends BaseEvent {
     if (
       member.guild.id === "888505595689332776" ||
       member.guild.id === "890707791541579857" ||
-      member.guild.id === "783991881028993045"
+      member.guild.id === "783991881028993045" ||
+      member.guild.id === "915782009270435900"
     ) {
       Canvas.registerFont("assets/fonts/theboldfont.ttf", { family: "Bold" });
       const options = {
@@ -106,8 +107,8 @@ export default class GuildMemberAddEvent extends BaseEvent {
           serverTitle = "Sen Nightcore";
         } else if (member.guild.id === "890707791541579857") {
           serverTitle = "Laknicek's community";
-        } else if (member.guild.id === "888505595689332776") {
-          serverTitle = "Aze's community";
+        } else if (member.guild.id === "915782009270435900") {
+          serverTitle = "Kazoku's server";
         }
         ctx.fillText(serverTitle, canvas.width / 2, canvas.height - 50);
 
