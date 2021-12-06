@@ -1,12 +1,19 @@
 import * as React from "react";
 import BaseCommand from "../server/client/utils/structures/BaseCommand";
 import { Box } from "@mui/system";
-import { Paper, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import theme from "../themes/TajawalFont";
 import {
   DropdownCommandContainer,
   DropdownCommandHeader,
 } from "../themes/StyledComponents";
+
+const formatString = (str: string) =>
+  `${str[0].toUpperCase()}${str
+    .slice(1)
+    .toLowerCase()
+    .replaceAll("_", " ")
+    .replaceAll("-", " ")}`;
 
 export const CommandInfo = (props: { command: BaseCommand }) => {
   const [expanded, setExpanded] = React.useState<boolean>(false);
@@ -15,7 +22,7 @@ export const CommandInfo = (props: { command: BaseCommand }) => {
     <ThemeProvider theme={theme}>
       <Box p={5}>
         <DropdownCommandHeader onClick={() => setExpanded(!expanded)}>
-          <p>{command.name}</p>
+          <p>{formatString(command.name)}</p>
         </DropdownCommandHeader>
         <DropdownCommandContainer expanded={expanded}>
           <a style={{ display: "flex" }}>

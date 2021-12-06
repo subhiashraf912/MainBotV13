@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
       name: "remove-voice-level-role",
       category: "levels",
       aliases: [],
-      userPermissions: ['MANAGE_ROLES'],
+      userPermissions: ["MANAGE_ROLES"],
       botPermissions: [],
       tutorialGif: "",
     });

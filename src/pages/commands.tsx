@@ -2,32 +2,25 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import * as React from "react";
 import BaseCommand from "../server/client/utils/structures/BaseCommand";
 import config from "../config.json";
-import { ClientUser, PermissionString } from "discord.js";
-import Box from "@mui/material/Box";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import { ClientUser } from "discord.js";
 import { CommandInfo } from "../components/CommandInfo";
 import { Grid } from "@mui/material";
 import Layout from "../components/Layout";
 import UserResponse from "../types/UserResponse";
 import { NextSeo } from "next-seo";
-
-type Anchor = "left";
-
-type commandType = {
-  name: string;
-  description: string;
-  usage: string;
-  botPermissions: PermissionString[];
-  userPermissions: PermissionString[];
-  aliases: string[];
-};
+import {
+  DropdownMenuItemContainer,
+  SelectItem,
+  SelectMenuDropDownHeader,
+} from "../themes/StyledComponents";
+import { Box } from "@mui/system";
 
 const formatString = (str: string) =>
-  `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
+  `${str[0].toUpperCase()}${str
+    .slice(1)
+    .toLowerCase()
+    .replaceAll("_", " ")
+    .replaceAll("-", " ")}`;
 
 const CommandsPage = ({
   commands: clientCommands,
@@ -36,66 +29,14 @@ const CommandsPage = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const commands: BaseCommand[] = clientCommands;
   const directories = [...new Set(commands.map((cmd) => cmd.category))];
-  const categories = directories.map((dir) => {
-    const getCommands: commandType[] | undefined = commands
-      .filter((cmd) => cmd.category === dir)
-      .map((cmd) => {
-        return {
-          name: cmd.name,
-          description: cmd.description,
-          usage: cmd.usage,
-          botPermissions: cmd.botPermissions,
-          userPermissions: cmd.userPermissions,
-          aliases: cmd.aliases,
-        };
-      });
-    return {
-      directory: formatString(dir),
-      commands: getCommands,
-    };
-  });
 
   const getcommandsByCategory = (category: string) =>
     commands.filter(
       (cate) => cate.category.toLowerCase() === category.toLowerCase()
     )!;
 
-  const [state, setState] = React.useState({
-    left: false,
-  });
-
   const [selected, setSelected] = React.useState<string>("");
-  const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event &&
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
-      setState({ ...state, [anchor]: open });
-    };
-
-  const list = (anchor: Anchor) => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {directories.map((text, index) => (
-          <ListItem color="black" button key={index}>
-            <ListItemText onClick={() => setSelected(text)} primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  const [expanded, setExpanded] = React.useState<boolean>(true);
 
   return (
     <Layout botData={clientUser} userData={user}>
@@ -105,16 +46,27 @@ const CommandsPage = ({
       />
       <div>
         <React.Fragment>
-          <Button onClick={toggleDrawer("left", true)}>Open Categories</Button>
-
-          <SwipeableDrawer
-            anchor={"left"}
-            open={state["left"]}
-            onClose={toggleDrawer("left", false)}
-            onOpen={toggleDrawer("left", true)}
-          >
-            {list("left")}
-          </SwipeableDrawer>
+          <Box p={5}>
+            <SelectMenuDropDownHeader onClick={() => setExpanded(!expanded)}>
+              Select A Category
+            </SelectMenuDropDownHeader>
+            <DropdownMenuItemContainer expanded={expanded}>
+              {directories.map((item, index) => {
+                return (
+                  <SelectItem
+                    key={index}
+                    onClick={() => {
+                      setSelected(item);
+                      setExpanded(false);
+                    }}
+                  >
+                    {formatString(item)}
+                  </SelectItem>
+                );
+              })}
+            </DropdownMenuItemContainer>
+          </Box>
+          A
           <Grid container columnSpacing={{ xs: 0.5, sm: 1, md: 1.5 }}>
             {getcommandsByCategory(selected)?.map((command, index) => {
               return (

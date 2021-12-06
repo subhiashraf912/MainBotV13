@@ -153,3 +153,10 @@ export const getFlags = (flags: UserFlags): string => {
 
   return description;
 };
+
+export const formatString = (str: string) =>
+  `${str[0].toUpperCase()}${str
+    .slice(1)
+    .toLowerCase()
+    .replaceAll("_", " ")
+    .replaceAll("-", " ")}`;

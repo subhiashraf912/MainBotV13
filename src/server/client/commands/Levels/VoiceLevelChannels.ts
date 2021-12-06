@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
       name: "voice-level-channels",
       category: "levels",
       aliases: [],
-      userPermissions: ['MANAGE_CHANNELS'],
+      userPermissions: ["MANAGE_CHANNELS"],
       botPermissions: [],
       tutorialGif: "",
     });
