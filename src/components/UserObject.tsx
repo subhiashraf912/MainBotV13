@@ -5,7 +5,6 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-  Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { ClientUser } from "discord.js";

@@ -14,6 +14,10 @@ import MenuItem from "@mui/material/MenuItem";
 import navLinks from "../utils/navLinks";
 import Link from "next/link";
 import UserHeader from "./UserObject";
+import {ThemeProvider} from '@mui/material/styles'
+import theme from "../themes/TajawalFont";
+
+
 const NavigationBar = (props: {
   botData: ClientUser;
   userData: UserResponse;
@@ -33,6 +37,8 @@ const NavigationBar = (props: {
   };
 
   return (
+    <ThemeProvider theme={theme}>
+
     <AppBar position="sticky" color="transparent">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -53,11 +59,13 @@ const NavigationBar = (props: {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="primary"
+              
             >
               <MenuIcon />
             </IconButton>
             <Menu
+            color="white"
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -107,6 +115,7 @@ const NavigationBar = (props: {
         </Toolbar>
       </Container>
     </AppBar>
+    </ThemeProvider>
   );
 };
 

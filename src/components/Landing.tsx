@@ -10,7 +10,6 @@ const Landing = (props: props) => {
   const { userData, botData } = props;
   return (
     <>
-      <Header botData={botData} userData={userData} />
     </>
   );
 };

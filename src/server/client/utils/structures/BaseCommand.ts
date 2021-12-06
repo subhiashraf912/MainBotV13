@@ -4,8 +4,25 @@ import { PermissionString } from "discord.js";
 import GetLanguage from "../Languages";
 import Category from "../../../../types/category.type";
 export default abstract class BaseCommand {
-  constructor(private options: commandOptions) {}
+  name;
+  category;
+  aliases;
+  userPermissions;
+  botPermissions;
+  description;
+  usage;
+  tutGif;
 
+  constructor(private options: commandOptions) {
+    this.name = options.name;
+    this.category = options.category;
+    this.aliases = options.aliases || [];
+    this.userPermissions = options.userPermissions || [];
+    this.botPermissions = options.botPermissions || [];
+    this.description = GetLanguage(`${this.options.name}_description`, 'english');
+    this.usage = GetLanguage(`${this.options.name}_usage`, 'english');
+    this.tutGif = options.tutorialGif || '';
+   }
   getName(): string {
     return this.options.name;
   }
