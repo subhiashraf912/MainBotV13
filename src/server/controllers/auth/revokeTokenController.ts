@@ -9,7 +9,7 @@ export default (client: DiscordClient) => {
     if (!req.user) return res.sendStatus(STATUS_CODES.UNAUTHORIZED);
     try {
       await revokeTokenService(req, res);
-      res.redirect('/')
+      res.redirect("/");
     } catch (err) {
       res.sendStatus(STATUS_CODES.BAD_REQUEST);
     }

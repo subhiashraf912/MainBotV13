@@ -8,10 +8,7 @@ type props = {
 
 const Landing = (props: props) => {
   const { userData, botData } = props;
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
 
 export default Landing;

@@ -132,8 +132,7 @@ export default class GuildMemberAddEvent extends BaseEvent {
             .replace("{member-ping}", `<@${member.id}>`)
             .replace("{member-username}", member.user.username)
             .replace("{member-tag}", member.user.tag)
-            .replace("{member-count}", member.guild.memberCount.toString())
-
+            .replace("{member-count}", member.guild.memberCount.toString()),
         });
       });
       return;

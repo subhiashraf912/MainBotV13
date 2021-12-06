@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  Avatar,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-} from "@mui/material";
+import { Avatar, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
 import { ClientUser } from "discord.js";
 import Link from "next/link";

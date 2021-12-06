@@ -12,8 +12,7 @@ export const DropdownHeader = styled.div`
 `;
 
 export const DropdownCommandHeader = styled(DropdownHeader)`
-  color:"white";
-  width: 500px;
+  color: white;
   transition: 500ms;
   :hover {
     background-color: white;

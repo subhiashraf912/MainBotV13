@@ -1,11 +1,8 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      'Tajawal',
-    ].join(','),
+    fontFamily: ["Tajawal"].join(","),
   },
-
 });
 
 export default theme;

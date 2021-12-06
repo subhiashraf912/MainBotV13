@@ -22,17 +22,22 @@ export default class Command extends BaseCommand {
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const config = await getConfig(client, message.guild?.id as string);
-    let roles:{
-      emoji: string,
-      role: string,
+    let roles: {
+      emoji: string;
+      role: string;
     }[];
-    if (message.guildId === '783991881028993045') roles =  (await import('../../utils/constants/SenServerRoles/ageRoles')).default;
-    else if (message.guildId === "915782009270435900") roles =(await import("../../utils/constants/TetsukunServerRoles/ageRoles")).default;
+    if (message.guildId === "783991881028993045")
+      roles = (await import("../../utils/constants/SenServerRoles/ageRoles"))
+        .default;
+    else if (message.guildId === "915782009270435900")
+      roles = (
+        await import("../../utils/constants/TetsukunServerRoles/ageRoles")
+      ).default;
     else {
-            message.channel.send("This command is only for sen nightcore server");
+      message.channel.send("This command is only for sen nightcore server");
       return;
     }
-    
+
     const actualRoles = [
       ...new Set(
         roles.map((role) => message.guild?.roles.cache.get(role.role))
@@ -66,7 +71,9 @@ export default class Command extends BaseCommand {
       .setDescription(
         "```Age Roles```\nYou can choose your age role from here. So other members can know your age by clicking on your profile!"
       )
-      .setThumbnail(message.guild?.iconURL({ dynamic: true, size: 4096 }) || "");
+      .setThumbnail(
+        message.guild?.iconURL({ dynamic: true, size: 4096 }) || ""
+      );
     await message.channel.send({
       embeds: [embed],
       components: components(false),

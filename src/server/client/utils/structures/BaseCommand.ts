@@ -19,10 +19,13 @@ export default abstract class BaseCommand {
     this.aliases = options.aliases || [];
     this.userPermissions = options.userPermissions || [];
     this.botPermissions = options.botPermissions || [];
-    this.description = GetLanguage(`${this.options.name}_description`, 'english');
-    this.usage = GetLanguage(`${this.options.name}_usage`, 'english');
-    this.tutGif = options.tutorialGif || '';
-   }
+    this.description = GetLanguage(
+      `${this.options.name}_description`,
+      "english"
+    );
+    this.usage = GetLanguage(`${this.options.name}_usage`, "english");
+    this.tutGif = options.tutorialGif || "";
+  }
   getName(): string {
     return this.options.name;
   }

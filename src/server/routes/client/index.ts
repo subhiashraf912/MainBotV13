@@ -8,6 +8,6 @@ export default (client: DiscordClient) => {
   const router = Router();
   router.get("/configs/:id", clientConfigsController(client));
   router.get("/user", getClientUser(client));
-  router.get('/commands', getClientCommands(client));
+  router.get("/commands", getClientCommands(client));
   return router;
 };

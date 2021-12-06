@@ -14,9 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import navLinks from "../utils/navLinks";
 import Link from "next/link";
 import UserHeader from "./UserObject";
-import {ThemeProvider} from '@mui/material/styles'
+import { ThemeProvider } from "@mui/material/styles";
 import theme from "../themes/TajawalFont";
-
 
 const NavigationBar = (props: {
   botData: ClientUser;
@@ -38,83 +37,85 @@ const NavigationBar = (props: {
 
   return (
     <ThemeProvider theme={theme}>
-
-    <AppBar position="sticky" color="transparent">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            color="white"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-          >
-            {botData.username}
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="primary"
-              
+      <AppBar position="sticky" color="transparent">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              color="white"
+              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-            color="white"
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+              {botData.username}
+            </Typography>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="primary"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                color="white"
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {navLinks.map((page, index) => (
+                  <MenuItem key={index} onClick={handleCloseNavMenu}>
+                    <Link href={page.path.replace("{botId}", botData.id)}>
+                      {page.name.replace("{BotName}", botData.username)}
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              color="white"
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             >
+              {botData.username}
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {navLinks.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Link href={page.path.replace("{botId}", botData.id)}>
+                <Link
+                  passHref={true}
+                  key={index}
+                  href={page.path.replace("{botId}", botData.id)}
+                >
+                  <Button sx={{ my: 2, color: "white", display: "block" }}>
                     {page.name.replace("{BotName}", botData.username)}
-                  </Link>
-                </MenuItem>
+                  </Button>
+                </Link>
               ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            color="white"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            {botData.username}
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {navLinks.map((page, index) => (
-              <Link passHref={ true } key={index} href={page.path.replace("{botId}", botData.id)}>
-                <Button sx={{ my: 2, color: "white", display: "block" }}>
-                  {page.name.replace("{BotName}", botData.username)}
-                </Button>
-              </Link>
-            ))}
-          </Box>
+            </Box>
 
-          <UserHeader botUser={botData} user={userData} />
-        </Toolbar>
-      </Container>
-    </AppBar>
+            <UserHeader botUser={botData} user={userData} />
+          </Toolbar>
+        </Container>
+      </AppBar>
     </ThemeProvider>
   );
 };

@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
       name: "remove-level-role",
       category: "levels",
       aliases: [],
-      userPermissions: [],
+      userPermissions: ['MANAGE_ROLES'],
       botPermissions: [],
       tutorialGif: "",
     });

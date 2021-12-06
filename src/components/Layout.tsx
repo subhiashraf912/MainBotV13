@@ -1,21 +1,21 @@
-import { ClientUser } from "discord.js"
-import { FC } from "react"
+import { ClientUser } from "discord.js";
+import { FC } from "react";
 import UserResponse from "../types/UserResponse";
 import Footer from "./Footer";
-import Header from "./Header"
+import Header from "./Header";
 interface props {
-    botData: ClientUser;
-    userData: UserResponse
+  botData: ClientUser;
+  userData: UserResponse;
 }
 
-const Layout:FC<props> = (props) => {
-    return (
-        <>
-            <Header userData={props.userData} botData={props.botData} />
-            { props.children }
-            <Footer/>
-        </>
-    )
-}
+const Layout: FC<props> = (props) => {
+  return (
+    <>
+      <Header userData={props.userData} botData={props.botData} />
+      {props.children}
+      <Footer />
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

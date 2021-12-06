@@ -22,14 +22,19 @@ export default class Command extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     const config = await getConfig(client, message.guild?.id as string);
 
-        let roles:{
-      emoji: string,
-      role: string,
+    let roles: {
+      emoji: string;
+      role: string;
     }[];
-    if (message.guildId === '783991881028993045') roles = (await import('../../utils/constants/SenServerRoles/genderRoles')).default
-    else if (message.guildId === "915782009270435900") roles = (await import("../../utils/constants/TetsukunServerRoles/genderRoles")).default;
+    if (message.guildId === "783991881028993045")
+      roles = (await import("../../utils/constants/SenServerRoles/genderRoles"))
+        .default;
+    else if (message.guildId === "915782009270435900")
+      roles = (
+        await import("../../utils/constants/TetsukunServerRoles/genderRoles")
+      ).default;
     else {
-            message.channel.send("This command is only for sen nightcore server");
+      message.channel.send("This command is only for sen nightcore server");
       return;
     }
 
@@ -66,7 +71,9 @@ export default class Command extends BaseCommand {
       .setDescription(
         "```Gender Roles```\nYou can choose your gender role from here. So other members can know your gender by clicking on your profile!"
       )
-      .setThumbnail(message.guild?.iconURL({ dynamic: true, size: 4096 }) || "");
+      .setThumbnail(
+        message.guild?.iconURL({ dynamic: true, size: 4096 }) || ""
+      );
     await message.channel.send({
       embeds: [embed],
       components: components(false),
