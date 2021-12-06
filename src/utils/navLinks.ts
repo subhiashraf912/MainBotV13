@@ -2,7 +2,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   {
     name: "Invite bot",
-    path: "https://top.gg/bot/{botId}/invite",
+    path: "https://discord.com/api/oauth2/authorize?client_id={botId}&permissions=8&scope=bot%20applications.commands",
   },
   {
     name: "Vote for {BotName}",

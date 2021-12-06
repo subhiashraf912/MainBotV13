@@ -8,6 +8,7 @@ import config from "../config.json";
 import { ClientUser } from "discord.js";
 import { NextSeo } from "next-seo";
 import Landing from "../components/Landing";
+import Layout from '../components/Layout';
 const Home: NextPage = ({
   data: APIData,
   clientUserData,
@@ -20,7 +21,9 @@ const Home: NextPage = ({
         title={`${clientUser.username} Dashboard`}
         description="The all in one bot. Everything you need in 1 bot!"
       />
+      <Layout botData={clientUser} userData={data}>
       <Landing botData={clientUser} userData={data} />
+      </Layout>
     </>
   );
 };

@@ -13,6 +13,7 @@ import { CommandInfo } from "../components/CommandInfo";
 import { Grid } from "@mui/material";
 import Layout from '../components/Layout';
 import UserResponse from "../types/UserResponse";
+import { NextSeo } from "next-seo";
 
 type Anchor = 'left'
 
@@ -93,6 +94,10 @@ const CommandsPage = ({commands:clientCommands, user, clientUser}:InferGetServer
 
   return (
     <Layout botData={clientUser} userData={user}>
+            <NextSeo
+        title={`${clientUser.username} Commands`}
+        description={`A list of all of the commands in ${clientUser.username} bot!`}
+      />
     <div>
         <React.Fragment>
           <Button onClick={toggleDrawer('left', true)}>Open Categories</Button>
@@ -105,10 +110,10 @@ const CommandsPage = ({commands:clientCommands, user, clientUser}:InferGetServer
           >
             {list('left')}
           </SwipeableDrawer>
-<Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+<Grid container columnSpacing={{ xs: 0.5, sm: 1, md: 1.5 }}>
           {getcommandsByCategory(selected)?.map((command, index) => {
             return (
-               <Grid key={index} item xs={8} md={4}  margin={'30px'}>
+               <Grid key={index} item xs={9} sm={7} md={6} lg={4} xl={3}  marginTop={'30px'}>
                   <CommandInfo command={command} />
               </Grid>
             )

@@ -103,7 +103,7 @@ const NavigationBar = (props: {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navLinks.map((page, index) => (
-              <Link key={index} href={page.path.replace("{botId}", botData.id)}>
+              <Link passHref={ true } key={index} href={page.path.replace("{botId}", botData.id)}>
                 <Button sx={{ my: 2, color: "white", display: "block" }}>
                   {page.name.replace("{BotName}", botData.username)}
                 </Button>
