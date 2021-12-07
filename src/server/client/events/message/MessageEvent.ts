@@ -1,5 +1,5 @@
 import BaseEvent from "../../utils/structures/BaseEvent";
-import { Message } from "discord.js";
+import { Message, PermissionString } from "discord.js";
 import DiscordClient from "../../classes/client";
 import getConfig from "../../utils/constants/getConfig";
 import GetLanguage from "../../utils/Languages";
@@ -49,16 +49,20 @@ export default class MessageEvent extends BaseEvent {
             });
           }
         });
+        const missingPerms:PermissionString[] = [];
         command.getBotPermissions().map((perm) => {
           if (!message.member?.guild.me?.permissions.has(perm)) {
+            missingPerms.push(perm);
+          }
+        });
+            if (missingPerms[0]) {
             return message.reply({
               content: GetLanguage(
                 "ClientIsMissingPermissions",
                 config.language
-              ).replaceAll("{permissions}", perm),
+              ).replaceAll("{permissions}", missingPerms.join(", ")),
             });
           }
-        });
         if (command.getCategory() === "owner") {
           if (!client.owners.has(message.author.id))
             return message.reply({
