@@ -39,28 +39,32 @@ export default class MessageEvent extends BaseEvent {
           client.aliases.get(cmdName.toLowerCase()) as string
         );
       if (command) {
+        const missingPerms:PermissionString[] = [];
         command.getUserPermissions().map((perm) => {
           if (!message.member?.permissions.has(perm)) {
-            return message.reply({
-              content: GetLanguage(
-                "MemberIsMissingPermissions",
-                config.language
-              ).replaceAll("{permissions}", perm),
-            });
-          }
-        });
-        const missingPerms:PermissionString[] = [];
-        command.getBotPermissions().map((perm) => {
-          if (!message.member?.guild.me?.permissions.has(perm)) {
             missingPerms.push(perm);
           }
         });
-            if (missingPerms[0]) {
+        if (missingPerms[0]) {
+          return message.reply({
+              content: GetLanguage(
+                "MemberIsMissingPermissions",
+                config.language
+              ).replaceAll("{permissions}", missingPerms.join(', ')),
+            });
+        }
+        const clientMissingPerms:PermissionString[] = [];
+        command.getBotPermissions().map((perm) => {
+          if (!message.member?.guild.me?.permissions.has(perm)) {
+            clientMissingPerms.push(perm);
+          }
+        });
+            if (clientMissingPerms[0]) {
             return message.reply({
               content: GetLanguage(
                 "ClientIsMissingPermissions",
                 config.language
-              ).replaceAll("{permissions}", missingPerms.join(", ")),
+              ).replaceAll("{permissions}", clientMissingPerms.join(", ")),
             });
           }
         if (command.getCategory() === "owner") {
