@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
   async run(client: DiscordClient, message: Message, args: Array<string>) {
     if (!message.guild || !message.member) return;
     const config = await getConfig(client, message.guild?.id as string);
-    const dev = await client.users.fetch("849641637831376936");
+    const dev = await client.users.fetch("507684120739184640");
     let current = client.rankBackgrounds.get(message.author.id);
     if (args[0] === "default") {
       if (current && current.rankBackground) {
