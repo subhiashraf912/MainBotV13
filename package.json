@@ -43,6 +43,7 @@
     "discord-giveaways": "^5.0.1",
     "discord-ytdl-core": "^5.0.4",
     "discord.js": "^13.3.1",
+    "discord.js-akinator": "^3.3.1",
     "distube": "^3.0.3",
     "djs-invite-tracker": "^1.0.3",
     "dotenv": "^10.0.0",
