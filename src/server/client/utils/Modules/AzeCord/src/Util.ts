@@ -2,7 +2,7 @@ import moment from "moment";
 import abbrev from "../plugins/abbrev";
 import renderEmoji from "../plugins/renderEmoji";
 import momentDurationFormatSetup from "moment-duration-format";
-import { NodeCanvasRenderingContext2D } from "canvas";
+import { CanvasRenderingContext2D } from "canvas";
 momentDurationFormatSetup(moment as any);
 
 class Util {
@@ -45,7 +45,7 @@ class Util {
   }
 
   static renderEmoji(
-    ctx: NodeCanvasRenderingContext2D,
+    ctx: CanvasRenderingContext2D,
     msg: string,
     x: number,
     y: number
@@ -101,7 +101,7 @@ class Util {
 
   static getLines(
     text: string,
-    ctx: NodeCanvasRenderingContext2D,
+    ctx: CanvasRenderingContext2D,
     maxWidth: number
   ) {
     if (!text) return [];

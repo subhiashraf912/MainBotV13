@@ -1,7 +1,7 @@
-import { Channel, GuildChannel, Message, TextChannel } from "discord.js";
+import {  GuildChannel, Message, TextChannel } from "discord.js";
 
 export default (options: optionsType) => {
-  let channel: Channel | undefined;
+  let channel;
   channel =
     options.message.guild?.channels.cache.get(options.query) ||
     options.message.guild?.channels.cache.find(

@@ -1,7 +1,7 @@
-import { NodeCanvasRenderingContext2D } from "canvas";
+import { CanvasRenderingContext2D } from "canvas";
 
 export default (
-  ctx: NodeCanvasRenderingContext2D,
+  ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
   width: number,

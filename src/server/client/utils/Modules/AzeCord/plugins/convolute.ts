@@ -1,7 +1,7 @@
-import { NodeCanvasRenderingContext2D, Canvas } from "canvas";
+import { CanvasRenderingContext2D, Canvas } from "canvas";
 
 export default (
-  ctx: NodeCanvasRenderingContext2D,
+  ctx: CanvasRenderingContext2D,
   canvas: Canvas,
   matrix: any[],
   opaque: boolean

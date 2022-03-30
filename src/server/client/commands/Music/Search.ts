@@ -92,7 +92,7 @@ export default class Command extends BaseCommand {
       if (response) {
         if (!response.first()) return;
         const entry: any = response.first()?.content;
-        client.distube.play(message, searchResults[entry - 1].url);
+        client.distube.play(message.member.voice.channel, searchResults[entry - 1].url);
       }
     } catch (err) {
       console.log(err);

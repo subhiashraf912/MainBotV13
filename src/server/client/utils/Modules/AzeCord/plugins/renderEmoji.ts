@@ -1,7 +1,7 @@
 import { fillTextWithTwemoji } from "node-canvas-with-twemoji-and-discord-emoji";
-import { NodeCanvasRenderingContext2D } from "canvas";
+import { CanvasRenderingContext2D } from "canvas";
 export default async (
-  ctx: NodeCanvasRenderingContext2D,
+  ctx: CanvasRenderingContext2D,
   message: string,
   x: number,
   y: number

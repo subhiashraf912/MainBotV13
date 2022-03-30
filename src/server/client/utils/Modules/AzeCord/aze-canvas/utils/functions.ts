@@ -1,4 +1,4 @@
-import { Canvas, NodeCanvasRenderingContext2D } from "canvas";
+import { Canvas } from "canvas";
 
 export const formatVariable = (prefix: any, variable: string) => {
   const formattedVariable = variable

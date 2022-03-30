@@ -42,7 +42,7 @@ export default class Command extends BaseCommand {
     let songURL: string | undefined = "";
     if (message.attachments.first()) songURL = message.attachments.first()?.url;
     if (!args[0] && message.attachments.first())
-      return client.distube?.play(message, songURL as string).catch((err) => {
+      return client.distube?.play(message.member.voice.channel, songURL as string).catch((err) => {
         message.reply({ content: `${err.message}` });
       });
 
@@ -63,9 +63,9 @@ export default class Command extends BaseCommand {
         });
         return;
       }
-      client.distube?.play(message, search[0].url);
+      client.distube?.play(message.member.voice.channel, search[0].url);
     } else {
-      client.distube?.play(message, args.join(" "));
+      client.distube?.play(message.member.voice.channel, args.join(" "));
     }
   }
 }
