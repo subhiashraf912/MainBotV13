@@ -21,6 +21,7 @@
   "dependencies": {
     "@distube/soundcloud": "^1.0.0",
     "@distube/spotify": "^1.0.0",
+    "@distube/ytdl-core": "^4.11.3",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",

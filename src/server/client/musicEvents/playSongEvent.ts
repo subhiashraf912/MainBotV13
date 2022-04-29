@@ -12,11 +12,9 @@ export default class PlaySongEvent extends DisTubeBaseEvent {
     if (queue.textChannel?.id === "969509588221198366") {
       const messages = await queue.textChannel.messages.fetch({ limit: 1 });
       const embed = new MessageEmbed()
-        .setTitle("Playing Song")
-        .addField("Name:", song.name || "No name for this song")
-        .addField("Uploaded By:", song.uploader.name || "Unknown uploader")
+        .setTitle(song.name || "No name for this song")
         .setFooter({
-          text: "Duration:" + song.formattedDuration || "Unknown Duration",
+          text: "Duration: " + song.formattedDuration || "Unknown Duration",
           iconURL: "https://yt3.ggpht.com/mmqDQ-MMsKt5NIlhTkc2zEdfP2QtaKZR6BJ00_QItcNURyylh0sbEE00n63QIXaDoKZMPOfPWw=s256-c-k-c0x00ffffff-no-rj",
         })
         .setImage(song.thumbnail || "https://wallpaperaccess.com/full/1783942.jpg");
