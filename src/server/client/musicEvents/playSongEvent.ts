@@ -15,7 +15,10 @@ export default class PlaySongEvent extends DisTubeBaseEvent {
         .setTitle("Playing Song")
         .addField("Name:", song.name || "No name for this song")
         .addField("Uploaded By:", song.uploader.name || "Unknown uploader")
-        .addField("Duration:", song.formattedDuration || "Unknown Duration")
+        .setFooter({
+          text: "Duration:" + song.formattedDuration || "Unknown Duration",
+          iconURL: "https://yt3.ggpht.com/mmqDQ-MMsKt5NIlhTkc2zEdfP2QtaKZR6BJ00_QItcNURyylh0sbEE00n63QIXaDoKZMPOfPWw=s256-c-k-c0x00ffffff-no-rj",
+        })
         .setImage(song.thumbnail || "https://wallpaperaccess.com/full/1783942.jpg");
       if (messages.first()) messages.first()?.edit({ embeds: [embed] });
       else queue.textChannel.send({ embeds: [embed] });

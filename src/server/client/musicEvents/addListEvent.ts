@@ -8,16 +8,12 @@ export default class AddListEvent extends DisTubeBaseEvent {
     super("addList");
   }
   async run(client: DiscordClient, queue: Queue, playlist: Playlist) {
-    const config = await getConfig(
-      client,
-      queue.textChannel?.guildId as string
-    );
+    if (queue.textChannel?.id === "969509588221198366") return;
+    const config = await getConfig(client, queue.textChannel?.guildId as string);
 
     if (queue.textChannel)
       queue.textChannel.send({
-        content: GetLanguage("DistubeAddListEvent", config.language)
-          .replaceAll("{playlistName}", playlist.name)
-          .replaceAll("{playlistLength}", playlist.songs.length.toString()),
+        content: GetLanguage("DistubeAddListEvent", config.language).replaceAll("{playlistName}", playlist.name).replaceAll("{playlistLength}", playlist.songs.length.toString()),
       });
   }
 }
