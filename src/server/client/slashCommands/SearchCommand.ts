@@ -100,7 +100,7 @@ export default class SearchCommand extends BaseSlashCommand {
       if (response) {
         if (!response.first()) return;
         const entry: any = response.first()?.content;
-        client.distube?.playVoiceChannel(voiceChannel, song, {
+        client.distube?.play(voiceChannel, song, {
           member,
           textChannel: member.guild.channels.cache.get(
             interaction.channelId

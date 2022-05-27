@@ -57,7 +57,7 @@ export default class PlayCommand extends BaseSlashCommand {
 
     const voiceChannel = member.voice.channel;
     client.distube
-      ?.playVoiceChannel(voiceChannel, song, {
+      ?.play(voiceChannel, song, {
         member,
         textChannel: member.guild.channels.cache.get(
           interaction.channelId
