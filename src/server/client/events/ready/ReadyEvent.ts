@@ -8,7 +8,7 @@ export default class ReadyEvent extends BaseEvent {
   }
   async run(client: DiscordClient) {
     try {
-      const senGuild = client.guilds.cache.get("969508454228164618");
+      const senGuild = client.guilds.cache.get("783991881028993045");
       if (senGuild?.me?.voice.channel) {
         const channel = senGuild.me.voice.channel;
         const textChannel = senGuild.channels.cache.get("969509588221198366") as TextChannel;
