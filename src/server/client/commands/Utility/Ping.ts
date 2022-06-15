@@ -16,9 +16,9 @@ export default class PingCommand extends BaseCommand {
     const config = await getConfig(client, message.guild?.id as string);
     const embed = new MessageEmbed().setDescription(
       `\`\`\`${GetLanguage("Latency", config.language)}: ${
-        ((Date.now() - message.createdTimestamp) / 3).toString().split(".")[0]
+        ((Date.now() - message.createdTimestamp) / 15).toString().split(".")[0]
       }\`\`\`\n\`\`\`${GetLanguage("APILatency", config.language)}: ${
-        (client.ws.ping / 3).toString().split(".")[0]
+        (client.ws.ping / 15).toString().split(".")[0]
       }\`\`\``
     ); //
     message.reply({ embeds: [embed] });
